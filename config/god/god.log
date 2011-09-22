@@ -1,0 +1,418 @@
+I [2011-06-08 14:53:10]  INFO: Started on drbunix:///tmp/god.17165.sock
+I [2011-06-08 14:53:10]  INFO: resque-1 move 'unmonitored' to 'init'I [2011-06-08 14:53:10]  INFO: resque-2 move 'unmonitored' to 'init'
+I [2011-06-08 14:53:10]  INFO: resque-3 move 'unmonitored' to 'init'
+
+I [2011-06-08 14:53:10]  INFO: resque-1 moved 'unmonitored' to 'init'I [2011-06-08 14:53:10]  INFO: redis move 'unmonitored' to 'up'I [2011-06-08 14:53:10]  INFO: resque-2 moved 'unmonitored' to 'init'
+I [2011-06-08 14:53:10]  INFO: resque-0 move 'unmonitored' to 'init'
+I [2011-06-08 14:53:10]  INFO: resque-3 moved 'unmonitored' to 'init'
+
+
+I [2011-06-08 14:53:10]  INFO: redis moved 'unmonitored' to 'up'I [2011-06-08 14:53:10]  INFO: resque-0 moved 'unmonitored' to 'init'
+
+I [2011-06-08 14:53:10]  INFO: resque-1 [trigger] process is not running (ProcessRunning)I [2011-06-08 14:53:10]  INFO: resque-2 [trigger] process is not running (ProcessRunning)
+I [2011-06-08 14:53:10]  INFO: resque-3 [trigger] process is not running (ProcessRunning)
+I [2011-06-08 14:53:10]  INFO: resque-1 move 'init' to 'start'
+I [2011-06-08 14:53:10]  INFO: resque-2 move 'init' to 'start'I [2011-06-08 14:53:10]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:53:10]  INFO: resque-3 move 'init' to 'start'
+I [2011-06-08 14:53:10]  INFO: resque-0 [trigger] process is not running (ProcessRunning)
+I [2011-06-08 14:53:10]  INFO: resque-1 start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 14:53:10]  INFO: resque-2 start: rake environment resque:work QUEUE=paperclip
+
+I [2011-06-08 14:53:10]  INFO: resque-3 start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 14:53:10]  INFO: resque-0 move 'init' to 'start'
+
+I [2011-06-08 14:53:10]  INFO: resque-0 start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 14:53:10]  INFO: resque-2 moved 'init' to 'start'I [2011-06-08 14:53:10]  INFO: resque-1 moved 'init' to 'start'
+
+I [2011-06-08 14:53:10]  INFO: resque-2 [trigger] process is running (ProcessRunning)I [2011-06-08 14:53:10]  INFO: resque-1 [trigger] process is running (ProcessRunning)
+
+I [2011-06-08 14:53:10]  INFO: resque-2 move 'start' to 'up'I [2011-06-08 14:53:10]  INFO: resque-1 move 'start' to 'up'
+
+I [2011-06-08 14:53:10]  INFO: resque-2 moved 'start' to 'up'
+I [2011-06-08 14:53:10]  INFO: resque-1 moved 'start' to 'up'I [2011-06-08 14:53:10]  INFO: resque-3 moved 'init' to 'start'
+
+I [2011-06-08 14:53:10]  INFO: resque-2 [ok] memory within bounds [16kb] (MemoryUsage)I [2011-06-08 14:53:10]  INFO: resque-3 [trigger] process is running (ProcessRunning)
+I [2011-06-08 14:53:10]  INFO: resque-1 [ok] memory within bounds [1796kb] (MemoryUsage)
+
+I [2011-06-08 14:53:10]  INFO: resque-3 move 'start' to 'up'
+I [2011-06-08 14:53:10]  INFO: resque-2 [ok] process is running (ProcessRunning)I [2011-06-08 14:53:10]  INFO: resque-1 [ok] process is running (ProcessRunning)
+I [2011-06-08 14:53:10]  INFO: resque-3 moved 'start' to 'up'
+
+I [2011-06-08 14:53:10]  INFO: resque-3 [ok] memory within bounds [1840kb] (MemoryUsage)
+I [2011-06-08 14:53:10]  INFO: resque-3 [ok] process is running (ProcessRunning)
+I [2011-06-08 14:53:10]  INFO: resque-0 moved 'init' to 'start'
+I [2011-06-08 14:53:10]  INFO: resque-0 [trigger] process is running (ProcessRunning)
+I [2011-06-08 14:53:10]  INFO: resque-0 move 'start' to 'up'
+I [2011-06-08 14:53:10]  INFO: resque-0 moved 'start' to 'up'
+I [2011-06-08 14:53:10]  INFO: resque-0 [ok] memory within bounds [9916kb] (MemoryUsage)
+I [2011-06-08 14:53:10]  INFO: resque-0 [ok] process is running (ProcessRunning)
+I [2011-06-08 14:53:15]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:53:20]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:53:25]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:53:30]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:53:35]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:53:40]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:53:40]  INFO: resque-2 [ok] memory within bounds [16kb, 0kb] (MemoryUsage)
+I [2011-06-08 14:53:40]  INFO: resque-2 [trigger] process is not running (ProcessRunning)
+I [2011-06-08 14:53:40]  INFO: resque-2 move 'up' to 'start'
+I [2011-06-08 14:53:40]  INFO: resque-2 start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 14:53:40]  INFO: resque-1 [ok] memory within bounds [1796kb, 0kb] (MemoryUsage)
+I [2011-06-08 14:53:40]  INFO: resque-1 [trigger] process is not running (ProcessRunning)
+I [2011-06-08 14:53:40]  INFO: resque-1 move 'up' to 'start'
+I [2011-06-08 14:53:40]  INFO: resque-1 start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 14:53:40]  INFO: resque-0 [ok] memory within bounds [9916kb, 0kb] (MemoryUsage)I [2011-06-08 14:53:40]  INFO: resque-3 [ok] memory within bounds [1840kb, 0kb] (MemoryUsage)
+
+I [2011-06-08 14:53:40]  INFO: resque-3 [trigger] process is not running (ProcessRunning)I [2011-06-08 14:53:40]  INFO: resque-0 [trigger] process is not running (ProcessRunning)
+
+I [2011-06-08 14:53:40]  INFO: resque-3 move 'up' to 'start'I [2011-06-08 14:53:40]  INFO: resque-0 move 'up' to 'start'
+
+I [2011-06-08 14:53:40]  INFO: resque-3 start: rake environment resque:work QUEUE=paperclipI [2011-06-08 14:53:40]  INFO: resque-0 start: rake environment resque:work QUEUE=paperclip
+
+I [2011-06-08 14:53:40]  INFO: resque-2 moved 'up' to 'start'
+I [2011-06-08 14:53:40]  INFO: resque-1 moved 'up' to 'start'
+I [2011-06-08 14:53:40]  INFO: resque-2 [trigger] process is running (ProcessRunning)I [2011-06-08 14:53:40]  INFO: resque-1 [trigger] process is running (ProcessRunning)
+
+I [2011-06-08 14:53:40]  INFO: resque-2 move 'start' to 'up'I [2011-06-08 14:53:40]  INFO: resque-1 move 'start' to 'up'
+
+I [2011-06-08 14:53:40]  INFO: resque-2 moved 'start' to 'up'I [2011-06-08 14:53:40]  INFO: resque-1 moved 'start' to 'up'
+
+I [2011-06-08 14:53:40]  INFO: resque-2 [ok] memory within bounds [2392kb] (MemoryUsage)I [2011-06-08 14:53:40]  INFO: resque-1 [ok] memory within bounds [10088kb] (MemoryUsage)
+
+I [2011-06-08 14:53:40]  INFO: resque-1 [ok] process is running (ProcessRunning)I [2011-06-08 14:53:40]  INFO: resque-2 [ok] process is running (ProcessRunning)
+
+I [2011-06-08 14:53:40]  INFO: resque-0 moved 'up' to 'start'
+I [2011-06-08 14:53:40]  INFO: resque-0 [trigger] process is running (ProcessRunning)
+I [2011-06-08 14:53:40]  INFO: resque-0 move 'start' to 'up'
+I [2011-06-08 14:53:40]  INFO: resque-0 moved 'start' to 'up'
+I [2011-06-08 14:53:40]  INFO: resque-0 [ok] memory within bounds [1040kb] (MemoryUsage)
+I [2011-06-08 14:53:40]  INFO: resque-0 [ok] process is running (ProcessRunning)
+I [2011-06-08 14:53:40]  INFO: resque-3 moved 'up' to 'start'
+I [2011-06-08 14:53:40]  INFO: resque-3 [trigger] process is running (ProcessRunning)
+I [2011-06-08 14:53:40]  INFO: resque-3 move 'start' to 'up'
+I [2011-06-08 14:53:40]  INFO: resque-3 moved 'start' to 'up'
+I [2011-06-08 14:53:40]  INFO: resque-3 [ok] memory within bounds [2064kb] (MemoryUsage)
+I [2011-06-08 14:53:40]  INFO: resque-3 [ok] process is running (ProcessRunning)
+I [2011-06-08 14:53:45]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:53:50]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:53:55]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:54:00]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:54:05]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:54:10]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:54:10]  INFO: resque-1 [ok] memory within bounds [10088kb, 0kb] (MemoryUsage)I [2011-06-08 14:54:10]  INFO: resque-2 [ok] memory within bounds [2392kb, 0kb] (MemoryUsage)
+
+I [2011-06-08 14:54:10]  INFO: resque-2 [trigger] process is not running (ProcessRunning)I [2011-06-08 14:54:10]  INFO: resque-1 [trigger] process is not running (ProcessRunning)
+
+I [2011-06-08 14:54:10]  INFO: resque-2 move 'up' to 'start'I [2011-06-08 14:54:10]  INFO: resque-1 move 'up' to 'start'
+
+I [2011-06-08 14:54:10]  INFO: resque-2 start: rake environment resque:work QUEUE=paperclipI [2011-06-08 14:54:10]  INFO: resque-1 start: rake environment resque:work QUEUE=paperclip
+
+I [2011-06-08 14:54:10]  INFO: resque-0 [ok] memory within bounds [1040kb, 0kb] (MemoryUsage)
+I [2011-06-08 14:54:10]  INFO: resque-0 [trigger] process is not running (ProcessRunning)
+I [2011-06-08 14:54:10]  INFO: resque-0 move 'up' to 'start'
+I [2011-06-08 14:54:10]  INFO: resque-0 start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 14:54:10]  INFO: resque-3 [ok] memory within bounds [2064kb, 0kb] (MemoryUsage)I [2011-06-08 14:54:10]  INFO: resque-1 moved 'up' to 'start'
+
+I [2011-06-08 14:54:10]  INFO: resque-1 [trigger] process is running (ProcessRunning)I [2011-06-08 14:54:10]  INFO: resque-3 [trigger] process is not running (ProcessRunning)
+
+I [2011-06-08 14:54:10]  INFO: resque-1 move 'start' to 'up'I [2011-06-08 14:54:10]  INFO: resque-3 move 'up' to 'start'
+
+I [2011-06-08 14:54:10]  INFO: resque-3 start: rake environment resque:work QUEUE=paperclipI [2011-06-08 14:54:10]  INFO: resque-1 moved 'start' to 'up'
+
+I [2011-06-08 14:54:10]  INFO: resque-2 moved 'up' to 'start'
+I [2011-06-08 14:54:10]  INFO: resque-1 [ok] memory within bounds [2536kb] (MemoryUsage)
+I [2011-06-08 14:54:10]  INFO: resque-2 [trigger] process is running (ProcessRunning)
+I [2011-06-08 14:54:10]  INFO: resque-2 move 'start' to 'up'I [2011-06-08 14:54:10]  INFO: resque-1 [ok] process is running (ProcessRunning)
+
+I [2011-06-08 14:54:10]  INFO: resque-2 moved 'start' to 'up'
+I [2011-06-08 14:54:10]  INFO: resque-2 [ok] memory within bounds [2520kb] (MemoryUsage)
+I [2011-06-08 14:54:10]  INFO: resque-2 [ok] process is running (ProcessRunning)
+I [2011-06-08 14:54:10]  INFO: resque-0 moved 'up' to 'start'
+I [2011-06-08 14:54:10]  INFO: resque-0 [trigger] process is running (ProcessRunning)
+I [2011-06-08 14:54:10]  INFO: resque-0 move 'start' to 'up'
+I [2011-06-08 14:54:10]  INFO: resque-0 moved 'start' to 'up'
+I [2011-06-08 14:54:10]  INFO: resque-0 [ok] memory within bounds [16kb] (MemoryUsage)
+I [2011-06-08 14:54:10]  INFO: resque-0 [ok] process is running (ProcessRunning)
+I [2011-06-08 14:54:10]  INFO: resque-3 moved 'up' to 'start'
+I [2011-06-08 14:54:10]  INFO: resque-3 [trigger] process is running (ProcessRunning)
+I [2011-06-08 14:54:10]  INFO: resque-3 move 'start' to 'up'
+I [2011-06-08 14:54:10]  INFO: resque-3 moved 'start' to 'up'
+I [2011-06-08 14:54:10]  INFO: resque-3 [ok] memory within bounds [1740kb] (MemoryUsage)
+I [2011-06-08 14:54:10]  INFO: resque-3 [ok] process is running (ProcessRunning)
+I [2011-06-08 14:54:15]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:54:20]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:54:25]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:54:30]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:54:35]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:54:40]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:54:40]  INFO: resque-1 [ok] memory within bounds [2536kb, 0kb] (MemoryUsage)
+I [2011-06-08 14:54:40]  INFO: resque-1 [trigger] process is not running (ProcessRunning)
+I [2011-06-08 14:54:40]  INFO: resque-1 move 'up' to 'start'
+I [2011-06-08 14:54:40]  INFO: resque-1 start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 14:54:40]  INFO: resque-2 [ok] memory within bounds [2520kb, 0kb] (MemoryUsage)
+I [2011-06-08 14:54:40]  INFO: resque-2 [trigger] process is not running (ProcessRunning)
+I [2011-06-08 14:54:40]  INFO: resque-2 move 'up' to 'start'
+I [2011-06-08 14:54:40]  INFO: resque-2 start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 14:54:40]  INFO: resque-0 [ok] memory within bounds [16kb, 0kb] (MemoryUsage)
+I [2011-06-08 14:54:40]  INFO: resque-0 [trigger] process is not running (ProcessRunning)
+I [2011-06-08 14:54:40]  INFO: resque-0 move 'up' to 'start'
+I [2011-06-08 14:54:40]  INFO: resque-0 start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 14:54:40]  INFO: resque-3 [ok] memory within bounds [1740kb, 0kb] (MemoryUsage)
+I [2011-06-08 14:54:40]  INFO: resque-3 [trigger] process is not running (ProcessRunning)
+I [2011-06-08 14:54:40]  INFO: resque-3 move 'up' to 'start'
+I [2011-06-08 14:54:40]  INFO: resque-3 start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 14:54:40]  INFO: resque-1 moved 'up' to 'start'
+I [2011-06-08 14:54:40]  INFO: resque-1 [trigger] process is running (ProcessRunning)
+I [2011-06-08 14:54:40]  INFO: resque-1 move 'start' to 'up'
+I [2011-06-08 14:54:40]  INFO: resque-1 moved 'start' to 'up'
+I [2011-06-08 14:54:40]  INFO: resque-1 [ok] memory within bounds [1756kb] (MemoryUsage)
+I [2011-06-08 14:54:40]  INFO: resque-1 [ok] process is running (ProcessRunning)
+I [2011-06-08 14:54:40]  INFO: resque-2 moved 'up' to 'start'
+I [2011-06-08 14:54:40]  INFO: resque-2 [trigger] process is running (ProcessRunning)
+I [2011-06-08 14:54:40]  INFO: resque-2 move 'start' to 'up'
+I [2011-06-08 14:54:40]  INFO: resque-2 moved 'start' to 'up'
+I [2011-06-08 14:54:40]  INFO: resque-2 [ok] memory within bounds [1836kb] (MemoryUsage)
+I [2011-06-08 14:54:40]  INFO: resque-2 [ok] process is running (ProcessRunning)
+I [2011-06-08 14:54:41]  INFO: resque-0 moved 'up' to 'start'
+I [2011-06-08 14:54:41]  INFO: resque-0 [trigger] process is running (ProcessRunning)
+I [2011-06-08 14:54:41]  INFO: resque-0 move 'start' to 'up'
+I [2011-06-08 14:54:41]  INFO: resque-0 moved 'start' to 'up'
+I [2011-06-08 14:54:41]  INFO: resque-0 [ok] memory within bounds [4kb] (MemoryUsage)
+I [2011-06-08 14:54:41]  INFO: resque-0 [ok] process is running (ProcessRunning)
+I [2011-06-08 14:54:41]  INFO: resque-3 moved 'up' to 'start'
+I [2011-06-08 14:54:41]  INFO: resque-3 [trigger] process is running (ProcessRunning)
+I [2011-06-08 14:54:41]  INFO: resque-3 move 'start' to 'up'
+I [2011-06-08 14:54:41]  INFO: resque-3 moved 'start' to 'up'
+I [2011-06-08 14:54:41]  INFO: resque-3 [ok] memory within bounds [1868kb] (MemoryUsage)
+I [2011-06-08 14:54:41]  INFO: resque-3 [ok] process is running (ProcessRunning)
+I [2011-06-08 14:54:45]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:54:50]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:54:55]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:55:00]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:55:05]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:55:10]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:55:10]  INFO: resque-1 [ok] memory within bounds [1756kb, 0kb] (MemoryUsage)
+I [2011-06-08 14:55:10]  INFO: resque-1 [trigger] process is not running (ProcessRunning)
+I [2011-06-08 14:55:10]  INFO: resque-1 move 'up' to 'start'
+I [2011-06-08 14:55:10]  INFO: resque-1 start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 14:55:10]  INFO: resque-2 [ok] memory within bounds [1836kb, 0kb] (MemoryUsage)
+I [2011-06-08 14:55:10]  INFO: resque-2 [trigger] process is not running (ProcessRunning)
+I [2011-06-08 14:55:10]  INFO: resque-2 move 'up' to 'start'
+I [2011-06-08 14:55:10]  INFO: resque-2 start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 14:55:11]  INFO: resque-0 [ok] memory within bounds [4kb, 0kb] (MemoryUsage)
+I [2011-06-08 14:55:11]  INFO: resque-0 [trigger] process is not running (ProcessRunning)
+I [2011-06-08 14:55:11]  INFO: resque-0 move 'up' to 'start'
+I [2011-06-08 14:55:11]  INFO: resque-0 start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 14:55:11]  INFO: resque-3 [ok] memory within bounds [1868kb, 0kb] (MemoryUsage)
+I [2011-06-08 14:55:11]  INFO: resque-3 [trigger] process is not running (ProcessRunning)
+I [2011-06-08 14:55:11]  INFO: resque-3 move 'up' to 'start'
+I [2011-06-08 14:55:11]  INFO: resque-3 start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 14:55:11]  INFO: resque-1 moved 'up' to 'start'
+I [2011-06-08 14:55:11]  INFO: resque-1 [trigger] process is running (ProcessRunning)
+I [2011-06-08 14:55:11]  INFO: resque-1 move 'start' to 'up'
+I [2011-06-08 14:55:11]  INFO: resque-1 moved 'start' to 'up'
+I [2011-06-08 14:55:11]  INFO: resque-2 moved 'up' to 'start'I [2011-06-08 14:55:11]  INFO: resque-1 [ok] memory within bounds [2520kb] (MemoryUsage)
+
+I [2011-06-08 14:55:11]  INFO: resque-2 [trigger] process is running (ProcessRunning)
+I [2011-06-08 14:55:11]  INFO: resque-1 [ok] process is running (ProcessRunning)I [2011-06-08 14:55:11]  INFO: resque-2 move 'start' to 'up'
+
+I [2011-06-08 14:55:11]  INFO: resque-2 moved 'start' to 'up'
+I [2011-06-08 14:55:11]  INFO: resque-2 [ok] memory within bounds [1860kb] (MemoryUsage)
+I [2011-06-08 14:55:11]  INFO: resque-2 [ok] process is running (ProcessRunning)
+I [2011-06-08 14:55:11]  INFO: resque-0 moved 'up' to 'start'
+I [2011-06-08 14:55:11]  INFO: resque-0 [trigger] process is running (ProcessRunning)
+I [2011-06-08 14:55:11]  INFO: resque-0 move 'start' to 'up'
+I [2011-06-08 14:55:11]  INFO: resque-0 moved 'start' to 'up'
+I [2011-06-08 14:55:11]  INFO: resque-0 [ok] memory within bounds [1164kb] (MemoryUsage)
+I [2011-06-08 14:55:11]  INFO: resque-0 [ok] process is running (ProcessRunning)
+I [2011-06-08 14:55:11]  INFO: resque-3 moved 'up' to 'start'
+I [2011-06-08 14:55:11]  INFO: resque-3 [trigger] process is running (ProcessRunning)
+I [2011-06-08 14:55:11]  INFO: resque-3 move 'start' to 'up'
+I [2011-06-08 14:55:11]  INFO: resque-3 moved 'start' to 'up'
+I [2011-06-08 14:55:11]  INFO: resque-3 [ok] memory within bounds [160kb] (MemoryUsage)
+I [2011-06-08 14:55:11]  INFO: resque-3 [ok] process is running (ProcessRunning)
+I [2011-06-08 14:55:15]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:55:20]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:55:25]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:55:30]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:55:35]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:55:40]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 14:55:41]  INFO: resque-1 [ok] memory within bounds [2520kb, 0kb] (MemoryUsage)
+I [2011-06-08 14:55:41]  INFO: resque-1 [trigger] process is not running (ProcessRunning)
+I [2011-06-08 14:55:41]  INFO: resque-1 move 'up' to 'start'
+I [2011-06-08 14:55:41]  INFO: resque-1 start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 14:55:41]  INFO: resque-2 [ok] memory within bounds [1860kb, 0kb] (MemoryUsage)
+I [2011-06-08 14:55:41]  INFO: resque-2 [trigger] process is not running (ProcessRunning)
+I [2011-06-08 14:55:41]  INFO: resque-2 move 'up' to 'start'
+I [2011-06-08 14:55:41]  INFO: resque-2 start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 14:55:41]  INFO: resque-0 [ok] memory within bounds [1164kb, 0kb] (MemoryUsage)
+I [2011-06-08 14:55:41]  INFO: resque-0 [trigger] process is not running (ProcessRunning)
+I [2011-06-08 14:55:41]  INFO: resque-0 move 'up' to 'start'
+I [2011-06-08 14:55:41]  INFO: resque-0 start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 14:55:41]  INFO: resque-3 [ok] memory within bounds [160kb, 0kb] (MemoryUsage)
+I [2011-06-08 14:55:41]  INFO: resque-3 [trigger] process is not running (ProcessRunning)
+I [2011-06-08 14:55:41]  INFO: resque-3 move 'up' to 'start'
+I [2011-06-08 14:55:41]  INFO: resque-3 start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 14:55:41]  INFO: resque-1 moved 'up' to 'start'
+I [2011-06-08 14:55:41]  INFO: resque-1 [trigger] process is running (ProcessRunning)
+I [2011-06-08 14:55:41]  INFO: resque-1 move 'start' to 'up'
+I [2011-06-08 14:55:41]  INFO: resque-1 moved 'start' to 'up'
+I [2011-06-08 14:55:41]  INFO: resque-1 [ok] memory within bounds [1064kb] (MemoryUsage)
+I [2011-06-08 14:55:41]  INFO: resque-1 [ok] process is running (ProcessRunning)
+I [2011-06-08 14:55:41]  INFO: resque-2 moved 'up' to 'start'
+I [2011-06-08 14:55:41]  INFO: resque-2 [trigger] process is running (ProcessRunning)
+I [2011-06-08 14:55:41]  INFO: resque-2 move 'start' to 'up'
+I [2011-06-08 14:55:41]  INFO: resque-2 moved 'start' to 'up'
+I [2011-06-08 14:55:41]  INFO: resque-2 [ok] memory within bounds [2424kb] (MemoryUsage)
+I [2011-06-08 14:55:41]  INFO: resque-2 [ok] process is running (ProcessRunning)
+I [2011-06-08 14:55:41]  INFO: resque-3 moved 'up' to 'start'
+I [2011-06-08 14:55:41]  INFO: resque-0 moved 'up' to 'start'
+I [2011-06-08 14:55:41]  INFO: resque-3 [trigger] process is running (ProcessRunning)
+I [2011-06-08 14:55:41]  INFO: resque-3 move 'start' to 'up'I [2011-06-08 14:55:41]  INFO: resque-0 [trigger] process is running (ProcessRunning)
+
+I [2011-06-08 14:55:41]  INFO: resque-0 move 'start' to 'up'I [2011-06-08 14:55:41]  INFO: resque-3 moved 'start' to 'up'
+
+I [2011-06-08 14:55:41]  INFO: resque-0 moved 'start' to 'up'
+I [2011-06-08 14:55:41]  INFO: resque-3 [ok] memory within bounds [4kb] (MemoryUsage)
+I [2011-06-08 14:55:41]  INFO: resque-0 [ok] memory within bounds [2576kb] (MemoryUsage)
+I [2011-06-08 14:55:41]  INFO: resque-3 [ok] process is running (ProcessRunning)
+I [2011-06-08 14:55:41]  INFO: resque-0 [ok] process is running (ProcessRunning)
+/usr/lib/ruby/gems/1.8/gems/god-0.11.0/bin/../lib/god.rb:656:in `join': Interrupt
+	from /usr/lib/ruby/gems/1.8/gems/god-0.11.0/bin/../lib/god.rb:656:in `start'
+	from /usr/lib/ruby/gems/1.8/gems/god-0.11.0/bin/../lib/god.rb:667:in `at_exit'
+	from /usr/lib/ruby/gems/1.8/gems/god-0.11.0/bin/../lib/god.rb:700
+	from /usr/bin/god:19
+I [2011-06-08 15:53:06]  INFO: Started on drbunix:///tmp/god.17165.sock
+I [2011-06-08 15:53:06]  INFO: resque move 'unmonitored' to 'init'
+I [2011-06-08 15:53:06]  INFO: redis move 'unmonitored' to 'up'
+I [2011-06-08 15:53:06]  INFO: resque moved 'unmonitored' to 'init'
+I [2011-06-08 15:53:06]  INFO: redis moved 'unmonitored' to 'up'
+I [2011-06-08 15:53:06]  INFO: resque [trigger] process is not running (ProcessRunning)I [2011-06-08 15:53:06]  INFO: redis [trigger] process is not running (ProcessRunning)
+
+I [2011-06-08 15:53:06]  INFO: resque move 'init' to 'start'I [2011-06-08 15:53:06]  INFO: redis move 'up' to 'start'
+
+I [2011-06-08 15:53:06]  INFO: resque start: rake environment resque:work QUEUE=paperclipI [2011-06-08 15:53:06]  INFO: redis start: /usr/bin/redis-server
+
+I [2011-06-08 15:53:06]  INFO: resque moved 'init' to 'start'
+I [2011-06-08 15:53:06]  INFO: resque [trigger] process is running (ProcessRunning)
+I [2011-06-08 15:53:06]  INFO: resque move 'start' to 'up'
+I [2011-06-08 15:53:06]  INFO: resque moved 'start' to 'up'
+I [2011-06-08 15:53:06]  INFO: resque [ok] memory within bounds [9988kb] (MemoryUsage)
+I [2011-06-08 15:53:06]  INFO: resque [ok] process is running (ProcessRunning)
+I [2011-06-08 15:53:16]  INFO: redis moved 'up' to 'up'
+I [2011-06-08 15:53:16]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:53:21]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:53:26]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:53:31]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:53:36]  INFO: resque [ok] memory within bounds [9988kb, 0kb] (MemoryUsage)
+I [2011-06-08 15:53:36]  INFO: resque [trigger] process is not running (ProcessRunning)
+I [2011-06-08 15:53:36]  INFO: resque move 'up' to 'start'
+I [2011-06-08 15:53:36]  INFO: resque start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 15:53:36]  INFO: resque moved 'up' to 'start'
+I [2011-06-08 15:53:36]  INFO: resque [trigger] process is running (ProcessRunning)
+I [2011-06-08 15:53:36]  INFO: resque move 'start' to 'up'
+I [2011-06-08 15:53:36]  INFO: resque moved 'start' to 'up'
+I [2011-06-08 15:53:36]  INFO: resque [ok] memory within bounds [2536kb] (MemoryUsage)
+I [2011-06-08 15:53:36]  INFO: resque [ok] process is running (ProcessRunning)
+I [2011-06-08 15:53:36]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:53:41]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:53:46]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:53:51]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:53:56]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:54:01]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:54:06]  INFO: resque [ok] memory within bounds [2536kb, 0kb] (MemoryUsage)
+I [2011-06-08 15:54:06]  INFO: resque [trigger] process is not running (ProcessRunning)
+I [2011-06-08 15:54:06]  INFO: resque move 'up' to 'start'
+I [2011-06-08 15:54:06]  INFO: resque start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 15:54:06]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:54:06]  INFO: resque moved 'up' to 'start'
+I [2011-06-08 15:54:06]  INFO: resque [trigger] process is running (ProcessRunning)
+I [2011-06-08 15:54:06]  INFO: resque move 'start' to 'up'
+I [2011-06-08 15:54:06]  INFO: resque moved 'start' to 'up'
+I [2011-06-08 15:54:06]  INFO: resque [ok] memory within bounds [3088kb] (MemoryUsage)
+I [2011-06-08 15:54:06]  INFO: resque [ok] process is running (ProcessRunning)
+I [2011-06-08 15:54:11]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:54:16]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:54:21]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:54:26]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:54:31]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:54:36]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:54:36]  INFO: resque [ok] memory within bounds [3088kb, 0kb] (MemoryUsage)
+I [2011-06-08 15:54:36]  INFO: resque [trigger] process is not running (ProcessRunning)
+I [2011-06-08 15:54:36]  INFO: resque move 'up' to 'start'
+I [2011-06-08 15:54:36]  INFO: resque start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 15:54:36]  INFO: resque moved 'up' to 'start'
+I [2011-06-08 15:54:36]  INFO: resque [trigger] process is running (ProcessRunning)
+I [2011-06-08 15:54:36]  INFO: resque move 'start' to 'up'
+I [2011-06-08 15:54:36]  INFO: resque moved 'start' to 'up'
+I [2011-06-08 15:54:36]  INFO: resque [ok] memory within bounds [3200kb] (MemoryUsage)
+I [2011-06-08 15:54:36]  INFO: resque [ok] process is running (ProcessRunning)
+I [2011-06-08 15:54:41]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:54:46]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:54:51]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:54:56]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:55:01]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:55:06]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:55:06]  INFO: resque [ok] memory within bounds [3200kb, 0kb] (MemoryUsage)
+I [2011-06-08 15:55:06]  INFO: resque [trigger] process is not running (ProcessRunning)
+I [2011-06-08 15:55:06]  INFO: resque move 'up' to 'start'
+I [2011-06-08 15:55:06]  INFO: resque start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 15:55:06]  INFO: resque moved 'up' to 'start'
+I [2011-06-08 15:55:06]  INFO: resque [trigger] process is running (ProcessRunning)
+I [2011-06-08 15:55:06]  INFO: resque move 'start' to 'up'
+I [2011-06-08 15:55:06]  INFO: resque moved 'start' to 'up'
+I [2011-06-08 15:55:06]  INFO: resque [ok] memory within bounds [3204kb] (MemoryUsage)
+I [2011-06-08 15:55:06]  INFO: resque [ok] process is running (ProcessRunning)
+I [2011-06-08 15:55:11]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:55:16]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:55:21]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:55:26]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:55:31]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:55:36]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:55:36]  INFO: resque [ok] memory within bounds [3204kb, 0kb] (MemoryUsage)
+I [2011-06-08 15:55:36]  INFO: resque [trigger] process is not running (ProcessRunning)
+I [2011-06-08 15:55:36]  INFO: resque move 'up' to 'start'
+I [2011-06-08 15:55:36]  INFO: resque start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 15:55:36]  INFO: resque moved 'up' to 'start'
+I [2011-06-08 15:55:36]  INFO: resque [trigger] process is running (ProcessRunning)
+I [2011-06-08 15:55:36]  INFO: resque move 'start' to 'up'
+I [2011-06-08 15:55:36]  INFO: resque moved 'start' to 'up'
+I [2011-06-08 15:55:36]  INFO: resque [ok] memory within bounds [3196kb] (MemoryUsage)
+I [2011-06-08 15:55:36]  INFO: resque [ok] process is running (ProcessRunning)
+I [2011-06-08 15:55:41]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:55:46]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:55:51]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:55:56]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:56:01]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:56:06]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:56:06]  INFO: resque [ok] memory within bounds [3196kb, 0kb] (MemoryUsage)
+I [2011-06-08 15:56:06]  INFO: resque [trigger] process is not running (ProcessRunning)
+I [2011-06-08 15:56:06]  INFO: resque move 'up' to 'start'
+I [2011-06-08 15:56:06]  INFO: resque start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 15:56:06]  INFO: resque moved 'up' to 'start'
+I [2011-06-08 15:56:06]  INFO: resque [trigger] process is running (ProcessRunning)
+I [2011-06-08 15:56:06]  INFO: resque move 'start' to 'up'
+I [2011-06-08 15:56:06]  INFO: resque moved 'start' to 'up'
+I [2011-06-08 15:56:06]  INFO: resque [ok] memory within bounds [3204kb] (MemoryUsage)
+I [2011-06-08 15:56:06]  INFO: resque [ok] process is running (ProcessRunning)
+I [2011-06-08 15:56:11]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:56:16]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:56:21]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:56:26]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:56:31]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:56:36]  INFO: redis [ok] process is running (ProcessRunning)
+I [2011-06-08 15:56:36]  INFO: resque [ok] memory within bounds [3204kb, 0kb] (MemoryUsage)
+I [2011-06-08 15:56:36]  INFO: resque [trigger] process is not running (ProcessRunning)
+I [2011-06-08 15:56:36]  INFO: resque move 'up' to 'start'
+I [2011-06-08 15:56:36]  INFO: resque start: rake environment resque:work QUEUE=paperclip
+I [2011-06-08 15:56:36]  INFO: resque moved 'up' to 'start'
+I [2011-06-08 15:56:36]  INFO: resque [trigger] process is running (ProcessRunning)
+I [2011-06-08 15:56:36]  INFO: resque move 'start' to 'up'
+I [2011-06-08 15:56:36]  INFO: resque moved 'start' to 'up'
+I [2011-06-08 15:56:36]  INFO: resque [ok] memory within bounds [1320kb] (MemoryUsage)
+I [2011-06-08 15:56:36]  INFO: resque [ok] process is running (ProcessRunning)
+I [2011-06-08 15:56:41]  INFO: redis move 'up' to 'unmonitored'I [2011-06-08 15:56:41]  INFO: resque move 'up' to 'unmonitored'
+
+I [2011-06-08 15:56:41]  INFO: redis moved 'up' to 'unmonitored'I [2011-06-08 15:56:41]  INFO: resque moved 'up' to 'unmonitored'
+
+I [2011-06-08 15:56:41]  INFO: redis stop: /usr/bin/redis-cli -p 6379 shutdown
+W [2011-06-08 15:56:41]  WARN: redis ensuring stop...

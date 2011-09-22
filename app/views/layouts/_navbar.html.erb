@@ -1,0 +1,71 @@
+<ul>
+	<li>
+		<%= 
+			link_to_unless_current 'Directory', '/directory' do
+				link_to 'Directory', directory_path, :class => 'active' 
+			end 
+		%>
+	</li>
+</ul>
+<% if permitted_to? :edit, @user %>					 
+	<ul>
+		<li>
+			<%= 
+				link_to_unless_current 'Add Person', new_user_path do
+					link_to 'Add Person', new_user_path, :class => 'active' 
+				end 
+			%>
+		</li>
+	</ul>
+<% end %>
+<% if permitted_to? :edit, @workstation %>
+	<ul>
+		<li>
+			<%= 
+				link_to_unless_current 'Administration', admin_users_path do
+					link_to 'Administration', admin_users_path, :class => 'active' 
+				end 
+			%>
+		</li>
+	</ul>
+	<ul>
+		<li>
+			<%= 
+				link_to_unless_current 'Workstations', workstations_path do
+					link_to 'Workstations', workstations_path, :class => 'active' 
+				end 
+			%>
+		</li>
+	</ul>
+<% end %>
+<% if permitted_to? :edit, @product %>					 		
+	<ul>
+		<li>
+			<%= 
+				link_to_unless_current 'Equipment', products_path do
+					link_to 'Equipment', products_path, :class => 'active' 
+				end 
+			%>
+		</li>
+	</ul>
+	<ul>
+		<li>
+			<%= 
+				link_to_unless_current 'Transactions', transactions_path do
+					link_to 'Transactions', transactions_path, :class => 'active' 
+				end 
+			%>
+		</li>
+	</ul>
+<% end %>
+<% if permitted_to? :index, @submission %>
+	<ul>
+		<li>
+			<%= 
+				link_to_unless_current 'Submissions', submissions_path do
+					link_to 'Submissions', submissions_path, :class => 'active' 
+				end 
+			%>
+		</li>
+	</ul>
+<% end %>

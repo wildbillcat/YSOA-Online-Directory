@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>YSOA Online -  <%= yield (:title) || "Directory" %></title>
+  	<%= stylesheet_link_tag 'products','application', 'grid', "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/overcast/jquery-ui.css", :media => "screen" %>
+  	<%= stylesheet_link_tag 'application', 'grid', 'print', :media => "print" %>
+	<%= javascript_include_tag "jquery.min.js","jquery_ujs.js","jquery-ui.js","application.js" %> 	
+	<%= csrf_meta_tag %> <!-- Returns a meta tag with the cross-site request forgery protection token for forms to use -->
+</head>
+
+<body>
+<div id="body">
+<div class= "container container_12">
+	<div class="grid_2">
+		<div id = "headerlogo">
+			<img src="/images/yale_arch_bluegray.gif" >
+		</div>				
+	</div>
+	<div class="grid_8">
+		<div id="banner">
+			<%= link_to "Yale School of Architecture Online Directory", "/directory" %>
+			<div class = 'timestamp'>Printed on <%= Date.today.to_s(:long) %></div>
+		</div>
+	</div>
+	<div class="grid_2">
+		<% if current_user %>	
+			<div class="login_window">
+				Logged in as <strong><%=h session[:cas_user] %></strong><br />
+				<%= link_to 'My Registration Page', user_path(current_user) %><br />
+				<% if permitted_to? :edit, @user %>			
+					<%= link_to 'Edit My User', edit_user_path(current_user) %><br />
+				<% end %>
+				<%= link_to "Log Out", logout_path, :confirm => "Are you sure you want to logout?"  %>
+			</div>
+		<% else %>
+			<div class="login_window">
+				<%= link_to "Log Out of Yale CAS", logout_path, :confirm => "Are you sure you want to logout?"  %>
+			</div>
+		<% end %>
+	</div>
+	<div class = 'clear'></div>
+	<% if current_user %>			
+	<div class = 'grid_12'> 
+		<div id = "topmenu">
+			<%= render 'layouts/navbar' %>
+		</div>
+	</div>
+	<div class = 'clear'></div>
+	<% end%>
+	<div class = 'grid_12'>
+		<div id = 'main'>
+			<h1><%= yield(:title) %></h1>  
+			<% if flash[:notice] %> 
+				<div id = "notice"><%= flash[:notice] %></div>
+			<% end %>
+			<%= yield :layout %>
+		</div> 
+	</div>
+	<div class = 'clear'></div>
+	<div class="grid_12">
+		<div id = "footer">
+			Site maintained by: Digital Media Office, Yale University School of Architecture.  Support contact: patrick.mcmorran at yale.edu
+		</div>
+	</div>	
+</div>
+</div>
+</body> 
+
+</html>
+

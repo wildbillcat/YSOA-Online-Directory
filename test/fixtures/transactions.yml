@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  product_name: MyString
+  checkout_date: 2010-04-06
+  checkin_date: 2010-04-06
+  due_date: 2010-04-06
+  days_late: 1
+  borrower_netid: MyString
+  student_id: 1
+  product_id: 1
+  notes: MyText
+  checkout_by: MyString
+  checkin_by: MyString
+
+two:
+  product_name: MyString
+  checkout_date: 2010-04-06
+  checkin_date: 2010-04-06
+  due_date: 2010-04-06
+  days_late: 1
+  borrower_netid: MyString
+  student_id: 1
+  product_id: 1
+  notes: MyText
+  checkout_by: MyString
+  checkin_by: MyString

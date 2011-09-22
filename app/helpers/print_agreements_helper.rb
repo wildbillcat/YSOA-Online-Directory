@@ -1,0 +1,2 @@
+module PrintAgreementsHelper
+end

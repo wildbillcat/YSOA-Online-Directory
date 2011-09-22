@@ -1,0 +1,39 @@
+<div id = "results" >
+	<div class="pagination">
+		<%= will_paginate @workstations, :class => 'pagination ajax' %>
+	</div>
+	
+	<table>
+		<tbody>
+  			<tr>
+				<th><%= sort_link @search, :netid, "User" %></th>
+    			<th><%= sort_link @search, :cpu_number, "CPU Number" %></th>
+    			<th>Monitor number</th>
+    			<th>Arm number</th>
+    			<th><%= sort_link @search, :floor, "Floor" %></th>
+    			<th><%= sort_link @search, :registration_date, "Registration Date" %></th>
+    			<th><%= sort_link @search, :semester, "Semester" %></th>
+  			</tr>
+		</tbody>
+		<% for workstation in @workstations %>
+			<tbody>
+				<tr>
+					<td><%=h workstation.netid %></td>
+    				<td><%=h workstation.cpu_number %></td>
+    				<td><%=h workstation.monitor_number %></td>
+    				<td><%=h workstation.arm_number %></td>
+    				<td><%=h workstation.floor %></td>
+    				<td><%=h workstation.registration_date.strftime('%m/%d/%Y, %I:%M%p') %></td>
+    				<td><%=h workstation.semester %></td>
+    				<td><%= link_to 'Show', workstation %></td>
+    				<td><%= link_to 'Edit', edit_workstation_path(workstation) %></td>
+   					<td><%= link_to 'Destroy', workstation, :confirm => 'Are you sure?', :method => :delete %></td>
+  				</tr>
+			</tbody>
+		<% end %>
+	</table>
+
+	<div class="pagination">
+		<%= will_paginate @workstations, :class => 'pagination ajax' %>
+	</div>
+</div>

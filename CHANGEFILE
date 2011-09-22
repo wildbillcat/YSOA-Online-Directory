@@ -1,0 +1,63 @@
+9-22-2011
+
+Reinitialized the git repository. The to_csv function has been broken since eric left, stll looking into fixing it. Edited the advanced_search in the directory to match in both locations, still looking into consolidating into 1 file. Have started implementing a batch update method for user attributes through the rake command.
+
+5-2-2011 - PENDING
+
+Hide Submissions from menu for student users, show Products
+FIX SUBMISSIONS COLLECTING - use Paperclip?
+HAVE RECORDS-PER-PAGE USE AJAX FOR LIVE UPDATING
+
+
+Adding Marilyn/Robie requested fields
+
+Added sid_number to Users
+Made year_in_program not visible for undergrads
+Changed program search to dropdown
+Gave all users print_multiple option - now need to go to print_multiple before you can edit_multiple
+
+Configured Holiday views and interface
+Made Products visible by students: students can view products that are out, but not who checked them out - MENUS NEED UPDATING
+
+
+Modified:
+
+holidays views
+application.css
+/admin/users/index.html.erb
+multiple User view files
+
+---
+
+
+4-28-2011 - CHANGES NOT UPLOADED
+
+Added Holidays controller for setting office-closed holidays for Equipment Checkout app (so days office are closed can be skipped when calculating next business day), and for setting academic session start and end days.
+
+Modified:
+
+application_controller.rb
+live_validations_controller.rb
+transactions_controller.rb
+holidays_controller.rb
+user.rb
+transaction.rb
+holiday.rb
+views/layouts/holidays.html.erb
+views/holidays
+
+rake db:migrate required
+
+
+---
+
+
+4-21-2011 - CHANGES UPLOADED
+
+Modified equipment checkout app so that user's photo showed up when checking out equipment and in list of equipment
+Modified equipment checkout views so that they no longer use tables (and look crappy).  Yay!
+
+
+
+
+application_helper.rb

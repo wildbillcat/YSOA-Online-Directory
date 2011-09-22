@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  print_agree: false
+  print_agree_date: 2010-03-24 10:18:20
+  student_id: 1
+
+two:
+  print_agree: false
+  print_agree_date: 2010-03-24 10:18:20
+  student_id: 1

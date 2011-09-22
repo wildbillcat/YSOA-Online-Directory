@@ -1,0 +1,18 @@
+<p>
+  <b>Laser agree:</b>
+  <%=h @laser_agreement.laser_agree %>
+</p>
+
+<p>
+  <b>Laser agree date:</b>
+  <%=h @laser_agreement.laser_agree_date %>
+</p>
+
+<p>
+  <b>Student:</b>
+  <%=h @laser_agreement.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_laser_agreement_path(@user) %> |
+<%= link_to 'Back', @user %>

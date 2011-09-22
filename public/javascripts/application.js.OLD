@@ -1,0 +1,49 @@
+// Place your application-specific JavaScript functions and classes here
+// This file is automatically included by javascript_include_tag :defaults
+
+
+function toggle_check() {
+	var allCheck = document.getElementsByName('checkAll');
+	var checkboxes = document.getElementsByName('user_ids[]');
+	for(var i = 0; i<checkboxes.length; i++){
+		checkboxes[i].checked = allCheck[0].checked;
+	}
+}
+
+function selectAllCheckboxes() {
+    $$('*[id^="user_ids_"]').invoke('writeAttribute', 'checked');
+}
+
+function toggle_visibility(id) {
+	var e = document.getElementById(id);
+	if(e.style.display == 'none')
+		e.style.display = 'block';
+	else
+	e.style.display = 'none';
+}
+
+// code for ajax pagination from https://github.com/mislav/will_paginate/wiki/Ajax-pagination
+
+document.observe("dom:loaded", function() {
+  // the element in which we will observe all clicks and capture
+  // ones originating from pagination links
+  var container = $(document.body)
+
+  if (container) {
+    var img = new Image
+    img.src = '/images/spinner.gif'
+
+    function createSpinner() {
+      return new Element('img', { src: img.src, 'class': 'spinner' })
+    }
+
+    container.observe('click', function(e) {
+      var el = e.element()
+      if (el.match('.pagination.ajax a')) {
+	        el.up('.pagination.ajax').insert(createSpinner())
+        new Ajax.Request(el.href, { method: 'get' })
+        e.stop()
+      }
+    })
+  }
+})

@@ -1,0 +1,62 @@
+<% page_title "Edit Selected Users" %>  
+<div id = "user-view">
+		<% form_for :user, :url => update_multiple_users_path, :method => :put do |f| %>  
+			<div class= "editblock">
+			<fieldset>
+			<p>  
+			  <% for user in @users %>  
+			    <%=h user.name %><%= hidden_field_tag "user_ids[]", user.id%><br />  
+			  <% end %>  
+			</p>
+			</fieldset>
+			</div>
+			<div class = "editblock">
+			<fieldset>
+			<p>
+    			<%= f.label :class_year %><br />
+    			<%= f.text_field :class_year %>
+  			</p>
+  			<p>
+	    		<%= f.label :program %><br />
+				<%= f.collection_select :program, User::PROGRAMS, :to_s, :humanize, :include_blank => true %>
+	  		</p>
+	  		<p>
+	    		<%= f.label :program_year %><br />
+				<%= f.select :program_year, [1, 2, 3, 4, 5 ], {:include_blank => true} %>			
+			</p>
+			<p>
+    			<%= f.label :status %><br />
+				<%= f.collection_select :status, User::STATUSES, :to_s, :humanize, :include_blank => true %><br />
+  			</p>
+			<p>
+    			<%= f.label :position %><br />
+    			<%= f.text_field :position %>
+  			</p>
+			<p>
+    			<%= f.label :graduation_date %><br />
+    			<%= f.date_select :graduation_date, :include_blank => true  %>
+  			</p>
+			<p>
+				<%= f.label :dean_notes, "Dean's Office Notes (internal)" %><br /> 
+				<%= f.text_field :dean_notes%><br />
+			</p>
+			<% if permitted_to? :edit, @workstations %>
+				<p>
+					<%= f.label :dm_notes, "DM Office Notes (internal)" %><br /> 
+					<%= f.text_field :dm_notes%><br />
+				</p>			
+			<% end %>
+			<% if @current_user.role == 'admin' %>
+  				<p>
+    				<%= f.label :role %><br />
+					<%= f.collection_select :role, User::ROLES, :to_s, :humanize, :include_blank => true %>
+  				</p>
+			<% end %>
+			<p>
+	    		<%= f.submit 'Update All' %>
+	  		</p>
+			</fieldset>
+			</div>
+			<div class = "clear"></div>
+		<% end %>
+</div>

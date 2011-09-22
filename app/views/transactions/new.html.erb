@@ -1,0 +1,23 @@
+<div id="product-list-view">
+
+<h1>Check Out <%=h @product.name %></h1>
+
+<fieldset>
+	<%= image_tag @product.image_url, :class => 'list-image' %>
+	<div class = "item-text-block">
+		<em>Name:</em> <%=h @product.name %><br />
+		<em>Description:</em><br /> 
+		<%= @product.description %><br />
+	</div>
+	<% form_for ([@product, @transaction]) do |f| %>
+      	<p><label>Borrower:</label> <%= f.text_field :borrower_netid %><span id="borrower_netid_message" class="live_validation"></span></p>
+	
+		<p><label>Notes:</label> <%= f.text_field :notes  %></p>
+		<p><label>Extended checkout?</label> <%= f.check_box :extended_checkout %></p>
+		<p><label>Extended checkout due date:</label> <%= f.text_field :due_date %></p>
+    	<p><%= submit_tag 'Check out' %></p>
+    <% end %>
+</fieldset>
+
+</div>
+

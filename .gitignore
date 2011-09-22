@@ -1,0 +1,10 @@
+.bundle
+db/*.sqlite3
+log/*
+tmp/*
+public/images/products/
+public/images/students/
+public/uploads/portfolios/
+users.csv
+update.csv
+*.swp

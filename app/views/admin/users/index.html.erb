@@ -1,0 +1,36 @@
+<% page_title "Administration" %>  
+
+<h1>Workstations and Registrations for <%= current_semester %></h1>
+
+<div id = "item-list">
+	<div id = "item-list-search">
+		<fieldset>
+		<% form_for :search, @search, :html => {:method => :get} do |f| %>
+			<p>
+			<%= f.label :first_name_or_last_name_contains, "Name" %>: <%= f.text_field :first_name_or_last_name_contains, :size => 10 %>   |      
+			<%= f.label :netid_equals, "Net ID" %>: <%= f.text_field :netid_equals, :size => 6 %>    |
+			<%= f.label :role_equals, "Role" %>: <%= f.collection_select :role_equals, User::ROLES, :to_s, :humanize, :include_blank => true %> |
+			<label>Records per page</label>: <%= select_tag :per_page, options_for_select([20,100,500,1000], (params[:per_page].blank? ? 20 :  params[:per_page].to_i)) %>
+			</p>
+			<p>
+			<em>Find agreements for current semester >> </em>
+			<%= f.label :last_equip_agree_semester_equals, "Equipment" %>: <%= f.check_box :last_equip_agree_semester_equals, {}, checked_value = "#{current_semester}", unchecked_value = nil %> |
+			<%= f.label :last_laser_agree_semester_equals, "Laser" %>: <%= f.check_box :last_laser_agree_semester_equals, {}, checked_value = "#{current_semester}", unchecked_value = nil %> | 
+			<%= f.label :last_print_agree_semester_equals, "Print" %>: <%= f.check_box :last_print_agree_semester_equals, {}, checked_value = "#{current_semester}", unchecked_value = nil %>
+			<%= f.submit "Search Users" %>
+		<% end %>
+		</p>
+		</fieldset>
+	</div>
+	<div id = "admin-options">
+		<fieldset>
+			<em>Administrator Options</em><br />
+			<br />
+			<%= link_to 'Change application dates', holidays_path %><br />
+			<%= link_to 'Export data to CSV', users_path(@users, :per_page => 1000, :format => :csv) %>
+		</fieldset>
+	</div>
+
+	<%= render 'userview' %>
+	
+</div>

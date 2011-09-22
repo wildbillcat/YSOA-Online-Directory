@@ -1,0 +1,22 @@
+<% @product = nil %>
+<% unless params[:product_id].blank?
+  @product = Product.find(params[:product_id]) %>
+<% end %>
+
+<h1>Transactions <% if @product != nil %>for <%=h @product.name %><% end %></h1>
+
+<% if @product == nil %>
+	<div id = "item-list-search">
+		<% form_for :search, @search, :html => {:method => :get}  do |f| %>
+			<p>
+				<%= f.label :product_name_contains, "Item" %>: <%= f.text_field :product_name_contains, :size => 10 %>  |  
+				<%= f.label :borrower_netid_equals, "Borrower" %>: <%= f.text_field :borrower_netid_equals, :size => 10 %>  |  
+				<%= f.label :days_late_is_not_null, "Late" %> <%= f.check_box :days_late_is_not_null %> |
+				<%= f.submit "Search Transactions" %>
+			</p>
+		<% end %>
+	</div>
+	<div class ="clear"></div>
+<% end %>
+
+<%= render 'transactionview' %>

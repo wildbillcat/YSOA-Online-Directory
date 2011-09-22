@@ -1,0 +1,58 @@
+<p>
+  <b>Product name:</b>
+  <%=h @transaction.product.name %>
+</p>
+
+<p>
+  <b>Checkout date:</b>
+  <%=h @transaction.checkout_date %>
+</p>
+
+<p>
+  <b>Checkin date:</b>
+  <%=h @transaction.checkin_date %>
+</p>
+
+<p>
+  <b>Due date:</b>
+  <%=h @transaction.due_date %>
+</p>
+
+<p>
+  <b>Days late:</b>
+  <%=h @transaction.days_late %>
+</p>
+
+<p>
+  <b>Borrower netid:</b>
+  <%=h @transaction.borrower_netid %>
+</p>
+
+<p>
+  <b>Student:</b>
+  <%=h @transaction.student_id %>
+</p>
+
+<p>
+  <b>Product:</b>
+  <%=h @transaction.product_id %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%=h @transaction.notes %>
+</p>
+
+<p>
+  <b>Checkout by:</b>
+  <%=h @transaction.checkout_by %>
+</p>
+
+<p>
+  <b>Checkin by:</b>
+  <%=h @transaction.checkin_by %>
+</p>
+
+
+<%= link_to 'Edit', edit_transaction_path(@transaction) %> |
+<%= link_to 'Back', transactions_path %>

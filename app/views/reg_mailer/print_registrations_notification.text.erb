@@ -1,0 +1,12 @@
+Yesterday's Printing Registrations
+==================================
+
+Here is the list of <%= pluralize(@print_agreements.size, "user") %> who registered for printing yesterday.  Please make sure they have active printing accounts and are able to print.
+
+<% for print_agreement in @print_agreements %>
+	<%=h print_agreement.print_user(print_agreement.user_id) %><br />
+<% end %>
+
+Cheers,
+
+The YSOA Registration Robot

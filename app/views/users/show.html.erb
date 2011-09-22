@@ -1,0 +1,171 @@
+<% if @user == @current_user && @user.role == "student" %>
+	<% page_title "My Registrations" %>  
+<% end %>
+
+<div id = "user-view">
+	<fieldset>
+		<h3><%=h @user.name %> <em> - <%=h @user.simplerole %><% if !@user.status.blank? %> - <%=h @user.status %><% end %></em></h3>
+		<p>
+			<% if File.exist?("public/images/students/#{@user.netid}.jpg") %>
+				<% if current_user %> 
+					<% if current_user.role == "faculty" || current_user.simplerole == "staff" || current_user == @user %>
+						<%= image_tag "/images/students/#{@user.netid}.jpg", :class => 'list-image' %>
+					<% else %>
+						<%= image_tag "/images/students/placeholder.jpg", :class => 'list-image '%>
+					<% end %>
+				<% else %>
+					<%= image_tag "/images/students/placeholder.jpg", :class => 'user-image '%>
+				<% end %>
+			<% else %>
+				<%= image_tag "/images/students/placeholder.jpg", :class => 'list-image '%>
+			<% end %>				
+		</p>
+		<p>
+			<b>Netid:</b> <%=h @user.netid %><br />
+			<b>Email:</b> <%=h @user.email %><br />
+			<% if @user.role && @user.role == "student" %>
+				<b>Class year:</b> <%=h @user.class_year %><br />
+				<b>Program:</b> <%=h @user.program %><br />
+				<% if permitted_to? :edit, @user or @user == @current_user %>
+					<b>SID Number:</b> <%=h @user.sid_number %><br />
+					<% if @user.program != "Undergrad" %>
+						<b>Year in Program:</b> <%=h @user.program_year %><br />
+					<% else %>
+						<br />
+					<% end %>
+				<% end %>
+				<div class = "smallertext">
+					<% if !@user.undergrad_college.blank? %>
+						<b>Undergrad College:</b> <%=h @user.undergrad_college %><br />
+					<% else%>
+						<br />
+					<% end %>
+					<% if !@user.graduation_date.blank? %>
+						Graduated on <%=h @user.graduation_date.to_s(:long) %><br />
+					<% end %>
+				</div>
+			<% else %>
+				<b>Position:</b> <%=h @user.position %><br />
+				<br />
+				<br />
+				<br />
+				<br />
+			<% end %>
+			<div class = "smallertext">
+				<% if permitted_to? :edit, @user %>
+					<br />
+					<b>Dean's Office Notes (internal):</b> <%=h @user.dean_notes%><br />
+				<% end %>
+				<% if @current_user and @current_user.role == 'admin' or @current_user.role == 'dmstaff' %>	
+					<b>DM Staff Notes (internal):</b> <%=h @user.dm_notes%><br />
+				<% end %>
+			</div>
+		</p> 
+	</fieldset>
+	<% if @user.role == "student" %>
+		<% if permitted_to? :edit, @workstations or @user == @current_user %>
+			<fieldset>
+				<h3>Registrations for <%=h current_semester %></h3>
+				<p>
+					<% if !@user.workstation_id or @user.current_cpu_semester != current_semester %>
+						<%= image_tag("/images/undone.jpg", :alt => "undone", :class => 'status-image') %>
+						<div class = "undone">You have not registered a workstation (<%= link_to 'Register Workstation', new_user_workstation_path(@user) %>)</div>
+					<% else %>
+						<%= image_tag("/images/done.jpg", :alt => "done", :class => 'status-image') %>
+						<div class = "done">You have registered Arch-PC-<%=h @user.current_cpu_number %> 
+						<% if permitted_to? :destroy, @workstation %>(<%= link_to 'Show', user_workstations_path(@user) %>)<% end %></div>
+					<% end %>
+				</p>
+				<p>
+				<% if @user.registered_to_print? %>
+					<%= image_tag("/images/done.jpg", :alt => "done", :class => 'status-image') %>
+					<div class = "done">You have registered to print 
+						<% if permitted_to? :destroy, @print_agreement %>
+							(<%= link_to 'Show', user_print_agreements_path(@user) %>)
+						<% end %>
+					</div>
+				<% else %>
+					<%= image_tag("/images/undone.jpg", :alt => "undone", :class => 'status-image') %>
+					<div class = "undone">
+						You have not registered to print (<%= link_to 'Register for printing', new_user_print_agreement_path(@user) %>)
+					</div>
+				<% end %>
+				</p>
+				<p>
+				<% if @user.registered_for_laser? %>
+					<%= image_tag("/images/done.jpg", :alt => "done", :class => 'status-image') %>
+					<div class = "done">
+						You have registered to use the laser cutters
+						<% if permitted_to? :destroy, @laser_agreement %>
+							(<%= link_to 'Show', user_laser_agreements_path(@user) %>)
+						<% end %>
+					</div>
+				<% else %>
+					<%= image_tag("/images/undone.jpg", :alt => "undone", :class => 'status-image') %>
+					<div class = "undone">
+						You have not registered for the laser cutters (<%= link_to 'Register for laser cutters', new_user_laser_agreement_path(@user) %>)
+					</div>
+				<% end %>
+				</p>
+				<p>
+				<% if @user.registered_for_equipment? %>
+					<%= image_tag("/images/done.jpg", :alt => "done", :class => 'status-image') %>
+					<div class = "done">You have registered to check out equipment 
+						<% if permitted_to? :destroy, @equip_agreement %>
+							(<%= link_to 'Show', user_equip_agreements_path(@user) %>)
+						<% end %>
+					</div>
+				<% else %>
+					<%= image_tag("/images/undone.jpg", :alt => "undone", :class => 'status-image') %>
+					<div class = "undone">
+						You have not registered to check out equipment (<%= link_to 'Register for equipment checkout', 
+				new_user_equip_agreement_path(@user) %>)
+					</div>
+				<% end %>
+				</p>
+			</fieldset>
+		<% end %>
+		<% if @user == @current_user || @current_user.role == "faculty" || @current_user.simplerole == "staff" %>
+			<fieldset>
+				<h3>Submissions</h3>
+				<p>Submit work for faculty review here.  Please note, your submissions will only be viewable by yourself and the School's faculty and staff.  You cannot edit or delete your submissions once you've made them.</p>
+				<p>If the server is busy processing multiple uploads, you may not see a thumbnail image of your uploaded file right away.  The thumbnails will be generated as soon as possible--YOU DO NOT NEED TO RE-UPLOAD YOUR FILE.</p>  
+				<%= link_to 'Make a new submission', new_user_submission_path(@user) %><br /><br />
+			</fieldset>
+			<% for submission in @user.my_submissions %>
+				<div class = "editblock">
+					<fieldset>
+						<%= link_to image_tag(submission.portfolio.url(:small)), submission.portfolio.url(:original), :target => "_blank"  %>
+					</fieldset>
+				</div>
+				<div class = "editblock">
+					<fieldset>
+						<p>
+							Submitted to the <b><%=h submission.collection %></b> collection<br />
+							Submitted at <b><%=h submission.created_at %></b><br />
+						</p>
+				  		<p>
+				  			<%= link_to 'Details', submission %>
+							<% if permitted_to? :edit, @submission %>	
+								| <%= link_to 'Edit Submission', edit_submission_path(submission) %>
+							<%end %>
+							<% if permitted_to? :destroy, @submission %>	 
+								| <%= link_to 'Delete Submission', submission, :confirm => 'Are you sure?', :method => :delete %>
+							<% end %> 
+							<br />
+						</p>
+					</fieldset>
+				</div>
+				<div class = "clear">
+				</div>
+			<% end %>
+		<% end%>
+	<% end %>
+	<% if permitted_to? :edit, @user %>
+		<div class = "links">	
+			<p>
+				<%= link_to 'Edit User', edit_user_path(@user) %> <%= link_to 'Destroy User', @user, :confirm => "Are you sure you want to permanently delete #{@user.name} from the Directory?", :method => :delete %>
+			</p>
+		</div>
+	<% end %>
+</div>

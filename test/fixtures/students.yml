@@ -1,0 +1,33 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  nickname: MyString
+  netid: MyString
+  image_url: MyString
+  email: MyString
+  class_year: 1
+  program: MyString
+  program_year: 1
+  undergrad_college: MyString
+  workstation_id: 1
+  equip_agreement_id: 1
+  print_agreement_id: 1
+  laser_agreement_id: 1
+
+two:
+  first_name: MyString
+  last_name: MyString
+  nickname: MyString
+  netid: MyString
+  image_url: MyString
+  email: MyString
+  class_year: 1
+  program: MyString
+  program_year: 1
+  undergrad_college: MyString
+  workstation_id: 1
+  equip_agreement_id: 1
+  print_agreement_id: 1
+  laser_agreement_id: 1

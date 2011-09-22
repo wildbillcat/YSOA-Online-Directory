@@ -1,0 +1,59 @@
+<h1>Editing Transaction for <%=h @transaction.product.name %></h1>
+
+
+<% form_for(@transaction) do |f| %>
+	<% if @transaction.errors.any? %>
+		<div id="error_explanation">
+ 			<h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+ 			<ul>
+ 				<% @transaction.errors.full_messages.each do |msg| %>
+   					<li><%= msg %></li>
+ 				<% end %>
+ 			</ul>
+		</div>
+	<% end %>
+	<p>
+    	<%= f.label :borrower_netid %><br />
+    	<%= f.text_field :borrower_netid %>
+ 	</p>
+  	<p>
+    	<%= f.label :checkout_date %><br />
+    	<%= f.date_select(:checkout_date, :include_blank => true) %>
+  	</p>
+  	<p>
+    	<%= f.label :checkin_date %><br />
+    	<%= f.date_select(:checkin_date, :include_blank => true) %>
+  	</p>
+	<% if permitted_to? :destroy, @transaction %>		
+		<p>
+	    	<%= f.label :checkout_by %><br />
+	    	<%= f.text_field :checkout_by %>
+	 	</p>
+		<p>
+	    	<%= f.label :checkin_by %><br />
+	    	<%= f.text_field :checkin_by %>
+	 	</p>
+	<% end %>
+  	<p>
+    	<%= f.label :due_date %><br />
+    	<%= f.date_select(:due_date, :include_blank => true) %>
+  	</p>
+  	<p>
+    	<%= f.label :extended_checkout %><br />
+    	<%= f.check_box(:extended_checkout) %>
+  	</p>
+ 	<p>
+    	<%= f.label :notes %><br />
+    	<%= f.text_field :notes %>
+ 	</p>
+	<p>
+    		<%= f.label :days_late %><br />
+    		<%= f.text_field :days_late %>
+  	</p>
+  	<p>
+    	<%= f.submit 'Update' %>
+  	</p>
+<% end %>
+
+<%= link_to 'Show', @transaction %> |
+<%= link_to 'Back', transactions_path %>

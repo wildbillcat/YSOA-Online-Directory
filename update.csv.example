@@ -1,0 +1,5 @@
+Value,netid
+#This is an example of the update.csv, which is used for updating any user field
+#based on the netID of the user. The field updated depends on the rake command
+#run, as there is one for each user field. They all however reference the same
+#update.csv file, so be wary of which one you run.

@@ -1,0 +1,24 @@
+<p>For more search options, use the <%= link_to_function "Advanced Search", "toggle_visibility('advanced-search')" %>.</p>
+<div id = "advanced-search" style = 'display:none'>
+	<fieldset>
+		<% form_for :search, @search, :html => {:method => 'get'} do |f| %>
+			<br />
+			<%= f.label :first_name_or_last_name_or_nickname_contains, "Name" %>: <%= f.text_field :first_name_or_last_name_or_nickname_like, :size => 20 %><br />
+			<%= f.label :netid_equals, "Net ID" %>: <%= f.text_field :netid_equals, :size => 12 %><br />
+			<%= f.label :role_equals, "Role" %>: <%= f.select :role_equals, ["Student", "Faculty"], {:include_blank => true} %><br />
+			<br />
+			<%= f.label :status_equals, "Status" %>: 
+			<%= f.collection_select :status_equals, User::STATUSES, :to_s, :humanize, :include_blank => true %><br />
+			<h4>Active students and faculty are currently enrolled in or teaching at the School</h4>
+			<%= f.label :class_year_equals, "Class Year" %>: <%= f.text_field :class_year_equals, :size => 6 %><br />	
+			<%= f.label :program_equals, "Program" %>: <%= f.collection_select :program_like, User::PROGRAMS, :to_s, :humanize, :include_blank => true %><br />
+			<%= f.label :program_year_eq, "Year in Program" %>: 
+			<%= f.select :program_year_eq, [1, 2, 3, 4, 5 ], {:include_blank => true} %>	<br />
+			<%= f.label :graduation_date_eq, "Graduation Date" %>: 
+			<%= f.text_field :graduation_date_eq, :size => 12 %> <br />
+			<%= f.submit "Advanced Search", :name => nil %><br />
+			<br />
+		<% end %>
+	</fieldset>
+</div>
+<div class = "clear"></div>

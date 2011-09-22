@@ -1,0 +1,33 @@
+<div id = 'item-list'>
+<h1>Equipment Agreements for <%=h @user.name %></h1>
+
+<% if @user.equip_agreements.count > 0 %>
+	<table>
+		<tbody>
+  			<tr>
+    			<th>Equipment agree</th>
+				<th>Semester</th>
+    			<th>Equipment agree date</th>
+  			</tr>
+		</tbody>
+	<% for equip_agreement in @equip_agreements %>
+  		<tbody>
+  			<tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+    			<td><%=h equip_agreement.equip_agree %></td>
+    			<td><%=h equip_agreement.semester %></td>
+    			<td><%=h equip_agreement.equip_agree_date %></td>
+    			<td><%= link_to 'Destroy', [@user, equip_agreement], :confirm => 'Are you sure?', :method => :delete %></td>
+  			</tr>
+		</tbody>
+	<% end %>
+	</table>
+
+<% else %>
+<p><%=h @user.first_name %> hasn't agreed to check out equipment.</p>
+<% end %>
+
+<p>
+<%= link_to 'New agreement', new_user_equip_agreement_path(@user) %> |
+<%= link_to 'Back', @user %>
+</p>
+</div>

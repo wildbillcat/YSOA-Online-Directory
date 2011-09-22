@@ -1,0 +1,13 @@
+Yesterday's Laser Cutter Registrations
+======================================
+
+Here is the list of <%= pluralize(@laser_agreements.size, "user") %> who registered for laser cutting yesterday.  Please make sure they have active printing accounts and have been enabled to use the laser cutters in Active Directory.
+
+<% for laser_agreement in @laser_agreements %>
+	<%=h laser_agreement.laser_user(laser_agreement.user_id) %><br />
+<% end %>
+
+
+Cheers,
+
+The YSOA Registration Robot

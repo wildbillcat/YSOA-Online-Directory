@@ -1,0 +1,2 @@
+module LiveValidationsHelper
+end

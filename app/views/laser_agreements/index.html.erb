@@ -1,0 +1,33 @@
+<div id = 'item-list'>
+<h1>Laser Registrations for <%=h @user.name %></h1>
+
+<% if @user.laser_agreements.count > 0 %>
+	<table>
+		<tbody>
+  			<tr>
+    			<th>Laser agree</th>
+				<th>Semester</th>
+    			<th>Laser agree date</th>
+  			</tr>
+		</tbody>
+	<% for laser_agreement in @laser_agreements %>
+		<tbody>
+  			<tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+    			<td><%=h laser_agreement.laser_agree %></td>
+				<td><%=h laser_agreement.semester %></td>
+    			<td><%=h laser_agreement.laser_agree_date %></td>
+    			<td><%= link_to 'Destroy', [@user, laser_agreement], :confirm => 'Are you sure?', :method => :delete %></td>
+  			</tr>
+		</tbody>
+	<% end %>
+	</table>
+
+<% else %>
+<p><%=h @user.first_name %> hasn't registered for laser cutting.</p>
+<% end %>
+
+<p>
+<%= link_to 'New agreement', new_user_laser_agreement_path(@user) %> |
+<%= link_to 'Back', @user %>
+</p>
+</div>

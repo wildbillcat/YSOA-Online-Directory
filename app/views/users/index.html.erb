@@ -1,0 +1,22 @@
+<div id = "top-search-area">
+	<div class = "top-search-left">	
+	<% form_for :search, @search, :html => {:method => :get} do |f| %>
+		<%= f.label :first_name_or_last_name_or_nickname_contains, "Find by Name" %>: <%= f.text_field :first_name_or_last_name_or_nickname_contains, :size => 20 %> <%= f.submit "Search", :name => nil %><br />
+		<em>(search by first name OR last name OR nickname)</em> <br />
+		<br />
+		<label>Records per page</label>: <%= select_tag :per_page, options_for_select([4,8,24,100,500], (params[:per_page].blank? ? 20 :  params[:per_page].to_i)) %>
+ 	<% end %>
+	<%= render :partial => 'advanced_search' %>
+	</div>
+</div>
+
+<% form_tag print_multiple_users_path do %>
+	<div id = 'selectmenu'>
+		Select all displayed:<input type="checkbox" name="checkAll" onClick="toggle_check()" /> | <%= submit_tag "Print Selected" %><br />
+		<%= render :partial => 'print_tips' %>
+	</div>
+	<div class = "clear"></div>
+	<%= render 'userview' %>
+<% end %>
+
+

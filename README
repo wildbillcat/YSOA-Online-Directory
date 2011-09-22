@@ -1,0 +1,268 @@
+This is the ReadMe for Yale School of Architecture Online Directory application.  The app is running on a Jumpbox virtual machine with Ruby 1.9.2, Rails 3.0.8 and Passenger 3.0.7 using Ruby Version Manager (RVM)
+
+
+LAUNCHING THE APPLICATION: 
+=========================
+
+1. 	ssh into the Ruby server as admin 
+2.	cd into /var/data/app/current/
+3.	set the Rails environment to production using the command "export RAILS_ENV=production"
+4.	start apache using the command: "sudo /etc/init.d/apache2 start"
+5.	start the Redis and Resque services using the God command "god -c config/god/all.god"
+6.	load the online directory at http://ruby.architecture.yale.edu and verify everything works properly
+	
+
+
+ABOUT THE APP:
+=============
+
+The online directory is made up of several parts:
+
+	Users
+	Workstations
+	Print Agreements
+	Laser Agreements
+	Equipment Agreements
+	Submissions
+	Products
+	Transactions
+	Administration
+	Holidays
+	Mailers
+
+
+
+USERS:
+=====
+
+Users handles the people in the directory (students, faculty, and staff).  
+
+Authentication is handled by Yale's CAS system using the rubycas-client plugin; the CAS base URL is specified in config/application.rb.  A person using the online directory logs in with his Yale net ID and password.  
+
+If that person is a user in the directory--that is, if there is a user in the directory with that same net ID (which is case-sensitive)--that person has the ability to view items in the directory as determined by his role (student, faculty, staff, dmstaff, admin).  
+
+If a user with that net ID is not in the directory, the person logging in has guest access only.  Guests can view users in the directory (but not the users' photos) and can register themselves to add themselves as a user in the directory.  This was originally done so that Architecture students who for some reason weren't on our rosters could add themselves to the directory and register for printing and equipment checkout and so on, but this policy should be revisited, as any user with a Yale net ID could add themselves to the directory.  
+Users who register themselves are automatically registered as students.
+
+A user's authorization level is determined by his role: student, faculty, staff, dmstaff, and admin.  The authorization rules for each role are dictated in config/authorization_rules.rb and is handled using the declarative_authorization gem.  Users are restricted from accessing certain areas of the application by the authorization rules using the "has_permission_on" flag, and are also restricted from viewing certain sections of pages to which they have access in the view code for those pages.  
+
+A search for "staff" in the directory will return staff, dmstaff, and admins, thanks to the simplerole method in the user.rb model.
+
+Admins, dmstaff, and staff have the ability to add (create) users to the directory, but only admins have the ability to delete users.  For obvious reasons, only admins have the ability to create admin users or to change a user's role to admin.
+
+If needed, you can get user data (and other data) from the directory in CSV format by adding ".csv" after "users" in a directory URL.  This will only export the users displayed, so you should set the number of records per page to a number high enough to display all records.  This functionality comes from the to_csv plugin.
+
+Each user has a "registration page" that displays their information.  Student registration pages also show whether they've registered a workstation, for printing, for laser cutters, and for equipment checkout for the current semester, any submissions they've made, and relevant links for registering and submitting.  Faculty and staff registration pages will not show registration or submission links (since they don't register).  
+
+The direct link to the registration page is http://ruby.architecture.yale.edu/register
+
+There are also a "Dean's Office Notes" and a "DM Staff Notes" field for each user that can be used for internal notes.  Staff can only see the Dean's Office notes, while dmstaff and admins can see both fields.  To remain compliant with FERPA regulations, these fields cannot be used for sensitive information or any kind of information that would cause problems if a student were able to view it.
+
+The look of the registration page and many other pages on the directory will change based on the role of the user who is logged in to the directory.  To get an idea of the various views, change the role of the asa29 test account, then log in with that account info.
+
+
+User Images
+-----------
+
+User images should be placed in /var/data/app/current/public/images/students and named with the convention "[netid].jpg".  Filenames are case-sensitive and should be all in lowercase.  If a user's net ID is set in the system as "EK23", for example, the ek23.jpg image would not be displayed.  For best results, always use lowercase net IDs.
+
+
+Batch-adding Users
+------------------
+
+Users can be batch-added using the following process:
+
+1.	Make a users.csv file with the desired user information, making sure that it is formatted with the information in the correct columns as specified in the lib/tasks/import_users.rake file (where "row[0]-row[11]" is actually columns 1-12 of the spreadsheet).  Remove any header row if there is one.
+
+2.	Copy your "users.csv" file to the main app directory (replacing the previous users.csv if there is one; you can use the previous one as a template).
+
+3.	CD into the app directory (/var/data/app/current) and set the environment to production using the command “export RAILS_ENV=production”
+
+4.	VERIFY YOUR USERS.CSV FILE HAS THE CORRECT DATA AND IS FORMATTED PROPERLY.
+
+5.	Run the rake task "rake db:load_csv_data"
+
+BE VERY CAREFUL when doing a bulk import to make sure your users.csv file is formatted correctly, and make sure the required fields (first_name, last_name, netid, role, status) are specified.  Having information in incorrect columns could break things.
+
+
+
+WORKSTATIONS
+============
+
+The Workstations tab is used for the administration of workstations registered by students.  Workstations can be searched for by registered user, CPU number, floor, or registered semester (e.g. "Summer 2011").
+
+Users are permitted to register only one workstation per academic session, and each workstation (identified by CPU number) can only be registered once per academic session.  If a student makes a mistake when registering a workstation or registers the wrong workstation, an admin will need to edit that registration or delete it so that the student can register again.
+
+Students can register their workstations by going to http://ruby.architecture.yale.edu/register and clicking on the "Register Workstation" link.  If they have already registered for that academic session, the link will not be shown.
+
+Academic session dates are set in the Holidays section of the application, which can be reached through the "Change Application Dates" link in the Administration tab.  The session dates specify the Summer, Fall and Spring academic sessions; when a new session starts, students' previous registrations will no longer be valid (although they won't be deleted from the database) and they will be able to register again.
+
+Admin and staff users will not see the link to register a workstation; if you want to see the form, you can view the Show page for the asa29 user (or any student who hasn't already registered) and click the "Register Workstation" link, or go to your own registration page and add "workstations/new" to the URL.
+
+The text for the workstation registration page can be found in app/views/workstations/new.  
+
+
+
+PRINT AGREEMENTS
+================
+
+Print Agreements handles the process a user goes through when registering for printing.  When a user registers for printing in a particular semester, a new print agreement is created and tied to that user, and the print_agreement.semester variable is set to the current academic session.  A user can only create one print agreement per semester; when a user attempts to create an print agreement, the validation process checks to make sure the user hasn't previously created an agreement with the same print_agreement.semester variable, and otherwise returns a message that the user has already registered for printing.  The validation also checks to make sure the print_agree variable is present, which means the user has selected "Agree" on the form.
+
+Admin and staff users will not see the link to register for printing on their registration pages; if you want to see the form, you can view the Show page for the asa29 user (or any student who hasn't already registered) and click the "Register for Printing" link
+
+Admin and dmstaff users can search for users who have registered for printing for the current academic session by going to the Administration tab and clicking the checkbox for "Print" in the search form.
+
+The text for the printing registration page can be found in app/views/print_agreements/new.
+
+
+
+LASER AGREEMENTS
+================
+
+Laser Agreements handles the process a user goes through when registering for the laser cutters.  As with Print Agreements, when a user registers for laser cutting in a particular semester, a new laser agreement is created and tied to that user, and the laser_agreement.semester variable is set to the current semester.  
+
+Validation checks to make sure the user has agreed to the form, hasn't registered for laser cutting previously the same semester, and has correctly answered the quiz questions on the form.  Answers are checked using the check_answers? method in app/models/laser_agreement.rb.
+
+The text for the laser registration page can be found in app/views/laser_agreements/new.
+
+
+
+EQUIP AGREEMENTS
+================
+
+Equip Agreements handles the process a user goes through when registering for equipment checkout.  It is functionally identical to Print Agreements.  
+
+The text for the equipment registration page can be found in app/views/equip_agreements/new.
+
+
+
+SUBMISSIONS
+===========
+
+Submissions handles files that students submit to the application for review purposes.  Users can submit files through their registration page.  Files are limited to 50MB in size.  Each uploaded file has two png thumbnails for display purposes; clicking on the thumbnails will take you to the original file.  The thumbnails are created by a delayed background job; when a file is first submitted, only a generic icon will be shown until the thumbnails are generated.
+
+Submitted files can be found in /var/data/app/current/public/uploads/portfolios on the Ruby server.
+
+Submissions can be accessed at 
+
+http://ruby.architecture.yale.edu/submissions
+
+It is only accessible by Admins, DM Staff and faculty.  Students can make submissions and view their own submitted files on their user page, but cannot view the Submissions section.  Faculty can view the Submissions section, but cannot create or delete submissions.  Admins, obviously, have full access.
+
+
+The Nitty-Gritty on File Uploads
+--------------------------------
+
+Submitted files are handled as attachments using the Paperclip gem.  When a file is submitted, "_original" is appended to the file name and the file is uploaded to the public/uploads/portfolios directory and placed in a folder with a unique ID.  The file is uploaded immediately; the thumbnailing of the file is done by a background process that is managed by the Delayed Paperclip, Resque and Redis gems.  Specifically, Delayed Paperclip tells the Paperclip gem to hand off thumbnailing to a background process which is created, placed in a queue and managed by Resque, which is backed by Redis, an open-source key-value store.  This means that multiple users submitting large PDFs should no longer be able to bring down the server, as each thumbnailing process is put into a Paperclip queue and then worked on by four Resque workers rather than attempted simultaneously.  Redis and the Resque workers are launched by a God config file, using the God gem.
+
+If you want to view your Resque workers and queue, you can use the handy web interface by typing in the command "resque-web" after ssh'ing into the server and cd'ing into the main application directory, then pointing your web browser to http://ruby.architecture.yale.edu:5678/overview
+
+
+
+PRODUCTS
+========
+
+Products handles the equipment checkout section of the application.  Each piece of equipment available for checkout is a product that can be edited or deleted.  A product has a unique ID, a name, a description, and an image URL that points to the image file used for the photo of the product on the Ruby server; product images should be placed in public/images/products.  
+
+A product also has a transaction_id variable; when a product is checked out, a new transaction with a unique ID is created, and that product's transaction_id variable is set to that ID.  When a product is checked back in, the product's transaction_id is set back to nil.  This links a checked-out product to its checkout transaction and can also be used to find products that are checked out (checked-out products will have a transaction_id variable, but available products will not).
+
+If a product does not have a transaction_id, it will be displayed as "available."  If a product has a transaction_id and the transaction's due_date variable is less than today's date, the product will be displayed as "late."  If a product has a transaction_id and the transaction's due_date is greater than or equal to today's date, the product will be displayed as "checkedout."
+
+When a product is being checked out, a javascript function observes the borrower_netid field and validates the borrower's net ID to see whether that user has registered for equipment checkout.  Users who have not registered are NOT prevented from checking out equipment, however, as there are occasionally faculty members checking out equipment who do not need to register.
+Products can be accessed at 
+
+http://ruby.architecture.yale.edu/products	
+
+It is only accessible by Admins and DM Staff.
+
+
+
+TRANSACTIONS
+============
+
+when a product is checked out, a new transaction with a unique ID is created, and the transaction_id variable of the product being checked out is set to that transaction's ID.  A newly-created transaction also has these variables: 
+
+• product_name - the name of the product associated with that transaction
+
+• checkout_date - the date the transaction is created
+
+• extended_checkout - a boolean flag that is set for extended checkouts
+
+• due_date - the date the product being checked out is due; this is automatically set to the next business day, unless a manual due_date is entered at the time the transaction is created (which would be the case in an extended checkout)
+
+• borrower_netid - the net ID of the user borrowing the equipment, which is entered by the DM staff member doing the checkout
+
+• checkout_by - the net ID of the logged-in DM staff member doing the checkout; this is set automatically using the current_user method in application_controller.rb
+
+• created_at - an automatically created timestamp
+
+When a product is checked out, the transaction with the ID matching the product's transaction_id variable is modified, and these variables are set:
+
+• checkin_date - the date the associated product is being checked in
+
+• days_late - the number of business days that the product is overdue, if any; this is calculated by the dayslate method in the transaction.rb model  and is set if the value is greater than 0
+
+• checkin_by - the net ID of the logged-in DM staff member doing the checkin; this is set automatically using the current_user method in application_controller.rb
+
+• updated_at - an automatically created timestamp
+
+Transactions can be accessed at 
+
+http://ruby.architecture.yale.edu/transactions
+
+It is only accessible by Admins and DM Staff.
+
+
+Next Business Day
+-----------------
+
+When a product is being checked out, the due date is the next business day that the DM Office will be opened.  This is calculated by the next_business_day function in the transaction.rb model, which finds the next day after the checkout date that isn't a weekend or an office-closed holiday.  The office-closed dates are pulled from the Holiday section of the application, which can be found by clicking on the "Change Application Dates" link in the Administration tab.
+
+
+
+ADMINISTRATION
+==============
+
+The Administration section can be used to find, edit and delete users and view their registered CPUs and other registrations.  It also contains a link to change the application dates which are used to determine the next business day for equipment checkout and the academic session date for registrations.  It can be accessed at 
+
+http://ruby.architecture.yale.edu/admin/users
+
+It is only accessible by Admins and DM Staff.
+
+
+
+HOLIDAYS
+========
+
+As previously mentioned, Holidays is where certain dates required by the application are set.  Products uses Holidays to determine the next business day when equipment is being checked out, and the registration sections use Holidays to determine the current academic session (Fall, Spring, Summer).
+
+At the start of the calendar year, the correct holiday dates need to be set by editing the respective holidays and changing the start and end dates.  The holiday names themselves should not be changed.  Specifically, changing the names of the Spring, Summer or Fall holidays will cause registrations to fail and could break other things.
+
+The specific Yale holidays can generally be found on the Yale Benefits website at http://www.yale.edu/hronline/benefits/.
+
+For holidays when the office is closed, make sure to enter the proper date range and make sure the "office closed" checkbox is checked when editing the holiday.  For academic session holidays (Fall, Spring and Summer), "office closed" should remain unchecked.
+
+
+
+MAILERS
+=======
+
+The application is configured to send email notifications.  Every morning at 8:00AM, a cron job runs the mailman.rake task which sends teh following:
+
+• Notifications for each currently late product, if any, sent to Claudia.  The text of this email can be found in app/views/equip_mailer.
+
+• Notifications for all users who registered for workstations, printing, laser cutting and equipment checkout, sent to Rob and Vin.  The text of these emails can be found in app/views/reg_mailer.
+
+The mailman.rake task itself can be found in app/lib/tasks/.  The config files for the mailers, which is where the mail_to addresses are set, can be found in app/mailers.
+
+The schedule for the cron job is set in config/schedule.rb using the Whenever gem.  If a new scheduled task is added, it can be added to the crontab by running the command "whenever --update-crontab archies" from the app directory.
+
+The path to cron is /etc/.
+
+
+
+CODA
+====
+
+That's the YSOA Online Directory in a nutshell.  The application was created by Eric Kurzenberger (offmango@me.com) and is owned by the Yale School of Architecture.  The original source code can be found at https://github.com/offmango/YSOA-Online-Directory. This application has been forked and is now maintained and developed by Patrick McMorran (wildbillcat.com). The current revision now resides at https://github.com/wildbillcat/YSOA-Online-Direcotry. Due to some development which occured between the application's handoff from Eric to Patrick, the git repository was re-initialized to ensure no private data could have accidentally been caught in a past commit. Because of this the git repository does not span back to any point before his commit. 
+

@@ -1,0 +1,2 @@
+module EquipAgreementsHelper
+end

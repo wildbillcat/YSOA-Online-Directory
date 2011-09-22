@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  cpu_number: 1
+  monitor_number: MyString
+  arm_number: MyString
+  cpu_damage: MyText
+  monitor_damage: MyText
+  arm_damage: MyText
+  floor: 1
+  studio: MyString
+  registration_date: 2010-03-23 11:42:01
+  student_id: 1
+
+two:
+  cpu_number: 1
+  monitor_number: MyString
+  arm_number: MyString
+  cpu_damage: MyText
+  monitor_damage: MyText
+  arm_damage: MyText
+  floor: 1
+  studio: MyString
+  registration_date: 2010-03-23 11:42:01
+  student_id: 1

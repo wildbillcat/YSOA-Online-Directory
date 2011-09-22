@@ -1,0 +1,9 @@
+Late Item!
+==========
+
+Just letting you know, <%=h @transaction.product_name %> was due back on <%=h @transaction.due_date.strftime('%A, %B %e') %> and is now overdue.  Please email the borrower, <%=h @transaction.borrower_netid %>, with a reminder to return this item as soon as possible to avoid further late fees.  Thanks!
+
+
+Cheers,
+
+The YSOA Equipment Checkout Robot

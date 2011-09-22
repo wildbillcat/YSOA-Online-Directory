@@ -1,0 +1,128 @@
+<div id = "student-form">
+	<% page_title "User Registration" %>  
+	
+		<% form_for(@user) do |f| %>
+			<% if @user.errors.any? %>
+		   		<div id="error_explanation">
+		     		<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+		     		<ul>
+		     			<% @user.errors.full_messages.each do |msg| %>
+		       				<li><%= msg %></li>
+		     			<% end %>
+		     		</ul>
+		   		</div>
+		 	<% end %>
+	  		<p>In order to use a School of Architecture workstation, printer, or laser cutters, you will need to be registered in our database.</p>
+			<p>
+				Please enter your information below, then click <strong>Register</strong>.
+			</p>
+			<div class = "divider"></div>
+			<fieldset>
+				<legend>Personal Information</legend>
+			<p>
+    			<%= f.label :first_name %><br />
+				<% if permitted_to? :edit, @user %>
+    				<%= f.text_field :first_name %>
+				<% else %>
+					<%= @user.first_name %>
+					<%= f.hidden_field :first_name, :value => @user.first_name %>
+				<% end %>
+  			</p>
+  			<p>
+    			<%= f.label :last_name %><br />
+				<% if permitted_to? :edit, @user %>
+    				<%= f.text_field :last_name %>
+				<% else %>
+					<%= @user.last_name %>
+					<%= f.hidden_field :last_name, :value => @user.last_name %>
+				<% end %>  
+			</p>
+  			<p>
+    			<%= f.label :nickname, "Known as" %><br />
+    			<%= f.text_field :nickname %>
+  			</p>
+  			<p>
+    			<%= f.label :netid %><br />
+				<% if permitted_to? :edit, @user %>
+    				<%= f.text_field :netid %>
+				<% else %>
+					<%= @user.netid %>
+					<%= f.hidden_field :netid, :value => @user.netid %>
+				<% end %>
+  			</p>
+  			<p>
+    			<%= f.label :email %><br />
+				<% if permitted_to? :edit, @user %>
+    					<%= f.text_field :email %>
+					<% else %>
+						<%= @user.email %>
+						<%= f.hidden_field :email, :value => @user.email %>
+					<% end %>  
+			</p>
+  			<p>
+    			<%= f.label :class_year %><br />
+    			<%= f.text_field :class_year %>
+  			</p>
+  			<p>
+    			<%= f.label :undergrad_college %><br />
+    			<%= f.text_field :undergrad_college %>
+  			</p>
+			<% if permitted_to? :edit, @user %>
+				<p>
+	    			<%= f.label :program %><br />
+					<%= f.collection_select :program, User::PROGRAMS, :to_s, :humanize, :include_blank => true %>
+	  			</p>
+	  			<p>
+	    			<%= f.label :program_year %><br />
+					<%= f.select :program_year, [1, 2, 3, 4, 5 ], {:include_blank => true} %>			
+	  			</p>
+				<p>
+					<%= f.label :sid_number %><br />
+					<%= f.text_field :sid_number %>
+				</p>
+				<p>
+					<%= f.label :status %><br />
+					<%= f.collection_select :status, User::STATUSES, :to_s, :humanize, :include_blank => true %><br />
+				<p>
+					<%= f.label :position %><br />
+					<%= f.text_field :position%>
+				</p>
+				<p>
+					<%= f.label :dean_notes, "Dean's Office Notes (internal)" %><br /> 
+					<%= f.text_field :dean_notes%><br />
+				</p>
+			<% else %>
+				<%= f.hidden_field :status, :value => 'inactive' %>
+				<%= f.hidden_field :program, :value => 'External' %>				
+			<% end %>
+			<% if permitted_to? :edit, @workstations %>
+				<p>
+					<%= f.label :dm_notes, "DM Office Notes (internal)" %><br /> 
+					<%= f.text_field :dm_notes%><br />
+				</p>			
+			<% end %>
+			<% if current_user and current_user.role == 'admin' %>
+	  			<p>
+	    			<%= f.label :role %><br />
+					<%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+	  			</p>
+			<% elsif current_user and current_user.role == 'staff' || current_user.role == 'dmstaff' %>
+				<p>
+	    			<%= f.label :role %><br />
+					<%= f.select(:role, ['student', 'faculty', 'staff']) %>
+	  			</p>
+			<% else %>
+				<p>
+					<%= f.label :role %><br />
+					Student <br />
+				</p>
+				<%= f.hidden_field :role, :value => 'student' %>
+			<% end %>
+  			<p>
+    			<%= f.submit 'Register' %>
+  			</p>
+			</fieldset>
+		<% end %>
+		<div class = "divider"></div>
+
+</div>

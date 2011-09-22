@@ -1,0 +1,19 @@
+<p>For more search options, use the <%= link_to_function "Advanced Search", "toggle_visibility('advanced-search')" %>.</p>
+<div id = "advanced-search" style = 'display:none'>
+	<fieldset>
+		<% form_for @search do |f| %>
+			<br />
+			<%= f.label :user_email_like, "Student Name" %>: <%= f.text_field :user_email_like, :size => 20 %><br />
+			<%= f.label :collection, "Collection" %> 
+			<%= f.collection_select :collection_like, Submission::COLLECTIONS, :to_s, :titleize, :include_blank => true %><br />
+			<%= f.label :created_at, "Date Range:"%><br /> 
+			From <%= f.date_select :created_at_gte, :include_blank => true %><br /> 
+			To <%= f.date_select :created_at_lte, :include_blank => true %><br />
+			<br />
+			Sort by name or collection or submission date<br />
+			<%= f.submit "Advanced Search", :name => nil %><br />
+			<br />
+		<% end %>
+	</fieldset>
+</div>
+<div class = "clear"></div>

@@ -1,0 +1,78 @@
+<div id = "results" >
+	
+<div class="pagination">
+	<%= will_paginate @users, :class => 'pagination ajax' %>
+</div>
+<div id = "directory-view" >
+<% i = 0 %>
+<% for user in @users %>
+	<% i += 1 %>
+	<div class = "block">
+		<fieldset>
+			<h3><%=h user.name %> <em> - <%=h user.simplerole %><% if !user.status.blank? && user.status != 'active' %> - <%=h user.status %><% end %></em>
+				<%= check_box_tag "user_ids[]", user.id %>
+			</h3>
+				<% if File.exist?("public/images/students/#{user.netid}.jpg") %>
+					<% if current_user %>
+						<% if current_user.role == "faculty" || current_user.simplerole == "staff" || current_user == user %>
+							<%= image_tag "/images/students/#{user.netid}.jpg", :class => 'user-image' %>
+						<% else %>
+							<%= image_tag "/images/students/placeholder.jpg", :class => 'user-image '%>
+						<% end %>
+					<% else %>
+						<%= image_tag "/images/students/placeholder.jpg", :class => 'user-image '%>
+					<% end %>
+				<% else %>
+					<%= image_tag "/images/students/placeholder.jpg", :class => 'user-image '%>
+				<% end %>
+				<b>Netid:</b> <%=h user.netid %><br />
+				<b>Email:</b> <%=h user.email %><br />
+				<% if user.role && user.role == "student" %>
+					<b>Class year:</b> <%=h user.class_year %><br />
+					<b>Program:</b> <%=h user.program %><br />
+					<% if permitted_to? :edit, @user or user == @current_user %>
+						<% if user.program != "Undergrad" %>
+							<b>Year in Program:</b> <%=h user.program_year %><br />
+						<% else %>
+							<br />
+						<% end %>
+					<% end %>
+					<div class = "smallertext">
+						<% if !user.undergrad_college.blank? %>
+							<b>Undergrad College:</b> <%=h user.undergrad_college %><br />
+						<% else%>
+							<br />
+						<% end %>
+						<% if !user.graduation_date.blank? %>
+							Graduated on <%=h user.graduation_date.to_s(:long) %><br />
+						<% else %>
+							<br />
+						<% end %>
+					</div>
+					<br />
+				<% else%>
+					<b>Position:</b> <%=h user.position %><br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+				<% end %>
+			<% if permitted_to? :edit, @user %>
+				<div class = "links">	
+						<%= link_to 'Show', user %> <%= link_to 'Edit User', edit_user_path(user) %> <%= link_to 'Delete User', user, :confirm => "Are you sure you want to delete #{user.name} from the Directory?", :method => :delete %>
+				</div>
+			<% end %>
+		</fieldset>
+	</div>
+	<div class = "<%= cycle("", "clear") -%>"></div>
+	<% if i % 8 == 0 %>
+		<div class = "page-break"></div>
+	<% end %>
+<% end %>
+<div class = "clear" ></div>
+</div>
+<div class="pagination">
+	<%= will_paginate @users, :class => 'pagination ajax' %>
+</div>
+</div>

@@ -1,0 +1,110 @@
+<% page_title "Equipment Registration" %>  
+
+<div id = "student-form">
+
+<% form_for([@user, @equip_agreement]) do |f| %>
+	<% if @equip_agreement.errors.any? %>
+   		<div id="error_explanation">
+     		<h2><%= pluralize(@equip_agreement.errors.count, "error") %> prevented you from registering:</h2>
+     		<ul>
+     			<% @equip_agreement.errors.full_messages.each do |msg| %>
+       				<li><%= msg %></li>
+     			<% end %>
+     		</ul>
+   		</div>
+ 	<% end %>
+	<p>Registering allows students of the Yale School of Architecture to check out equipment such as cameras, voice recorders, and mobile presentation carts with LCD screens from the Digital Media office.</p>
+	<p><strong>If you're an Architecture student and would like to be able to check out equipment, please review the conditions below, select "Agree," and submit the form</strong>.</p>
+	<div class = "divider"></div>
+	<fieldset>
+		<legend>Terms and Conditions</legend>
+		<ul>
+			<li>
+				I alone agree to check equipment out from the 6th floor DM office, and return the equipment to the 6th floor DM Office or the after-hours drop box located outside the DM office. Someone else cannot return equipment for me.
+			</li> 
+		  	<li>
+				Each time I check out the equipment, I will verify that it is in working order, that nothing is missing, and that there is no visible damage to the equipment. I also understand that if I return this equipment and it is damaged, I am responsible for any damage. 
+			</li>
+		  	<li>
+				I alone am responsible for anything that happens to the equipment while I have it checked out. I agree to pay for all necessary repairs, up to the replacement value of the equipment listed below, for equipment that gets damaged while in my care. 
+		  	</li>
+			<li>
+				I agree not to remove any of the schools equipment, except for the digital cameras, camcorders, and GPS units, from the Architecture building without written permission from the Director of Digital Media. 
+		  	</li>
+			<li>
+				I understand that checked-out equipment must be returned to the Digital Media office by 5:00PM of the next business day, or deposited in the after-hours drop box located outside the DM office by the start of the following business day, unless otherwise specified.  Extended checkout requests must be submitted in advance via the <%= link_to "DM Online website", "http://www.architecture.yale.edu/dmonline/Forms/extended-equip-loan/default.htm", :popup => true %> and must receive written approval from the Director of Digital Media.
+			</li>
+			<li>
+				I agree to pay the assigned late fee for any checked-out equipment returned after the due date. I acknowledge that the late fees are structured as follows:<br />
+				 - for the first 4 late offenses in the academic year: <strong>$20/day</strong><br />
+				 - for the next 3 late offenses: <strong>$40/day</strong><br />
+				 - for the next 3 late offenses: <strong>$80/day</strong><br />
+				 - late fees will continue to double after every 3 late offenses.
+			</li>
+		  	<li>
+				If this equipment is lost or stolen, during the time I have the equipment checked out, I am responsible for the replacement value of the equipment as indicated below.
+			</li> 
+		  	<li>
+				I understand and agree to the replacement costs of each piece of equipment listed below: <br /> 
+				<br />
+		  		<table>
+		    		<tbody>
+		    			<tr>
+		      				<th width="200" align="left">Equipment</th>
+		      				<th width="100" align="left">Original Cost</th>
+		      				<th width="150" align="left">Replacement Cost</th>
+						</tr>
+		    			<tr>
+		      				<td>Canon SLR Cameras</td>
+		      				<td>$1,800.00</td>
+		      				<td>$1,500.00</td>
+						</tr>
+						<tr>
+		      				<td>SLR Light Ring</td>
+		      				<td>$300.00</td>
+		      				<td>$240.00</td>
+						</tr>
+		    			<tr>
+		      				<td>Nikon SLR Cameras and Lenses</td>
+		      				<td>$800.00</td>
+		      				<td>$600.00</td>
+						</tr>
+		   				<tr>
+		    				<td>Digital Camcorders</td>
+		     				<td>$1,000.00</td>
+		      				<td>$800.00</td>
+						</tr>
+		    			<tr>
+		      				<td>Wacom Tablets</td>
+		      				<td>$100.00</td>
+		      				<td>$80.00</td>
+						</tr>
+		    			<tr>
+		      				<td>Wacom Tablet Stylists</td>
+		      				<td>$50.00</td>
+		  					<td>$40.00</td>
+		    			</tr>
+						<tr>
+		      				<td>GPS Receivers</td>
+		      				<td>$500.00</td>
+		      				<td>$400.00</td>
+						</tr>
+					</tbody>
+				</table>
+			</li>
+		</ul>
+	</fieldset>
+	<fieldset>
+		<legend>Agree and Submit</legend>
+  		<p>
+			<%= f.select :equip_agree, [['Agree', true], ['Do Not Agree', false]], {:include_blank => true} %>
+			Select "Agree" to acknowledge that you agree to these terms and conditions, then click <strong>Submit</strong>.
+		</p>
+		<p>
+    		<%= f.submit 'Submit Registration' %>
+  		</p>
+	</fieldset>
+<% end %>
+<div class = "divider"></div>
+</div>
+

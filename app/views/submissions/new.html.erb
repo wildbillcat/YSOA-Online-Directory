@@ -1,0 +1,45 @@
+<div id = "user-view">
+<fieldset>
+<h3>New submission</h3>
+
+<% form_for([@user, @submission], :html => {:multipart => true}) do |f| %>
+	<% if @submission.errors.any? %>
+   		<div id="error_explanation">
+     		<h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
+     		<ul>
+     			<% @submission.errors.full_messages.each do |msg| %>
+       				<li><%= msg %></li>
+     			<% end %>
+   			</ul>
+   		</div>
+ 	<% end %>
+	<p>
+		<%= @user.name %>, please select your file to be submitted.<br />  
+		Only image (.jpg, .gif, .png) and PDF files under 50MB in size will be allowed.
+		<%= f.hidden_field :user_id, :value => @user.id %>
+	</p>
+  	<p>
+		<%= f.file_field :portfolio %>
+	</p>
+  	<p>
+    	<%= f.label :collection, 'Studio' %><br />
+		<%= f.collection_select :collection, Submission::COLLECTIONS, :to_s, :titleize %><br />
+  	</p>
+  	<p>
+    	<%= f.label :description %><br />
+    	<%= f.text_field :description %>
+  	</p>
+  	<p>
+    	<%= f.submit 'Submit' %>
+	</p>
+	<p>
+		<span class = "hint">
+			Please note, large files, particularly PDFs, may take a few minutes for submission to complete.  If the server is busy processing multiple uploads, you may not see a thumbnail image of your uploaded file right away.  The thumbnails will be generated as soon as possible--YOU DO NOT NEED TO RE-UPLOAD YOUR FILE.
+		</span>
+  	</p>
+<% end %>
+</fieldset>
+<fieldset>
+<%= link_to 'Back', @user %> 	
+</fieldset>
+</div>

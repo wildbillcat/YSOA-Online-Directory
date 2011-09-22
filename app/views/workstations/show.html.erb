@@ -1,0 +1,62 @@
+<div id = "user-view">
+<p>
+  <b>Cpu number:</b>
+  <%=h @workstation.cpu_number %>
+</p>
+
+<p>
+  <b>Student Netid:</b>
+  <%=h @workstation.netid %>
+</p>
+
+
+<p>
+  <b>Monitor number:</b>
+  <%=h @workstation.monitor_number %>
+</p>
+
+<p>
+  <b>Arm number:</b>
+  <%=h @workstation.arm_number %>
+</p>
+
+<p>
+  <b>Cpu damage:</b>
+  <%=h @workstation.cpu_damage %>
+</p>
+
+<p>
+  <b>Monitor damage:</b>
+  <%=h @workstation.monitor_damage %>
+</p>
+
+<p>
+  <b>Arm damage:</b>
+  <%=h @workstation.arm_damage %>
+</p>
+
+<p>
+  <b>Floor:</b>
+  <%=h @workstation.floor %>
+</p>
+
+<p>
+  <b>Studio:</b>
+  <%=h @workstation.studio %>
+</p>
+
+<p>
+  <b>Registration date:</b>
+  <%=h @workstation.registration_date %>
+</p>
+
+<p>
+  <b>Semester:</b>
+  <%=h @workstation.semester %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_workstation_path(@workstation) %> |
+<%= link_to 'Back', workstations_path %>
+</div>

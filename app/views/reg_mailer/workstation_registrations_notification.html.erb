@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h2>Yesterday's Workstation Registrations</h2>
+    <p>
+		Here is the list of <%= pluralize(@workstations.size, "workstation") %> registered yesterday.  Please make sure they're unlocked and in the right groups in Active Directory.
+    </p>
+	<table>
+		<tbody>
+  			<tr>
+				<th>Student - </th>
+    			<th>CPU - </th>
+    			<th>Floor</th>
+  			</tr>
+			<% for workstation in @workstations %>
+		  		<tr>
+					<td><%=h workstation.netid %></td>
+    				<td><%=h workstation.cpu_number %></td>
+    				<td><%=h workstation.floor %></td>
+  				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<p>Cheers,</p>
+    <p>The YSOA Registration Robot</p>
+  </body>
+</html>

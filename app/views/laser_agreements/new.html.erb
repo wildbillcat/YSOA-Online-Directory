@@ -1,0 +1,101 @@
+<% page_title "Laser Cutter Registration" %>  
+
+<div id = "student-form">
+
+<% form_for([@user, @laser_agreement]) do |f| %>
+	<% if @laser_agreement.errors.any? %>
+   		<div id="error_explanation">
+     		<h2><%= pluralize(@laser_agreement.errors.count, "error") %> prevented you from registering:</h2>
+     		<ul>
+     			<% @laser_agreement.errors.full_messages.each do |msg| %>
+       				<li><%= msg %></li>
+     			<% end %>
+     		</ul>
+   		</div>
+ 	<% end %>
+	<p>
+		In order to be able to use the School laser cutters, School of Architecture students must first register by viewing the Yale Health and Safety instructional video at the link below, correctly answering the corresponding quiz questions, and agreeing to the terms and conditions.  Failure to do any of the above will prohibit you from registering and using the laser cutters.
+	</p>
+	<p>
+		Please note, using the laser cutters also requires completing the <%= link_to 'Printing Registration Form', new_user_print_agreement_path(@user) %> if you haven't already done so.
+	</p>
+	<div class = "divider"></div>
+	<fieldset>
+		<legend>Laser Safety Video</legend>
+		<p>Please view the Yale Health and Safety laser cutter instructional video here:</p>
+		<p><%= link_to "Working Safely with Embedded Lasers", "http://www.yale.edu/ehs/onlinetraining/EmbeddedLaser/EmbeddedLaser.htm", :popup => true %></p>
+		<p>Then answer the following True/False questions.  <strong>You must answer the questions correctly to register</strong>.</p>
+		<ol>
+		  	<li>
+				Class 4 lasers (the type of laser in our laser cutters) are high-powered lasers with the capacity to cause skin burns and eye damage.  <%= f.select :question1, [true, false], {:include_blank => true} %>
+			</li>
+			<li>
+				The laser beams in the laser cutters can cause fires if the speed setting is too low or the power setting is too high.  <%= f.select :question2, [true, false], {:include_blank => true} %>
+			</li>
+			<li>
+				Tampering with the safety interlocks on the laser cutters is permitted when cutting larger materials that do not fit on the laser bed.  <%= f.select :question3, [true, false], {:include_blank => true} %>
+			</li>
+			<li>
+				Fire extinguishers are located outside the entry door to each laser cutter room.  <%= f.select :question4, [true, false], {:include_blank => true} %>
+			</li>
+			<li>
+				Toxic fumes are not a concern when laser cutting, as none of the material permitted in the laser cutters releases fumes when cut.  <%= f.select :question5, [true, false], {:include_blank => true} %>
+			</li>
+			<li>
+				The laser cutters are available from 8:00 AM to 12:00 AM, seven days a week.  <%= f.select :question6, [true, false], {:include_blank => true} %>
+			</li>
+			<li>
+				I am permitted to use the laser cutter if the ventilation system is not operating, but I should notify the DM office afterward.  <%= f.select :question7, [true, false], {:include_blank => true} %>
+			</li>
+			<li>
+				Hand-cutting of material is permitted on the cutting table in the laser cutter room or on top of the laser cutter.  <%= f.select :question8, [true, false], {:include_blank => true} %>
+			</li>
+		</ol>
+	</fieldset>
+	<fieldset>
+		<legend>Terms and Conditions</legend>
+		<p>
+			Please review the following terms of use for the laser cutters.  <strong>Failure to follow any of these terms MAY RESULT IN LOSS OF ACCESS TO THE LASER CUTTERS</strong>.
+		</p>
+		<ul>
+			<li>		
+				I understand that there is a <strong>high risk of fire</strong> when using the laser cutters, and I WILL NOT leave the machine unattended while cutting.
+			</li>
+			<li>
+				I understand that guidelines for laser cutter use are posted in every laser cutter room.  I will review these guidelines before doing any laser cutting, and I will not use the laser cutter to cut prohibited materials.  If I have questions about whether a material is suitable for use in the laser cutter, I will ask the Digital Media office.
+			<li>
+				I understand that laser cutter operating hours are between 8:00AM and 12:00AM, and that use the cutters outside of these hours is prohibited.  Violators will be reported to the Dean's Office for disciplinary action.<br />
+				<strong>Note:</strong> The operational hours for the the shop industrial laser cutter are controlled by the shop’s electrical equipment lockouts; this laser cutter will therefore operate on a slightly different operational schedule.
+			</li>
+			<li>
+				I will not sit, lean, or hand-cut on top of the laser cutters, as this can damage the plexiglass view screen; I understand that doing so will make me liable for the cost of repairing any damage I cause.  I understand that a cutting table has been provided in each laser cutter room for hand-cutting use.   
+			</li>
+			<li>
+				I will notify the Digital Media office if I find or cause damage to the laser cutters, and will not use a cutter if it has visible damage, such as cracks or holes in the plexiglass view screen.
+			<li>
+				I understand that there is a fire extinguisher located right outside each laser cutter room and will use the extinguisher if needed.  I will notify the Digital Media office immediately if there is an incident which requires use of the fire extinguisher.
+			</li>
+			<li>
+				I understand that I am responsible for the charges for all laser cutter jobs sent under my printing account, including charges for jobs done on a machine that I left logged in with my credentials or those done by another person to whom I have given my credentials.
+			</li>
+			<li>
+				I understand that the laser cutters can be reserved online for a maximum of ONE hour per day per laser cutter, for a maximum of two consecutive days at a time; and that any violation of this policy may result in the deletion of any offending reservations and loss of my access to the reservation system.
+			</li>
+			<li>
+				I understand that I have only 30 calendar days to request any printing reimbursements. After 30 calendar days all printing charges are final and will be billed to my Yale Bursar Account. 
+			</li>
+		</ul>
+	</fieldset>
+	<fieldset>
+		<legend>Agree and Submit</legend>
+		<p>
+			<%= f.select :laser_agree, [['Agree', true], ['Do Not Agree', false]], {:include_blank => true}  %>
+			Select "Agree" to acknowledge that you agree to these terms and conditions, then click <strong>Submit</strong>.
+		</p>
+		<p>
+    		<%= f.submit 'Submit Registration' %>
+  		</p>
+  	</fieldset>
+<% end %>
+<div class = "divider"></div>
+</div>

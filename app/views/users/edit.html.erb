@@ -1,0 +1,96 @@
+<% page_title "Edit User" %>  
+<div id = "user-view">
+	<fieldset>
+		<% form_for(@user) do |f| %>
+			<% if @user.errors.any? %>
+	   			<div id="error_explanation">
+	     			<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>	
+	     			<ul>
+	     			<% @user.errors.full_messages.each do |msg| %>
+	       				<li><%= msg %></li>
+	     			<% end %>
+	     			</ul>
+	   			</div>
+	 		<% end %> 			
+			<p>
+				<%= f.label :first_name %><br />
+				<%= f.text_field :first_name %>
+			</p>
+			<p>
+				<%= f.label :last_name %><br />
+				<%= f.text_field :last_name %>
+			</p>
+			<p>
+				<%= f.label :nickname, "Known as" %><br />
+				<%= f.text_field :nickname %>
+			</p>
+			<p>
+				<%= f.label :netid %><br />
+				<%= f.text_field :netid %>
+			</p>
+			<p>
+				<%= f.label :email %><br />
+				<%= f.text_field :email %>
+  			</p>
+			<p>
+				<%= f.label :sid_number %><br />
+				<%= f.text_field :sid_number %>
+			</p>
+			<p>
+    			<%= f.label :class_year %><br />
+    			<%= f.text_field :class_year %>
+  			</p>
+  			<p>
+    			<%= f.label :program %><br />
+				<%= f.collection_select :program, User::PROGRAMS, :to_s, :humanize, :include_blank => true %>
+  			</p>
+  			<p>
+    			<%= f.label :program_year %><br />
+				<%= f.select :program_year, [1, 2, 3, 4, 5 ], {:include_blank => true} %>			
+			</p>
+  			<p>
+    			<%= f.label :undergrad_college %><br />
+    			<%= f.text_field :undergrad_college %>
+  			</p>
+			<p>
+    			<%= f.label :status %><br />
+				<%= f.collection_select :status, User::STATUSES, :to_s, :humanize, :include_blank => true %><br />
+  			</p>
+			<p>
+    			<%= f.label :position %><br />
+    			<%= f.text_field :position %>
+  			</p>	
+			<p>
+    			<%= f.label :graduation_date %><br />
+    			<%= f.date_select(:graduation_date, :include_blank => true) %>
+  			</p>
+			<p>
+				<%= f.label :dean_notes, "Dean's Office Notes (internal)" %><br /> 
+				<%= f.text_field :dean_notes%><br />
+			</p>
+			<% if @current_user and @current_user.role == 'admin' or @current_user.role == 'dmstaff' %>	
+				<p>
+					<%= f.label :dm_notes, "DM Office Notes (internal)" %><br /> 
+					<%= f.text_field :dm_notes%><br />
+				</p>			
+			<% end %>
+			<% if @current_user.role == 'admin' %>
+  				<p>
+    				<%= f.label :role %><br />
+					<%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+  				</p>
+			<% elsif @current_user.role == 'staff' || @current_user.role == 'dmstaff' %>
+				<p>
+		    		<%= f.label :role %><br />
+					<%= f.select(:role, ['student', 'faculty', 'staff']) %>
+		  		</p>
+			<% end %>
+  			<p>
+    			<%= f.submit 'Update' %>
+  			</p>
+		<% end %>
+	</fieldset>
+	<fieldset>
+		<%= link_to 'Back', @user %> 	
+	</fieldset>
+</div>

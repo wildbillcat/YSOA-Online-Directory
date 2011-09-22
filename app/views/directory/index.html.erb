@@ -1,0 +1,21 @@
+<div id = "directory-main">
+	<p>
+		Welcome to the Yale School of Architecture Online Directory.  You can use the Directory to search or browse School students, faculty and staff, or, if you're a student, to register for the School's printers, laser cutters, and equipment checkout.
+	</p>
+	<br />
+	<% form_for :search, @search, :url=> '/users', :html => {:method => 'get'} do |f| %>
+			<%= f.label :first_name_or_last_name_or_nickname_contains, "Find by Name" %>: <%= f.text_field :first_name_or_last_name_or_nickname_contains, :size => 30 %>
+			<%= f.submit "Search", :name => nil %><br />
+			<div class="note">Search by first name OR last name OR nickname</div>
+		<% end %>				
+		<%= render :partial => 'advanced_search' %>
+	<br />
+	<p>Browse by Current Students, Faculty, or Staff:</p>
+	<ul>
+		<li><%= link_to "Students", users_path(:search => {:role_equals => "student", :status_equals => "active"}) %></li>
+		<li><%= link_to "Faculty", users_path(:search => {:role_equals => "faculty", :status_equals => "active"} ) %></li>
+		<li><%= link_to "Staff", users_path(:search => {:role_equals => "staff", :status_equals => "active"}) %></li>
+		<li><%= link_to "Graduate Students", users_path(:search => {:role_equals => "student", :program_does_not_contain => "er", :status_equals => "active"}) %></li>
+		<li><%= link_to "Undergrad Students", users_path(:search => {:role_equals => "student", :program_equals => "undergrad", :status_equals => "active"}) %></li>
+	</ul>
+</div>

@@ -1,0 +1,55 @@
+<% page_title "Edit Workstation" %>  
+
+<div id = "student-form">
+
+<% form_for(@workstation) do |f| %>
+	<% if @workstation.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@workstation.errors.count, "error") %> prohibited this product from being saved:</h2>
+			<ul>
+				<% @workstation.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>	
+	<p>
+		Mandatory fields are marked with a <%= image_tag("/images/required_star.gif", :alt => "required") %>.
+	</p>
+  	<fieldset>
+		<legend>Workstation Information</legend>
+		<p>
+			<%= f.label :floor %>: <%= f.select :floor, [4, 5, 6, 7] , {:include_blank => true} %>
+			<%= image_tag("/images/required_star.gif", :alt => "required") %><br />
+			<%= f.label :cpu_number %>: Arch-PC-<%= f.text_field :cpu_number, :size => 4 %>
+			<%= image_tag("/images/required_star.gif", :alt => "required") %><br />
+			<%= f.label :monitor_number %>: <%= f.text_field :monitor_number, :size => 8 %>
+			<%= image_tag("/images/required_star.gif", :alt => "required") %><br />
+			<%= f.label :arm_number %> <%= f.text_field :arm_number, :size => 8 %><br />
+		</p>
+	</fieldset>
+ 	<fieldset>
+		<legend>Workstation Damage</legend>
+		<p>
+			Please document any existing <strong>CPU</strong> damage, if present.
+		</p>
+		<%= f.text_area :cpu_damage, :cols => 60, :rows => 4 %><br />
+		<br />
+		<p>
+			Please document any existing <strong>monitor</strong> damage, if present.
+		</p>
+		<%= f.text_area :monitor_damage, :cols => 60, :rows => 4 %><br />
+		<br />
+		<p>
+			Please document any existing <strong>monitor arm</strong> damage, if present. 
+		</p>	
+		<%= f.text_area :arm_damage, :cols => 60, :rows => 4 %><br />
+		<br />
+	</fieldset>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', workstations_path %>
+</div>

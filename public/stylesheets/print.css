@@ -1,0 +1,52 @@
+#headerlogo, .login_window, #topmenu, #top-search-area, #footer, .links, .pagination, #selectmenu, #notice, #user_ids_ {
+	display: none;
+}
+
+#banner {
+	color: black; 
+	text-shadow: none;
+	height: 20px;
+}
+
+#directory-view h3, p {
+	color: black;
+}
+
+#directory-view fieldset{
+	border: none;
+	-webkit-box-shadow: 0 0px 0px rgba(0,0,0,0);
+	-moz-box-shadow: 0 0px 0px rgba(0,0,0,0);
+	box-shadow: 0 0px 0px rgba(0,0,0,0);
+	color: black;
+}
+
+#directory-view .user-image {
+	margin: 0 1em 1em 0;
+	width: 100px;
+  	height: 125px;
+	border: 3px solid white;
+	-webkit-box-shadow: 0 1px 10px rgba(0,0,0,0);
+	-moz-box-shadow: 0 1px 10px rgba(0,0,0,0);
+	box-shadow: 0 1px 10px rgba(0,0,0,0);
+	float: left;
+}
+
+.page-break  { 
+	display: block;
+	page-break-before: always; 
+} 
+
+.block {
+	page-break-inside: avoid;
+}
+
+.timestamp{
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin-left: 30px;
+	display: block;
+	width: 200px;
+	position: absolute;
+	top: 15px;
+	left: 600px;
+}

@@ -1,0 +1,28 @@
+<h1>Editing submission</h1>
+
+<% form_for(@submission) do |f| %>
+	<% if @submission.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
+			<ul>
+				<% @submission.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+  <p>
+    <%= f.label :collection %><br />
+	<%= f.collection_select :collection, Submission::COLLECTIONS, :to_s, :humanize %><br />
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @submission %> |
+<%= link_to 'Back', submissions_path %>

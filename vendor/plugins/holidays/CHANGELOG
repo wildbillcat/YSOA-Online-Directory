@@ -1,0 +1,15 @@
+= Ruby Holidays Gem CHANGELOG
+  
+== 0.9.3
+* Added New York Stock Exchange holidays (thank you Alan Larkin).
+* Added UPS holidays (thank you Tim Anglade).
+* Fixed rakefile to force lower case definition file names.
+
+== 0.9.2
+* Included rakefile in Gem (thank you James Herdman).
+
+== 0.9.1
+* au.yaml was being included incorrectly in US holiday definitions. Thanks to Glenn Vanderburg (http://vanderburg.org/) for the fix.
+
+== 0.9.0
+* Initial release.

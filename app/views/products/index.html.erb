@@ -1,0 +1,73 @@
+<div id="product-list-view">
+
+<h1>Equipment List</h1>
+
+<% @products.each do |product| %>
+
+	<% if product.lateitem? %>
+		<fieldset class = "lateitem">
+	<% elsif product.available? %>
+		<fieldset class = "available">
+	<% else %>
+		<fieldset class="checkedout">
+	<% end %>
+
+	<legend><%=h link_to "#{product.name}", product_path(product)  %></legend>
+	
+	<% if product.extended? %>
+		<div class = "item-red">Extended Checkout</div>
+	<% end %>
+
+	<% if !product.available? %>
+		<% if permitted_to? :create, @transaction %>
+			<% if File.exist?("public/images/students/#{product.current_borrower_netid}.jpg") %>
+				<%= image_tag "/images/students/#{product.current_borrower_netid}.jpg", :class => 'borrower-image' %>
+			<% else %>
+				<%= image_tag "/images/students/placeholder.jpg", :class => 'borrower-image' %>
+			<% end %>
+		<% end %>
+	<% end %>
+
+	<%= image_tag product.image_url, :class => 'list-image' %>
+	<div class = "item-text-block">
+	<em>Description:</em><br />  
+	<%= product.description %><br /><br />
+	<% if !product.available? %>
+		<% if permitted_to? :create, @transaction %>
+			<em>Checked out by:</em> <%=h product.current_borrower_name %><br />
+		<% end %>
+		<em>Checked out on:</em> <%=h product.current_transaction.checkout_date %><br />
+		<em>Due back on:</em> <%=h product.current_transaction.due_date %><br /><br />
+		<em>Notes:</em> <%=h product.current_transaction.notes %>
+	<% end %>
+	</div>
+	<div class = "button-block">
+	<table>
+		<tr>
+			<td>
+				<% if permitted_to? :create, @transaction %>		
+					<% if !product.available? %>
+						<%= button_to 'Check In', product_checkin_path(:id => product.transaction_id, :product_id => product.id),  :confirm => "Please confirm you are checking in #{product.name} and nothing is missing.", :method => :put, :class => 'positive' %>
+					<% else %>
+						<%= button_to 'Check Out', new_product_transaction_path(product), :method => :get, :class => 'positive' %>
+					<% end %>
+				<% end %>
+			</td>
+			<td>
+				<% if permitted_to? :edit, @product %>	
+					<%= button_to 'Edit', edit_product_path(product), :method => :get %>
+				<% end %>
+			</td>
+			<td>
+				<% if permitted_to? :destroy, @product %>		
+					<%= button_to 'Remove', product, :confirm => "Are you sure you want to remove #{product.name}?", :method => :delete %> 
+				<% end %>
+			</td>
+		</tr>
+	</table>
+	</div>
+	</fieldset>
+
+<% end %>
+
+</div>

@@ -1,0 +1,68 @@
+<% page_title "Printing Registration" %>  
+
+<div id ="student-form">
+
+<% form_for([@user, @print_agreement]) do |f| %>
+	<% if @print_agreement.errors.any? %>
+   		<div id="error_explanation">
+     		<h2><%= pluralize(@print_agreement.errors.count, "error") %> prevented you from registering:</h2>
+     		<ul>
+     			<% @print_agreement.errors.full_messages.each do |msg| %>
+       				<li><%= msg %></li>
+     			<% end %>
+     		</ul>
+   		</div>
+ 	<% end %>
+	<p>
+		Registering for printing allows students of the Yale School of Architecture to print to the school printers, plotters, and laser cutters.  If you're an Architecture student and would like to be able to print, please review the conditions below, select "Agree," and submit the form.  <strong>Failure to do so will result in you not being able to use the school printers, plotters, and/or laser cutters</strong>.
+	</p>
+	<p>
+		Please note, using the laser cutters also requires completing the <%= link_to 'Laser Cutter Registration Form', new_user_laser_agreement_path(@user) %> if you haven't already done so.
+	</p>
+	<div class = "divider"></div>
+	<fieldset>
+		<legend>Terms and Conditions</legend>
+		<ul>
+			<li>
+				I understand that only School-provided paper can be used in the black-and-white laser printers and copiers, the color laser printers, and all plotters EXCEPT the manual feed plotters and the inkjet printers. I understand that I may not remove paper from these devices, and that if I do, I will be fined on a per-incident basis.
+			</li>
+			<li>
+				I understand that only School-provided paper and pre-approved specialty papers are allowed in the color inkjet printers and the manual feed plotters. For a comprehensive list of approved paper for the color inkjet and manual feed plotters, I will refer to the <%= link_to "DM Online website", "http://www.architecture.yale.edu/DMOnline", :popup => true %>.
+			</li> 
+			<li>
+				I understand that I am responsible for the cost of any repairs or replacement of equipment if I attempt to use any unapproved paper or materials in any of the printing, plotting, or laser cutter devices and that I will be fined on a per-incident basis for these attempts.
+			</li>
+			<li> 
+				I understand that I am responsible for the cost of any repair or replacement of equipment if I attempt to remove or replace any internal or external components, including but not limited to inks, toner, print heads, fusers, and paper; and that I will be fined on a per-incident basis for doing so.
+			</li>
+			<li>
+				I understand that I am responsible for the cost of any consumables if I attempt to remove them from the equipment, including but not limited to paper, inks, toner, and print heads; and that I will be fined on a per-incident basis for doing so.
+			</li>
+			<li>
+				I am responsible for all printing, plotting, and laser cutter charges accrued under my printing account, including charges for jobs done on a machine that I left logged in with my credentials or those done by another person to whom I have given my credentials.
+			</li>
+			<li>
+				I understand that I will not be granted a reimbursement for any plots that exceed the recommended plotting lengths for the plotters:<br />
+				Draft Plotter (OCE Plotter): 96" (8 Ft)<br />
+				Production Plotters (HP 1055CM): 96" (8 Ft)<br />
+				Photo Plotters (HP Z3200): 120" (10 Ft)<br />
+				Presentation Plotters (HP Z6100PS 42" and HP Z6100PS 60" plotters): 120" (10 Ft)
+			</li>
+			<li> 
+				I understand that I have only 30 calendar days to request any printing reimbursements. After 30 calendar days all printing charges are final and will be billed to my Yale Bursar Account. 
+			</li>
+		</ul>
+	</fieldset>
+	<fieldset>
+		<legend>Agree and Submit</legend>
+		<p>
+			<%= f.select :print_agree, [['Agree', true], ['Do Not Agree', false]], {:include_blank => true} %>
+			Select "Agree" to acknowledge that you agree to these terms and conditions, then click <strong>Submit</strong>.
+		</p>
+		<p>
+    		<%= f.submit 'Submit Registration' %>
+  		</p>
+	</fieldset>
+<% end %>
+<div class = "divider"></div>
+</div>

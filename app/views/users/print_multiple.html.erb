@@ -1,0 +1,21 @@
+
+<div id = 'selectmenu'>
+	<div class = 'selectmenu-right'>
+		<%= link_to 'Back to Main Directory Page', '/directory' %><br />
+		<br />
+	</div>
+</div>
+<div class = "clear"></div>
+
+<% form_tag edit_multiple_users_path do %>
+	<% if permitted_to? :edit, @user %>					 
+		<div id = 'selectmenu'>
+				Select all displayed:<input type="checkbox" name="checkAll" onClick="toggle_check()" /> | 
+				<%= submit_tag "Edit Selected" %><br />
+		</div>
+		<div class = "clear"></div>
+	<% end %>
+
+	<%= render :partial => 'print_userview' %>
+
+<% end %>

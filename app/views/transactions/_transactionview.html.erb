@@ -1,0 +1,61 @@
+<div id = "results" >
+	
+<div id="item-list">
+
+	<div class="pagination">
+		<%= will_paginate @transactions, :class => 'pagination ajax' %>
+	</div>
+
+	<table>
+		<tbody>
+  			<tr>
+				<% if @product == nil %>
+    				<th><%= sort_link @search, :product_name, "Product" %></th>
+				<% end %>
+    			<th><%= sort_link @search, :borrower_netid, "Borrower" %></th>
+    			<th><%= sort_link @search, :checkout_date, "Check Out" %></th>
+    			<th><%= sort_link @search, :checkin_date, "Check In" %></th>
+    			<th><%= sort_link @search, :due_date, "Due Date" %></th>
+    			<th><%= sort_link @search, :extended_checkout, "Extended Checkout?" %></th>
+    			<th><%= sort_link @search, :days_late, "Days Late" %></th>
+				<th> </th>
+				<th> </th>
+				<% if permitted_to? :destroy, @transaction %>		
+					<th> </th>
+				<% end %>
+  			</tr>
+		</tbody>
+
+	<% for transaction in @transactions %>
+		<tbody>
+		<% if transaction.days_late && transaction.days_late > 0 %>
+			<tr class ="lateitem">
+		<% else %>	
+  			<tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+		<% end %>
+		<% if @product == nil %>
+				<td><%=h transaction.product_name %></td>
+		<% end %>
+    			<td><%=h transaction.borrower_netid %></td>
+    			<td><%=h transaction.checkout_date %></td>
+    			<td><%=h transaction.checkin_date %></td>
+    			<td><%=h transaction.due_date %></td>
+				<td><% if transaction.extended_checkout %>Yes<% end %></td>
+    			<td><% if transaction.days_late && transaction.days_late > 0 %><%=h transaction.days_late %><% end %></td>
+				<td><%= link_to 'Show', transaction %></td>
+    			<td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
+				<% if permitted_to? :destroy, @transaction %>		
+    				<td><%= link_to 'Destroy', transaction, :confirm => 'Are you sure?', :method => :delete %></td>
+				<% end %>
+  			</tr>
+		</tbody>
+	<% end %>
+	</table>
+
+<br />
+<div class="pagination">
+	<%= will_paginate @transactions, :class => 'pagination ajax' %>
+</div>
+
+</div>
+</div>

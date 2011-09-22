@@ -1,0 +1,52 @@
+<div id = "results" >
+
+	<div class="pagination">
+		<%= will_paginate @users, :class => 'pagination ajax' %>
+	</div>
+	
+	<table>
+		<tbody>
+  			<tr>
+    			<th><%= sort_link @search, :first_name, "First Name" %></th>
+    			<th><%= sort_link @search, :last_name, "Last Name" %></th>
+    			<th><%= sort_link @search, :netid, "Net ID" %></th>
+    			<th>Email</th>
+    			<th>CPU Number</th>
+    			<th>Equip agree?</th>
+    			<th>Print agree?</th>
+    			<th>Laser agree?</th>
+				<% if permitted_to? :edit, @user %>
+    				<th><%= sort_link @search, :role, "Role" %></th>
+					<th> </th>
+					<th> </th>
+					<th> </th>
+				<% end %>
+  			</tr>
+		</tbody>
+		<% for user in @users %>
+			<tbody>
+				<tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+    				<td><%=h user.first_name %></td>
+    				<td><%=h user.last_name %></td>
+    				<td><%=h user.netid %></td>
+    				<td><%=h user.email %></td>
+    				<td><%=h user.current_cpu_number %></td>
+    				<td><% if user.registered_for_equipment? %>Yes<% end %></td>
+    				<td><% if user.registered_to_print? %>Yes<% end %></td>
+    				<td><% if user.registered_for_laser? %>Yes<% end %></td>
+					<% if permitted_to? :edit, @user %>
+    					<td><%=h user.role %></td>
+    					<td><%= link_to 'Show', user_path(user) %></td>
+    					<td><%= link_to 'Edit', edit_user_path(user) %></td>
+    					<td><%= link_to 'Destroy', user, :confirm => "Are you sure you want to destroy the record for #{user.name}?", :method => :delete %></td>
+					<% end %>
+  				</tr>
+			</tbody>
+		<% end %>
+	</table>
+
+	<div class="pagination">
+		<%= will_paginate @users, :class => 'pagination ajax' %>
+	</div>
+
+</div>

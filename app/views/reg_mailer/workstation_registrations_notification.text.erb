@@ -1,0 +1,17 @@
+Yesterday's Workstation Registrations
+=====================================
+
+Here is the list of <%= pluralize(@workstations.size, "workstation") %> registered yesterday.  Please make sure they're unlocked and in the right groups in Active Directory.
+
+Student - CPU - Floor
+
+<% for workstation in @workstations %>
+	<%=h workstation.netid %>
+	<%=h workstation.cpu_number %>
+	<%=h workstation.floor %>
+<% end %>
+
+
+Cheers,
+
+The YSOA Registration Robot

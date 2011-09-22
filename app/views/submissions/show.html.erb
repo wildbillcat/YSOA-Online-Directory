@@ -1,0 +1,44 @@
+<% page_title "Submission Details" %>
+<div id = "user-view">
+		<fieldset>
+			<legend><%= link_to "#{@submission.owner.name}", @submission.owner %></legend>
+			<% if File.exist?("public/images/students/#{@submission.owner.netid}.jpg") %>
+				<% if current_user && current_user.role == "faculty" || current_user.simplerole == "staff" || current_user == @submission.owner %>
+					<%= image_tag "/images/students/#{@submission.owner.netid}.jpg", :class => 'list-image' %>
+				<% else %>
+					<%= image_tag "/images/students/placeholder.jpg", :class => 'list-image '%>
+				<% end %>
+			<% else %>
+				<%= image_tag "/images/students/placeholder.jpg", :class => 'list-image '%>
+			<% end %>
+			<p>
+			<b>Netid:</b> <%=h @submission.owner.netid %><br />
+			<b>Email:</b> <%=h @submission.owner.email %><br />
+			<b>Class year:</b> <%=h @submission.owner.class_year %><br />
+			<b>Program:</b> <%=h @submission.owner.program %><br />
+			</p>
+		</fieldset>
+		<fieldset>
+			<p>
+				Submitted to the <b><%=h @submission.collection %></b> collection on <b><%=h @submission.created_at.strftime('%m/%d/%Y at %I:%M%p') %></b><br />
+				<% if @submission.description?%>
+					<b>Item Description:</b> <%=h @submission.description %><br />
+				<% end %>
+			</p>
+			<p>
+				<%= link_to image_tag(@submission.portfolio.url(:large)), @submission.portfolio.url(:original), :target => "_blank"  %>
+			</p>
+		</fieldset>
+		<fieldset>
+  			<p>
+  				<%= link_to 'Back to Submissions', submissions_path %> 
+				<% if permitted_to? :edit, @submission %>	
+				| <%= link_to 'Edit', edit_submission_path(@submission) %>
+				<%end %>
+				<% if permitted_to? :destroy, @submission %>	 
+				| <%= link_to 'Destroy', @submission, :confirm => 'Are you sure?', :method => :delete %>
+				<% end %>
+				<br />
+			</p>
+		</fieldset>
+	</div>

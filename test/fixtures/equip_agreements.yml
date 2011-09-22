@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  equip_agree: false
+  equip_agree_date: 2010-03-24 10:17:48
+  student_id: 1
+
+two:
+  equip_agree: false
+  equip_agree_date: 2010-03-24 10:17:48
+  student_id: 1

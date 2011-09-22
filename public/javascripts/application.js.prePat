@@ -1,0 +1,120 @@
+// Place your application-specific JavaScript functions and classes here
+// This file is automatically included by javascript_include_tag :defaults
+
+
+function toggle_check() {
+	var allCheck = document.getElementsByName('checkAll');
+	var checkboxes = document.getElementsByName('user_ids[]');
+	for(var i = 0; i<checkboxes.length; i++){
+		checkboxes[i].checked = allCheck[0].checked;
+	}
+}
+
+function selectAllCheckboxes() {
+    $$('*[id^="user_ids_"]').invoke('writeAttribute', 'checked');
+}
+
+function toggle_visibility(id) {
+	var e = document.getElementById(id);
+	if(e.style.display == 'none')
+		e.style.display = 'block';
+	else
+	e.style.display = 'none';
+}
+
+
+// code for new Rails3-compatible date selector - see http://asciicasts.com/episodes/213-calendars
+
+$(function (){
+    $('#search_graduation_date_eq').datepicker({dateFormat: 'dd-mm-yy'});  
+});
+
+$(function (){
+    $('#search_created_at_gte').datepicker({dateFormat: 'dd-mm-yy'});  
+});
+
+$(function (){
+    $('#search_created_at_lte').datepicker({dateFormat: 'dd-mm-yy'});  
+});
+
+$(function (){
+    $('#transaction_due_date').datepicker({dateFormat: 'dd-mm-yy'});  
+});
+
+
+
+// code for ajax pagination from https://github.com/mislav/will_paginate/wiki/Ajax-pagination
+// Need the jrails gem for this function to work properly!
+
+$(document).ready(function(){
+//document.observe("dom:loaded", function() {
+  // the element in which we will observe all clicks and capture
+  // ones originating from pagination links
+  var container = $(document.body)
+
+  if (container) {
+    var img = new Image
+    img.src = '/images/spinner.gif'
+
+    function createSpinner() {
+      return new Element('img', { src: img.src, 'class': 'spinner' })
+    }
+
+    container.observe('click', function(e) {
+      var el = e.element()
+      if (el.match('.pagination.ajax a')) {
+	        el.up('.pagination.ajax').insert(createSpinner())
+        new Ajax.Request(el.href, { method: 'get' })
+        e.stop()
+      }
+    })
+  }
+})
+
+// ajax pagination links
+
+$('.pagination a').live('click',function (){  
+        $.getScript(this.href);  
+        return false;  
+});
+
+// Code for observing records_per_page
+// needs to be adapted to also pass {request.query_string}
+// CURRENTLY BROKEN
+
+$('#per_page').live('change', function() {
+/**
+ * This way is designed to just rewrite the physical url and pass a string instead of attempting to use
+ * jquery's get() function with 3 parameters, including an associative array. 
+ */
+
+/*
+ * This section performs some string manupulation. It first grabs the current url from the window,
+ * and then finds where the value of per_page begins and ends. It then takes the value in the dropdown
+ * and replaces the old value in the URL string. 
+ */
+var url = window.location.href;
+var beginning = url.indexOf("=", url.indexOf('per_page')) + 1;
+var end = url.indexOf("&", beginning) - 1;
+var oldNum = url.substring(beginning, end);
+var newNum = "" + $('#per_page').val();
+url.replace(oldNum,newNum);
+
+/*
+ * This passes the URL WITH all of the parameters already concatenated in the string using the
+ * get function from jquery.
+ */
+url = url + " #results";
+$('#results').load(url);
+
+});
+
+
+// $('#per_page').live('change', function() {
+//	$.get('#users_path', { per_page: $('#per_page').val()}, function(data) {
+//		$('#results').html(data);
+//	});
+// });
+	
+
+

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h2>Yesterday's Laser Cutter Registrations</h2>
+    <p>
+		Here is the list of <%= pluralize(@laser_agreements.size, "user") %> who registered for laser cutting yesterday.  Please make sure they have active printing accounts and have been enabled to use the laser cutters in Active Directory.
+    </p>
+	<p>
+		<% for laser_agreement in @laser_agreements %>
+			<%=h laser_agreement.laser_user(laser_agreement.user_id) %><br />
+		<% end %>
+	</p>
+	<p>Cheers,</p>
+    <p>The YSOA Registration Robot</p>
+  </body>
+</html>

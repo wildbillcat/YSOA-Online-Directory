@@ -1,0 +1,14 @@
+<% page_title "Submitted Items" %>
+<div id = "top-search-area">
+	<div class = "top-search-left">	
+	<% form_for :search, @search, :html => {:method => :get} do |f| %>
+		<%= f.label :user_first_name_or_user_last_name_or_user_nickname_contains, "Name" %>: <%= f.text_field :user_first_name_or_user_last_name_or_user_nickname_contains, :size => 20 %> 
+		<%= f.submit "Search", :name => nil %>
+	<% end %>				
+	<%= render :partial => 'advanced_search' %>
+	</div>
+</div>
+<div class = "clear">
+</div>
+
+<%= render 'submissionview' %>

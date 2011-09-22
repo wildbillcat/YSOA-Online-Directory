@@ -1,0 +1,24 @@
+<% page_title "Workstations" %>
+<div id = "item-list">
+	
+	<h2>Registered Workstations</h2>
+		
+	<div id = "item-list-search">
+		<fieldset>
+			<% form_for :search, @search, :html => {:method => :get}  do |f| %>
+				<p>
+					<%= f.label :netid_equals, "User" %>: <%= f.text_field :netid_equals, :size => 8 %>    |      
+					<%= f.label :cpu_number_equals, "CPU" %>: <%= f.text_field :cpu_number_equals, :size => 5 %>    | 
+					<%= f.label :floor_equals, "Floor" %>: <%= f.text_field :floor_equals, :size => 3 %>    |
+					<%= f.label :semester_contains, "Semester" %>: <%= f.text_field :semester_contains, :size => 8 %>
+				</p>
+				<p>
+					<label>Records per page</label>: <%= select_tag :per_page, options_for_select([20,100,500,1000], (params[:per_page].blank? ? 20 :  params[:per_page].to_i)) %>	| <%= f.submit "Search Workstations" %>
+				</p>
+			<% end %>
+		</fieldset>
+	</div>
+
+	<%= render "workstationview" %>
+	
+</div>

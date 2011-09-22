@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h2>Yesterday's Printing Registrations</h2>
+    <p>
+		Here is the list of <%= pluralize(@print_agreements.size, "user") %> who registered for printing yesterday.  Please make sure they have active printing accounts and are able to print.
+    </p>
+	<p>
+		<% for print_agreement in @print_agreements %>
+			<%=h print_agreement.print_user(print_agreement.user_id) %><br />
+		<% end %>
+	</p>
+	<p>Cheers,</p>
+    <p>The YSOA Registration Robot</p>
+  </body>
+</html>
