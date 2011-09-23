@@ -1,4 +1,4 @@
-This is the ReadMe for Yale School of Architecture Online Directory application.  The app is running on a Jumpbox virtual machine with Ruby 1.9.2, Rails 3.0.8 and Passenger 3.0.7 using Ruby Version Manager (RVM)
+This is the ReadMe for Yale School of Architecture Online Directory application.  The app is running on a Jumpbox virtual machine with Ruby 1.9.2-p180, Rails 3.0.8 and Passenger 3.0.7 using Ruby Version Manager (RVM)
 
 
 LAUNCHING THE APPLICATION: 
@@ -76,7 +76,7 @@ Users can be batch-added using the following process:
 
 2.	Copy your "users.csv" file to the main app directory (replacing the previous users.csv if there is one; you can use the previous one as a template).
 
-3.	CD into the app directory (/var/data/app/current) and set the environment to production using the command “export RAILS_ENV=production”
+3.	CD into the root of the application directory and set the environment to production using the command “export RAILS_ENV=production”
 
 4.	VERIFY YOUR USERS.CSV FILE HAS THE CORRECT DATA AND IS FORMATTED PROPERLY.
 
@@ -85,6 +85,23 @@ Users can be batch-added using the following process:
 BE VERY CAREFUL when doing a bulk import to make sure your users.csv file is formatted correctly, and make sure the required fields (first_name, last_name, netid, role, status) are specified.  Having information in incorrect columns could break things.
 
 
+Batch-updating Users
+--------------------
+
+Different user fields can be updated in a batch using the following process:
+
+1. Make an update.csv file with the desired information. You can only update one attribute at a time, so you can update class years in one batch, and then have a second batch update first names. An example csv file is in the main directory called update.csv.example.
+
+2.	Copy your "update.csv" file to the main app directory (replacing the previous users.csv if there is one).
+
+3.	CD into the root of the application directory and set the environment to production using the command “export RAILS_ENV=production”
+
+4.	VERIFY YOUR USERS.CSV FILE HAS THE CORRECT DATA AND IS FORMATTED PROPERLY.
+
+5.	Run the rake task "rake db:update_users_xxx" replacing the "xxx" with the field an update is desired for.
+
+The following is a list of fields can be updated using this rake command: first_name, last_name, nickname, program, program_year, undergrad_college, class_year, email, role, status, position, and sid_number. The only field not accessible by this command is the netid field, which is used as a key to look up each user. An example of this command used to update the program year of some users is "rake db:update_users_program_year". 
+NOTE: If this command finds that a user does not exist it will log the entry in the update.error.log in the log folder with the failed csv line.
 
 WORKSTATIONS
 ============

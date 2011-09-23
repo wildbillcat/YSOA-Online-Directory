@@ -8,3 +8,4 @@ public/uploads/portfolios/
 users.csv
 update.csv
 *.swp
+.project
