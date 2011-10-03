@@ -1,6 +1,6 @@
 default_run_options[:pty] = true 
 set :application, "students"
-set :repository,  "git@github.com:offmango/YSOA-Online-Directory.git"
+set :repository,  "git://github.com/wildbillcat/YSOA-Online-Directory.git"
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`

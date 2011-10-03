@@ -1,5 +1,12 @@
 This is the ReadMe for Yale School of Architecture Online Directory application.  The app is running on a Jumpbox virtual machine with Ruby 1.9.2-p180, Rails 3.0.8 and Passenger 3.0.7 using Ruby Version Manager (RVM)
 
+INSTALLING THE APPLICATION:
+===========================
+External Resources: This application uses two plugins(gems) which are external to this application. (remove ".git" to view the github page)
+to_csv = This plugin is used to convert active directory entries to csv format to export data from the application. src = https://github.com/arydjmal/to_csv.git
+rubycas-client-rails = This plugin is used to CAS authentication, ensuring only yale members have access to the application. src = https://github.com/rubycas/rubycas-client-rails.git
+
+To install the application, clone the 
 
 LAUNCHING THE APPLICATION: 
 =========================
