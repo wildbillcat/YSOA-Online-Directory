@@ -15,7 +15,15 @@ class Admin::UsersController < ApplicationController
         format.html # index.html.erb
         format.xml { render :xml => @users }
         #format.csv { send_data @users.to_csv }
-        format.csv { render :csv => @users }
+        format.csv { 
+          csvresults = CSV.generate do |csv|
+          csv << ["First Name", "Last Name", "Nick Name", "NetID", "Program", "Program Year", "Undergrad College", "Class Year", "E-mail", "Role", "Status", "Position", "SID Number"]
+          @users.each do |user|
+            csv << [user.first_name, user.last_name, user.nickname, user.netid, user.program, user.program_year, user.undergrad_college, user.class_year, user.email, user.role, user.status, user.position, user.sid_number]
+          end
+        end 
+        send_data(csvresults, :type => 'text/csv', :filename => 'results.csv')
+        }
         format.js {
               render :update do |page|
                 # 'page.replace' will replace full "results" block...works for this example
