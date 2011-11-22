@@ -14,7 +14,8 @@ class Admin::UsersController < ApplicationController
     respond_to do |format|
         format.html # index.html.erb
         format.xml { render :xml => @users }
-        format.csv { send_data @users.to_csv }
+        #format.csv { send_data @users.to_csv }
+        format.csv { render :csv => @users }
         format.js {
               render :update do |page|
                 # 'page.replace' will replace full "results" block...works for this example
