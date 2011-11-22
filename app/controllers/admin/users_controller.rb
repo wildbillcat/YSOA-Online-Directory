@@ -16,6 +16,7 @@ class Admin::UsersController < ApplicationController
         format.xml { render :xml => @users }
         #format.csv { send_data @users.to_csv }
         format.csv { 
+          require 'csv'
           csvresults = CSV.generate do |csv|
           csv << ["First Name", "Last Name", "Nick Name", "NetID", "Program", "Program Year", "Undergrad College", "Class Year", "E-mail", "Role", "Status", "Position", "SID Number"]
           @users.each do |user|
