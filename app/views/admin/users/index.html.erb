@@ -27,7 +27,7 @@
 			<em>Administrator Options</em><br />
 			<br />
 			<%= link_to 'Change application dates', holidays_path %><br />
-			<%= link_to 'Export data to CSV', admin_users_path(@search, :format => :csv) %>
+			<%= link_to 'Export data to CSV', admin_users_path( options({:search => params[:search]}), :format => :csv) %>
 		</fieldset>
 	</div>
 
