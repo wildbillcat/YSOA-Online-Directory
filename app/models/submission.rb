@@ -16,7 +16,7 @@ class Submission < ActiveRecord::Base
   validates_attachment_presence :portfolio
   validates_attachment_size :portfolio, :less_than => 50.megabytes
   
-  COLLECTIONS = ['Design Review: MArch1', 'Design Review: MArch2', 'Graduating Review: MArch1', 'Graduating Review: MArch 2', '1st Year Design Studio: Rock Lobster', '2nd Year Design Studio', 'Advanced Design Studio', 'Final Portfolio Submission December 2011', 'Graduating Students Portfolio Submission December 2011']
+  COLLECTIONS = ['Design Review: MArch1', 'Design Review: MArch2', 'Graduating Review: MArch1', 'Graduating Review: MArch 2', '1st Year Design Studio: Rock Lobster', '2nd Year Design Studio', 'Advanced Design Studio', 'Final Portfolio Submission December 2011', 'Graduating Students Portfolio Submission December 2011', '1021a Final Boards 2011']
 
   def owner
     if user_id && User.exists?(user_id)
