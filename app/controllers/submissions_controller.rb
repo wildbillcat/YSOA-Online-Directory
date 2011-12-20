@@ -6,27 +6,30 @@ class SubmissionsController < ApplicationController
 
 
   def index
-    @search = Submission.search(params[:search])
-    @search.meta_sort ||= 'created_at.desc'   
-    if @search.count > 0
-      @submissions = @search.paginate(:page => params[:page], :per_page => '4' )
-      respond_to do |format|
-        format.html # index.html.erb
-        format.xml { render :xml => @submissions }
-        format.js {
-              render :update do |page|
-                # 'page.replace' will replace full "results" block...works for this example
-                # 'page.replace_html' will replace "results" inner html...useful elsewhere
-                page.replace 'results', :partial => 'submissionview'
-              end
-          }      
-        end
+    if today?(DateTime.now, current_user.last_ferpa_agreement)
+      @search = Submission.search(params[:search])
+      @search.meta_sort ||= 'created_at.desc'
+      if @search.count > 0
+        @submissions = @search.paginate(:page => params[:page], :per_page => '4' )
+        respond_to do |format|
+          format.html # index.html.erb
+          format.xml { render :xml => @submissions }
+          format.js {
+                render :update do |page|
+                  # 'page.replace' will replace full "results" block...works for this example
+                  # 'page.replace_html' will replace "results" inner html...useful elsewhere
+                  page.replace 'results', :partial => 'submissionview'
+                end
+            }      
+          end
+      else
+        flash[:notice] = "Sorry, your search didn't return any results."
+        redirect_to submissions_path
+      end
     else
-      flash[:notice] = "Sorry, your search didn't return any results."
-      redirect_to submissions_path
+      #what happens if they haven't agreed to the ferpa agreement
     end
-  end
-
+   end
 
   def show
     @submission = Submission.find(params[:id])
@@ -78,5 +81,12 @@ class SubmissionsController < ApplicationController
     end
   end
   
+  def today?(date1, date2) #This method checks to see if the two dates are on the same day
+    if date2.nil? || date1.nil?#If Date 2 is nill, it returns false
+      false
+    else
+    (date1 - date2).abs >= 1
+    end
+   end
   
 end
