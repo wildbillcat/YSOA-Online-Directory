@@ -28,6 +28,7 @@ class SubmissionsController < ApplicationController
       end
     else
       #what happens if they haven't agreed to the ferpa agreement
+      render :action => "ferpa" 
     end
    end
 
@@ -88,5 +89,10 @@ class SubmissionsController < ApplicationController
     (date1 - date2).abs >= 1
     end
    end
+  
+  def ferpa
+     @user = User.find(params[:user_id])
+     
+  end 
   
 end
