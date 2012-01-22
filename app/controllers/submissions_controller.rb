@@ -2,11 +2,13 @@ class SubmissionsController < ApplicationController
 
   layout "directory"
 
+  #Gets user ID from routing and converts it to an @user object using get_user
+  before_filter :get_user
   filter_resource_access
 
 
   def index
-    if today?(DateTime.now, current_user.last_ferpa_agreement)
+    if today?(DateTime.now, @user.last_ferpa_agreement)
       @search = Submission.search(params[:search])
       @search.meta_sort ||= 'created_at.desc'
       if @search.count > 0
@@ -91,8 +93,8 @@ class SubmissionsController < ApplicationController
    end
   
   def ferpa
-     @user = User.find(params[:user_id])
-     
+    
+    @user.last_ferpa_agreement = Time.now
   end 
   
 end
