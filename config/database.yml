@@ -3,11 +3,11 @@
 
 development:
     adapter: mysql2
-    encoding: utf8
-    database: students_development
-    username: root
+    database: app
     host: localhost
-    socket: /tmp/mysql.sock
+    username: appuser
+    password: tah2quooL1
+    socket: /var/run/mysqld/mysqld.sock
 #  adapter: sqlite3
 #  database: db/development.sqlite3
 #  pool: 5
