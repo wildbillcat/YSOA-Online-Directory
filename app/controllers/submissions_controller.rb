@@ -3,7 +3,6 @@ class SubmissionsController < ApplicationController
   layout "directory"
 
   #Gets user ID from routing and converts it to an @user object using get_user
-  before_filter :get_user
   filter_resource_access
 
 
@@ -30,8 +29,8 @@ class SubmissionsController < ApplicationController
       end
     else
       #what happens if they haven't agreed to the ferpa agreement
-      #render :action => "ferpa" 
-      redirect_to users_path
+      render :action => "ferpa" 
+      #redirect_to users_path
     end
    end
 
