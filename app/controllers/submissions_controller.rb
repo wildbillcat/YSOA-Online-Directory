@@ -93,8 +93,13 @@ class SubmissionsController < ApplicationController
    end
   
   def ferpa
-    
+    if(params[:agree_ferpa]=='agreed')
     @user.last_ferpa_agreement = Time.now
+    @user.save
+    redirect_to submissions_path
+    else
+    redirect_to users_path  
+    end
   end 
   
 end
