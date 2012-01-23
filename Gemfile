@@ -10,7 +10,7 @@ gem 'calendar_date_select'
 gem "yaml_db"
 gem "jeweler"
 #gem 'newrelic_rpm' test removal of newrelic gem.
-gem 'rubycas-client'
+gem 'rubycas-client', '2.2.1'
 gem 'rubycas-client-rails'
 gem "meta_search"
 gem 'mysql2', '< 0.3' 
