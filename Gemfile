@@ -14,7 +14,7 @@ gem 'rubycas-client'
 gem 'rubycas-client-rails'
 gem "meta_search"
 gem 'mysql2', '< 0.3' 
-gem 'paperclip'
+gem 'paperclip', '2.4.5'
 gem 'delayed_paperclip'
 gem 'resque'
 gem 'god'     
