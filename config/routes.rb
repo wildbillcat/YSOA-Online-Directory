@@ -1,5 +1,7 @@
 Students::Application.routes.draw do 
   
+  get "ferpa_agreement/agreement"
+
   resources :holidays  
 
   namespace :admin do
@@ -37,11 +39,9 @@ Students::Application.routes.draw do
   
   resources :workstations, :only => [:index]
   
-  #resources :submissions, :only => [:index]
-  resources :submissions do
-    resources :index
-    resources :ferpa
-  end
+  resources :submissions, :only => [:index]
+  
+  resources :ferpa, :only => [:index]
   
   match "/logout" => "application#logout",  :as => :logout
 

@@ -28,7 +28,7 @@ class SubmissionsController < ApplicationController
       end
     else
       #what happens if they haven't agreed to the ferpa agreement
-      render :action => "ferpa" 
+      render :action => "submissions/ferpa" 
       #redirect_to users_path
     end
    end

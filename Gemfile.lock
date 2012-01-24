@@ -32,6 +32,7 @@ GEM
     arel (2.0.10)
     builder (2.1.2)
     calendar_date_select (1.16.2)
+    cocaine (0.2.1)
     declarative_authorization (0.5.3)
     delayed_paperclip (0.6.5)
       paperclip (>= 2.3.0)
@@ -62,10 +63,11 @@ GEM
       arel (~> 2.0.2)
     mime-types (1.16)
     mysql2 (0.2.8)
-    newrelic_rpm (3.0.1)
-    paperclip (2.3.11)
+    paperclip (2.4.5)
       activerecord (>= 2.3.0)
       activesupport (>= 2.3.2)
+      cocaine (>= 0.0.2)
+      mime-types
     polyglot (0.3.1)
     rack (1.2.3)
     rack-mount (0.6.14)
@@ -110,7 +112,7 @@ GEM
       fastercsv
     treetop (1.4.9)
       polyglot (>= 0.3.1)
-    tzinfo (0.3.28)
+    tzinfo (0.3.31)
     vegas (0.1.8)
       rack (>= 1.0.0)
     whenever (0.6.8)
@@ -132,12 +134,11 @@ DEPENDENCIES
   jrails
   meta_search
   mysql2 (< 0.3)
-  newrelic_rpm
-  paperclip
+  paperclip (= 2.4.5)
   rails (= 3.0.8)
   resque
   ruby-net-ldap
-  rubycas-client
+  rubycas-client (= 2.2.1)
   rubycas-client-rails
   to_csv
   whenever
