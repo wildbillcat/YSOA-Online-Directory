@@ -6,7 +6,7 @@ class SubmissionsController < ApplicationController
 
 
   def index
-    if today?(DateTime.now, @user.last_ferpa_agreement)
+    if @user.agreed_to_ferpa?
       @search = Submission.search(params[:search])
       @search.meta_sort ||= 'created_at.desc'
       if @search.count > 0
@@ -82,23 +82,5 @@ class SubmissionsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
-  def today?(date1, date2) #This method checks to see if the two dates are on the same day
-    if date2.nil? || date1.nil?#If Date 2 is nill, it returns false
-      false
-    else
-    (date1 - date2).abs >= 1
-    end
-   end
-  
-  def ferpa
-    if(params[:agree_ferpa]=='agreed')
-    @user.last_ferpa_agreement = Time.now
-    @user.save
-    redirect_to submissions_path
-    else
-    redirect_to users_path  
-    end
-  end 
   
 end

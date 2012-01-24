@@ -122,6 +122,9 @@ class User < ActiveRecord::Base
     4
   end
 
+  def agreed_to_ferpa?
+    (last_ferpa_agreement =! nil) && ((last_ferpa_agreement. - Time.now) <= 1.day))
+  end
 
   def my_submissions
      Submission.find_all_by_user_id(id, :order => "id DESC" )    
