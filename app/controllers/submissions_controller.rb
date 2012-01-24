@@ -6,8 +6,7 @@ class SubmissionsController < ApplicationController
 
 
   def index
-    @user = User.find(params[:user_id])
-    if @user.agreed_to_ferpa?
+    if @current_user.agreed_to_ferpa?
       @search = Submission.search(params[:search])
       @search.meta_sort ||= 'created_at.desc'
       if @search.count > 0
