@@ -123,7 +123,8 @@ class User < ActiveRecord::Base
   end
 
   def agreed_to_ferpa?
-     (Time.now - Date.parse(last_ferpa_agreement)) <= 1.day
+     #(Time.now - Date.parse(last_ferpa_agreement)) <= 1.day
+     (Time.now - last_ferpa_agreement) <= 1.day
   end
 
   def my_submissions
