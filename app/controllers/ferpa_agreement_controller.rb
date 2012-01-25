@@ -9,8 +9,12 @@ class FerpaAgreementController < ApplicationController
 
   layout "directory"
   
-  def agreement
+  def index
+    @laser_agreements = @user.laser_agreements
+  end
   
+  def agreement
+  render :action => "ferpa"
   end
 
 end
