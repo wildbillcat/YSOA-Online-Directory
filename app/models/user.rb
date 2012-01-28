@@ -130,6 +130,10 @@ class User < ActiveRecord::Base
      false
      end
   end
+  
+  def set_ferpa
+    last_ferpa_agreement = TIME.now
+  end
 
   def my_submissions
      Submission.find_all_by_user_id(id, :order => "id DESC" )    

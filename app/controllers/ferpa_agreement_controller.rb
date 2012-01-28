@@ -10,11 +10,17 @@ class FerpaAgreementController < ApplicationController
   layout "directory"
   
   def index
-    @laser_agreements = @user.laser_agreements
+   @user = @current_user
   end
   
   def agreement
-  render :action => "ferpa"
+  @user = @current_user
+  @user.last_ferpa_agreement
   end
 
+  private
+
+   def get_user
+     @user = User.find(params[:user_id])
+   end
 end
