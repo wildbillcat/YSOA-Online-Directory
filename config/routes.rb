@@ -1,6 +1,6 @@
 Students::Application.routes.draw do 
   
-  get "ferpa_agreement/agreement"
+  get "ferpa_agreement/index"
 
   resources :holidays  
 
