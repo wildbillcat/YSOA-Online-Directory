@@ -24,7 +24,7 @@ class SubmissionsController < ApplicationController
           end
       else
         flash[:notice] = "Sorry, your search didn't return any results."
-        redirect_to submissions_path
+        redirect_to "/ferpa"
       end
     else
       #what happens if they haven't agreed to the ferpa agreement
