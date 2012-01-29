@@ -1,13 +1,9 @@
+<h1>Ferpa Agreement</h1>
 
-<div id = "user-view">
 <fieldset>
-<h3>Ferpa Agreement</h3>
-
 <%= form_tag({:controller => "submissions", :action => "ferpa"}, :method => "post", :class => "ferpa_agreement") do %>
 <p>This is an agreement for ferpa. Beware!</p>
 <%= check_box_tag(:agree_ferpa, 'agreed', false) %>
 <%= label_tag(:agree_ferpa, "I agree to follow the above stated FERPA Regulations") %>
 <% end %>
-	
 </fieldset>
-</div>
