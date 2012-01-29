@@ -41,7 +41,7 @@ Students::Application.routes.draw do
   
   resources :submissions, :only => [:index]
   
-  resources :ferpa, :only => [:index]
+  #resources :ferpa, :only => [:agreement]
   
   match "/logout" => "application#logout",  :as => :logout
 
