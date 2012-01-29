@@ -9,10 +9,6 @@ class FerpaAgreementController < ApplicationController
 
   layout "directory"
   
-  def index
-   @user = @current_user
-  end
-  
   def agreement
   @user = @current_user
   @user.last_ferpa_agreement
