@@ -11,7 +11,6 @@ class FerpaAgreementController < ApplicationController
   
   def agreement
   @user = @current_user
-  @user.last_ferpa_agreement
   end
 
  # private
