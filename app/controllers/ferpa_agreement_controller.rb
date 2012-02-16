@@ -23,9 +23,9 @@ class FerpaAgreementController < ApplicationController
     end
   end
 
- # private
+  private
 
-  # def get_user
-     #@user = User.find(params[:user_id])
-   #end
+  def get_user
+      @user = User.find(params[:user_id])
+  end
 end
