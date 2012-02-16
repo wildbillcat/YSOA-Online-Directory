@@ -16,7 +16,10 @@ class FerpaAgreementController < ApplicationController
   def update
     @user = @current_user
     if params[:agree_ferpa] = true
-      @user.
+      @user.set_ferpa
+      redirect_to submissions_path
+    else
+    redirect_to "directory#index" 
     end
   end
 
