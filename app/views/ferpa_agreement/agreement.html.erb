@@ -1,10 +1,10 @@
 <h1>Ferpa Agreement</h1>
 
 <fieldset>
-<%= form_tag("/ferpa_agreement") do %>
+<%= form_tag("/ferpa/agree") do %>
 <p>This is an agreement for ferpa. Beware!</p>
-<%= check_box_tag(:agree_ferpa, 'agreed', false) %>
-<%= label_tag(:agree_ferpa, "I agree to follow the above stated FERPA Regulations") %>
-<%= submit_tag("Submit") %>
+<p><%= check_box_tag(:agree_ferpa, 'agreed', false) %>
+<%= label_tag(:agree_ferpa, "I agree to follow the above stated FERPA Regulations") %></p>
+<p><%= submit_tag("Submit") %></p>
 <% end %>
 </fieldset>

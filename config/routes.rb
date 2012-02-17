@@ -41,8 +41,6 @@ Students::Application.routes.draw do
   
   resources :submissions, :only => [:index]
   
-  #resources :ferpa, :only => [:agreement]
-  
   match "/logout" => "application#logout",  :as => :logout
 
   match "/transactions/checkin/:id" => "transactions#checkin", :as => "product_checkin"
@@ -53,6 +51,7 @@ Students::Application.routes.draw do
   match "/register" => "registration#index", :as => :register
   match "/directory" => "directory#index", :as => :directory
   match "/ferpa" => "ferpa_agreement#agreement", :as => :ferpa
+  match "/ferpa/agree" => "ferpa_agreement#update", :as => "agree_ferpa"
   root :to => "directory#index"  
 
 # { :controller => :live_validations, :action => :validate_borrower_netid }
