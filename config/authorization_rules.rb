@@ -3,14 +3,14 @@ authorization do
     has_permission_on [:admin_users, :users, :workstations, :equip_agreements, :laser_agreements, :print_agreements, :products,
        :transactions, :directory, :submissions, :holidays ], 
       :to => [:index, :show, :new, :create, :edit, :update, :destroy, :edit_multiple, :update_multiple, :checkin, :print_multiple, :advanced_search]  
-    has_permission_on [:ferpa_agreement], :to => [:agreement, :update]
+    has_permission_on [:ferpa], :to => [:agreement, :update]
   end 
   
   role :dmstaff do  
      has_permission_on [:admin_users, :users, :workstations, :equip_agreements, :laser_agreements, :print_agreements, :products, 
        :transactions, :directory, :submissions ], 
        :to => [:index, :show, :new, :create, :edit, :update, :edit_multiple, :update_multiple, :checkin ]  
-     has_permission_on [:ferpa_agreement], :to => [:agreement, :update]
+     has_permission_on [:ferpa], :to => [:agreement, :update]
   end
   
   role :staff do
@@ -43,7 +43,7 @@ authorization do
   role :faculty do
     has_permission_on [:users, :directory], :to => [:index, :show, :print_multiple ]   
     has_permission_on [:submissions], :to => [:index, :show ]
-    has_permission_on [:ferpa_agreement], :to => [:agreement, :update]
+    has_permission_on [:ferpa], :to => [:agreement, :update]
   end
   
 end  
