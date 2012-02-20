@@ -4,6 +4,7 @@ authorization do
        :transactions, :directory, :submissions, :holidays ], 
       :to => [:index, :show, :new, :create, :edit, :update, :destroy, :edit_multiple, :update_multiple, :checkin, :print_multiple, :advanced_search]  
     has_permission_on [:ferpa], :to => [:agreement, :update]
+    has_permission_on [:ferpa_agreement], :to => [:agreement, :update]
   end 
   
   role :dmstaff do  
@@ -11,6 +12,7 @@ authorization do
        :transactions, :directory, :submissions ], 
        :to => [:index, :show, :new, :create, :edit, :update, :edit_multiple, :update_multiple, :checkin ]  
      has_permission_on [:ferpa], :to => [:agreement, :update]
+     has_permission_on [:ferpa_agreement], :to => [:agreement, :update]
   end
   
   role :staff do
@@ -37,12 +39,14 @@ authorization do
       if_attribute :user_id => is {user.id}  
     end
     has_permission_on [:ferpa_agreement], :to => [:agreement, :update]
+    has_permission_on [:ferpa], :to => [:agreement, :update]
     has_permission_on [:products], :to => [:index, :show ] 
   end
   
   role :faculty do
     has_permission_on [:users, :directory], :to => [:index, :show, :print_multiple ]   
     has_permission_on [:submissions], :to => [:index, :show ]
+    has_permission_on [:ferpa_agreement], :to => [:agreement, :update]
     has_permission_on [:ferpa], :to => [:agreement, :update]
   end
   
