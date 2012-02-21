@@ -1,7 +1,7 @@
 Students::Application.routes.draw do 
   
-  match "/submissions/agreement" => "submissions#agreement", :as => :ferpa_agreement
-  match "/submissions/ferpaupdate" => "submissions#ferpaupdate", :as => :ferpa_update
+  get "/submissions/agreement"
+  post "/submissions/ferpaupdate"
   
   resources :holidays  
 
