@@ -28,7 +28,7 @@ class SubmissionsController < ApplicationController
       end
     else
       #what happens if they haven't agreed to the ferpa agreement
-      redirect_to '/ferpa'
+      redirect_to 'submissions#agreement'
       #redirect_to users_path
     end
    end
@@ -80,6 +80,21 @@ class SubmissionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(submissions_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  
+  def agreement
+  @current_user = current_user
+  end
+  
+  def ferpaupdate
+    @current_user = current_user
+    if params[:agree_ferpa]==true
+      @current_user.set_ferpa
+      redirect_to submissions_path
+    else
+    redirect_to "directory#index" 
     end
   end
   
