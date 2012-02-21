@@ -9,17 +9,17 @@ class FerpaAgreementController < ApplicationController
   layout "directory"
   
   def agreement
-  @current_user = current_user
+  #@current_user = current_user
   end
   
   def update
-    @current_user = current_user
-    if params[:agree_ferpa]==true
-      @current_user.set_ferpa
-      redirect_to submissions_path
-    else
-    redirect_to "directory#index" 
-    end
+    #@current_user = current_user
+    #if params[:agree_ferpa]==true
+     # @current_user.set_ferpa
+      #redirect_to submissions_path
+    #else
+    #redirect_to "directory#index" 
+    #end
   end
 
   #private
