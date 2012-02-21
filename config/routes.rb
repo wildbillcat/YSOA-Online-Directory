@@ -52,6 +52,8 @@ Students::Application.routes.draw do
   match "/directory" => "directory#index", :as => :directory
   root :to => "directory#index"  
 
+  match "/submissions/ferpa" => "submissions#agreement", :as => :ferpa_agreement
+  match "/submissions/ferpa_update" => "submissions#ferpaupdate", :as => :ferpa_update
 # { :controller => :live_validations, :action => :validate_borrower_netid }
   # The priority is based upon order of creation:
   # first created -> highest priority.
