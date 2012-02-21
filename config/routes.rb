@@ -41,6 +41,8 @@ Students::Application.routes.draw do
   
   resources :submissions, :only => [:index]
   
+  resources :ferpa
+  
   match "/logout" => "application#logout",  :as => :logout
 
   match "/transactions/checkin/:id" => "transactions#checkin", :as => "product_checkin"
