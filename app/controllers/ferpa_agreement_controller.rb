@@ -9,7 +9,7 @@ class FerpaAgreementController < ApplicationController
   layout "directory"
   
   def agreement
-  @current_user  
+  @current_user = current_user
   end
   
   def update
