@@ -10,6 +10,10 @@ class FerpaAgreementController < ApplicationController
   
   def agreement
   #@current_user = current_user
+   respond_to do |format|
+      format.html # index.html.erb
+   end
+
   end
   
   def update
