@@ -4,7 +4,7 @@ class FerpaAgreementController < ApplicationController
   #before_filter :get_user
   #before_filter :unregistered_user
 
-  filter_resource_access
+  #filter_resource_access
 
   layout "directory"
   
