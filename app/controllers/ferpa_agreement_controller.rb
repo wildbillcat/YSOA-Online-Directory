@@ -4,7 +4,7 @@ class FerpaAgreementController < ApplicationController
   #before_filter :get_user
   #before_filter :unregistered_user
 
-  #filter_resource_access
+  filter_resource_access
 
   layout "directory"
   
@@ -18,7 +18,7 @@ class FerpaAgreementController < ApplicationController
      # @current_user.set_ferpa
       #redirect_to submissions_path
     #else
-    redirect_to "/directory" 
+    redirect_to directory_path 
     #end
   end
 
