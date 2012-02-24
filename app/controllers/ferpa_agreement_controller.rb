@@ -18,7 +18,7 @@ class FerpaAgreementController < ApplicationController
      # @current_user.set_ferpa
       #redirect_to submissions_path
     #else
-    #redirect_to "directory#index" 
+    redirect_to "directory#index" 
     #end
   end
 
