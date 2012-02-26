@@ -55,8 +55,6 @@ Students::Application.routes.draw do
   match "/registration" => "registration#index", :as => :registration
   match "/register" => "registration#index", :as => :register
   match "/directory" => "directory#index", :as => :directory
-  get "ferpa_agreement/agreement"
-  post "ferpa_agreement/update"
   #match "/ferpa" => "ferpa_agreement#agreement", :as => :ferpa
   #match "/ferpa/agree" => "ferpa_agreement#update", :as => "agree_ferpa"
   root :to => "directory#index"  
