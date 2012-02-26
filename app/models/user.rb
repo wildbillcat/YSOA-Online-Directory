@@ -132,7 +132,7 @@ class User < ActiveRecord::Base
   end
   
   def set_ferpa
-    last_ferpa_agreement = TIME.now
+    last_ferpa_agreement = TIME.new
   end
 
   def my_submissions
