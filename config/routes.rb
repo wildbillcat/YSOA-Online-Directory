@@ -1,5 +1,6 @@
 Students::Application.routes.draw do 
   
+  match "/submissions/ferpaupdate" => "submissions#ferpaupdate"
 
   resources :holidays  
 
@@ -55,7 +56,7 @@ Students::Application.routes.draw do
   match "/registration" => "registration#index", :as => :registration
   match "/register" => "registration#index", :as => :register
   match "/directory" => "directory#index", :as => :directory
-  match "/submissions/ferpaupdate" => "submissions#ferpaupdate"
+  
   
   root :to => "directory#index"  
 
