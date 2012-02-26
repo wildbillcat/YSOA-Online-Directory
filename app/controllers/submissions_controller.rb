@@ -6,6 +6,12 @@ class SubmissionsController < ApplicationController
 
 
   def index
+    if params[:agree_ferpa] != nil
+      if (params[:agree_ferpa]="agreed")
+        @current_user.set_ferpa
+      end
+    end
+    
     if @current_user.agreed_to_ferpa?
       @search = Submission.search(params[:search])
       @search.meta_sort ||= 'created_at.desc'
