@@ -1,6 +1,6 @@
 Students::Application.routes.draw do 
   
-  match "/submissions/ferpaupdate" => "submissions#ferpaupdate"
+  match "submissions/ferpaupdate", :to => "submissions#ferpaupdate", :via => "post"
 
   resources :holidays  
 
