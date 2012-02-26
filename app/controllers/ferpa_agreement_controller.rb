@@ -8,11 +8,11 @@ class FerpaAgreementController < ApplicationController
 
   layout "directory"
   
-  def agreement
+  def ferpaagreement
   #@current_user = current_user
   end
   
-  def update
+  def ferpaupdate
     #@current_user = current_user
     #if params[:agree_ferpa]==true
      # @current_user.set_ferpa

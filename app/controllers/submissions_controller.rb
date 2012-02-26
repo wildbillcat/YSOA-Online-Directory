@@ -28,7 +28,8 @@ class SubmissionsController < ApplicationController
       end
     else
       #what happens if they haven't agreed to the ferpa agreement
-      redirect_to '/ferpa_agreement/agreement'
+      #redirect_to '/ferpa_agreement/agreement'
+      render :action => "ferpaagreement" 
       #redirect_to users_path
     end
    end
@@ -72,7 +73,19 @@ class SubmissionsController < ApplicationController
     end
   end
 
- 
+  def ferpaagreement
+  end
+  
+  def ferpaupdate
+    #@current_user = current_user
+    #if params[:agree_ferpa]==true
+     # @current_user.set_ferpa
+      #redirect_to submissions_path
+    #else
+    redirect_to directory_path 
+    #end
+  end
+  
   def destroy
     @submission = Submission.find(params[:id])
     @submission.destroy
