@@ -55,8 +55,8 @@ Students::Application.routes.draw do
   match "/registration" => "registration#index", :as => :registration
   match "/register" => "registration#index", :as => :register
   match "/directory" => "directory#index", :as => :directory
-  #match "/ferpa" => "ferpa_agreement#agreement", :as => :ferpa
-  #match "/ferpa/agree" => "ferpa_agreement#update", :as => "agree_ferpa"
+  match "/submissions/ferpaupdate" => "submissions#ferpaupdate"
+  
   root :to => "directory#index"  
 
 # { :controller => :live_validations, :action => :validate_borrower_netid }
