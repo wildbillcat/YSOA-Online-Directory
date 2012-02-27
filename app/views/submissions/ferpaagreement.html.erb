@@ -2,7 +2,8 @@
 
 <fieldset>
 <%= form_tag({:action => :index}, {:method => 'get'}) do %>
-<p>This is an agreement for ferpa. Beware!</p>
+<p>By clicking "OK" you acknowledge that you are attempting to access information that is protected by Federal Privacy Law.   Disclosure to unauthorized parties violates the Family Educational Rights and Privacy Act (FERPA).</p>
+<p>When accessing the system, you must access only that information needed to complete your assigned or authorized task.   You may communicate the information only to other parties authorized to have access in accordance with the provisions of FERPA.</p>
 <p><%= check_box_tag(:agree_ferpa, 'agreed', false) %>
 <%= label_tag(:agree_ferpa, "I agree to follow the above stated FERPA Regulations") %></p>
 <p><%= submit_tag("Submit") %></p>
