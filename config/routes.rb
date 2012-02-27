@@ -1,7 +1,5 @@
 Students::Application.routes.draw do 
   
-  match "submissions/ferpaupdate", :to => "submissions#ferpaupdate", :via => "post"
-
   resources :holidays  
 
   namespace :admin do

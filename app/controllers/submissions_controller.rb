@@ -9,7 +9,6 @@ class SubmissionsController < ApplicationController
     if params[:agree_ferpa] != nil
       if (params[:agree_ferpa]="agreed")
         @current_user.update_attribute(:last_ferpa_agreement, Date::current)
-        #@current_user.save
       end
     end
     
@@ -81,16 +80,6 @@ class SubmissionsController < ApplicationController
   end
 
   def ferpaagreement
-  end
-  
-  def ferpaupdate
-    #@current_user = current_user
-    #if params[:agree_ferpa]==true
-     # @current_user.set_ferpa
-      #redirect_to submissions_path
-    #else
-    redirect_to directory_path 
-    #end
   end
   
   def destroy
