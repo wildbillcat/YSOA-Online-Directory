@@ -8,7 +8,7 @@ class SubmissionsController < ApplicationController
   def index
     if params[:agree_ferpa] != nil
       if (params[:agree_ferpa]="agreed")
-        @current_user.update_attribute(:last_ferpa_agreement, Date::new)
+        @current_user.update_attribute(:last_ferpa_agreement, Date::current)
         #@current_user.save
       end
     end
