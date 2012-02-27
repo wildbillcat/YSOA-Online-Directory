@@ -9,6 +9,7 @@ class SubmissionsController < ApplicationController
     if params[:agree_ferpa] != nil
       if (params[:agree_ferpa]="agreed")
         @current_user.set_ferpa
+        @current_user.save
       end
     end
     
