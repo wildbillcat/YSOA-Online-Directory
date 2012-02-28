@@ -7,9 +7,9 @@ Students::Application.configure do
 
   # Full error reports are disabled and caching is turned on
   
-  config.consider_all_requests_local       = true #dev
-  config.action_view.debug_rjs             = true #dev
-  #config.consider_all_requests_local       = false
+  #config.consider_all_requests_local       = true #dev
+  #config.action_view.debug_rjs             = true #dev
+  config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
   # Specifies the header that your server uses for sending files
