@@ -125,7 +125,7 @@ class User < ActiveRecord::Base
   def agreed_to_ferpa?
      #(Time.now - Date.parse(last_ferpa_agreement)) <= 1.day
      if (last_ferpa_agreement != nil)
-     (Date.current - last_ferpa_agreement) <= 1.day
+      Date.new(last_ferpa_agreement).today?
      else
      false
      end
