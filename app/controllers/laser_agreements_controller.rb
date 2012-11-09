@@ -16,7 +16,11 @@ class LaserAgreementsController < ApplicationController
   end
 
   def new
+    if(params[:educated])
     @laser_agreement = @user.laser_agreements.build
+    else
+    render :action => "lasercuttervideoeducation"   
+    end
   end
 
   def edit
