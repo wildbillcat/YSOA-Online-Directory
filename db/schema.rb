@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110503135444) do
+ActiveRecord::Schema.define(:version => 20111219235425) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -139,6 +139,7 @@ ActiveRecord::Schema.define(:version => 20110503135444) do
     t.string   "last_laser_agree_semester"
     t.string   "last_print_agree_semester"
     t.integer  "sid_number"
+    t.date     "last_ferpa_agreement"
   end
 
   create_table "workstations", :force => true do |t|

@@ -9,7 +9,9 @@
 				<th><%= sort_link @search, :netid, "User" %></th>
     			<th><%= sort_link @search, :cpu_number, "CPU Number" %></th>
     			<th>Monitor number</th>
+    			<th>Monitor number2</th>
     			<th>Arm number</th>
+    			<th>Arm number2</th>
     			<th><%= sort_link @search, :floor, "Floor" %></th>
     			<th><%= sort_link @search, :registration_date, "Registration Date" %></th>
     			<th><%= sort_link @search, :semester, "Semester" %></th>
@@ -21,7 +23,9 @@
 					<td><%=h workstation.netid %></td>
     				<td><%=h workstation.cpu_number %></td>
     				<td><%=h workstation.monitor_number %></td>
+    				<td><%=h workstation.monitor_number2 %></td>
     				<td><%=h workstation.arm_number %></td>
+    				<td><%=h workstation.arm_number2 %></td>
     				<td><%=h workstation.floor %></td>
     				<td><%=h workstation.registration_date.strftime('%m/%d/%Y, %I:%M%p') %></td>
     				<td><%=h workstation.semester %></td>
