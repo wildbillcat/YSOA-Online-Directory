@@ -6,9 +6,10 @@ class LaserAgreement < ActiveRecord::Base
   validates_presence_of :laser_agree, :message => "field must be agreed to"
   validates_uniqueness_of :user_id, :scope => :semester, :message => "has already registered for laser cutting this semester"
 
-  attr_accessor :question1, :question2, :question3, :question4, :question5, :question6, :question7, :question8
-
+  attr_accessor :question1, :question2, :question3, :question4, :question5, :question6, :question7, :question8, :question9, :question10, :question11, :question12, :question13, :question14, :question15
+  attr_accessor :MasterQuestions
   validate :check_answers?
+  
   
   def laser_user(user_id)
     user = User.find(user_id)

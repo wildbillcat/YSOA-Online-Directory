@@ -26,30 +26,81 @@
 		<p><%= link_to "Working Safely with Embedded Lasers", "http://www.yale.edu/ehs/onlinetraining/EmbeddedLaser/EmbeddedLaser.htm", :popup => true %></p>
 		<p>Then answer the following True/False questions.  <strong>You must answer the questions correctly to register</strong>.</p>
 		<ol>
+			<% if(@MasterQuestions[0]) %>
 		  	<li>
-				Class 4 lasers (the type of laser in our laser cutters) are high-powered lasers with the capacity to cause skin burns and eye damage.  <%= f.select :question1, [true, false], {:include_blank => true} %>
+				Class 4 lasers (the type of laser in our laser cutters) are high-powered lasers with the capacity to cause skin burns and permanent eye damage.   <%= f.select :question1, [true, false], {:include_blank => true} %>
 			</li>
+			<% end
+			 if(@MasterQuestions[1]) %>
 			<li>
-				The laser beams in the laser cutters can cause fires if the speed setting is too low or the power setting is too high.  <%= f.select :question2, [true, false], {:include_blank => true} %>
+				The laser beams in the laser cutters can cause fires if the speed setting is too low or the power setting is too high.   <%= f.select :question2, [true, false], {:include_blank => true} %>
 			</li>
+			<% end
+			 if(@MasterQuestions[2]) %>
 			<li>
-				Tampering with the safety interlocks on the laser cutters is permitted when cutting larger materials that do not fit on the laser bed.  <%= f.select :question3, [true, false], {:include_blank => true} %>
+				Tampering with the safety interlocks on the laser cutters is permitted when cutting larger materials that do not fully fit on the laser bed.   <%= f.select :question3, [true, false], {:include_blank => true} %>
 			</li>
+			<% end
+			 if(@MasterQuestions[3]) %>
 			<li>
 				Fire extinguishers are located outside the entry door to each laser cutter room.  <%= f.select :question4, [true, false], {:include_blank => true} %>
 			</li>
+			<% end
+			 if(@MasterQuestions[4]) %>
 			<li>
 				Toxic fumes are not a concern when laser cutting, as none of the material permitted in the laser cutters releases fumes when cut.  <%= f.select :question5, [true, false], {:include_blank => true} %>
 			</li>
+			<% end
+			 if(@MasterQuestions[5]) %>
 			<li>
-				The laser cutters are available from 8:00 AM to 12:00 AM, seven days a week.  <%= f.select :question6, [true, false], {:include_blank => true} %>
+				The laser cutters are ONLY available from 8:00 AM to Midnight, seven days a week.  <%= f.select :question6, [true, false], {:include_blank => true} %>
 			</li>
+			<% end
+			 if(@MasterQuestions[6]) %>
 			<li>
-				I am permitted to use the laser cutter if the ventilation system is not operating, but I should notify the DM office afterward.  <%= f.select :question7, [true, false], {:include_blank => true} %>
+				I am permitted to still use the laser cutter if the ventilation system is not operating.  However, I should notify the DM office afterward.  <%= f.select :question7, [true, false], {:include_blank => true} %>
 			</li>
+			<% end
+			 if(@MasterQuestions[7]) %>
 			<li>
-				Hand-cutting of material is permitted on the cutting table in the laser cutter room or on top of the laser cutter.  <%= f.select :question8, [true, false], {:include_blank => true} %>
+				Hand-cutting of material is permitted on top of the laser cutter.  <%= f.select :question8, [true, false], {:include_blank => true} %>
 			</li>
+			<% end
+			 if(@MasterQuestions[8]) %>
+			<li>
+				I cannot cut MDF, Plywood, or OSB materials on the Industrial laser cutter because it can damage the optics, taking the machine down for extended periods of time.  <%= f.select :question9, [true, false], {:include_blank => true} %>
+			</li>
+			<% end
+			 if(@MasterQuestions[9]) %>
+			<li>
+				I can cut any type of plastic in the laser cutters as long as I leave the lid closed for 2 minutes after cutting to get rid of fumes.  <%= f.select :question10, [true, false], {:include_blank => true} %>
+			</li>
+			<% end
+			 if(@MasterQuestions[10]) %>
+			<li>
+				The only type of plastic I can cut on ANY of the laser cutters is Acrylic.  <%= f.select :question11, [true, false], {:include_blank => true} %>
+			</li>
+			<% end
+			 if(@MasterQuestions[11]) %>
+			<li>
+				It is OK to cut foam core because it is sandwiched between coated paper and thus will not catch on fire.  <%= f.select :question12, [true, false], {:include_blank => true} %>
+			</li>
+			<% end
+			 if(@MasterQuestions[12]) %>
+			<li>
+				The fire extinguisher cannot be moved, tampered with, or used as door stops.  <%= f.select :question13, [true, false], {:include_blank => true} %>
+			</li>
+			<% end
+			 if(@MasterQuestions[13]) %>
+			<li>
+				It is OK to leave the laser cutter room while the laser is running for a short period of time  <%= f.select :question14, [true, false], {:include_blank => true} %>
+			</li>
+			<% end
+			 if(@MasterQuestions[14]) %>
+			<li>
+				It is safe to use the laser cutter if the Plexiglas screen is cracked or missing.  <%= f.select :question15, [true, false], {:include_blank => true} %>
+			</li>
+			<% end %>		
 		</ol>
 	</fieldset>
 	<fieldset>

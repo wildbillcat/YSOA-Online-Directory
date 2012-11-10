@@ -17,6 +17,7 @@ class LaserAgreementsController < ApplicationController
 
   def new
     if(params[:educated])
+    @MasterQuestions = :get_questions
     @laser_agreement = @user.laser_agreements.build
     else
     render :action => "lasercuttervideoeducation"   
@@ -66,5 +67,10 @@ class LaserAgreementsController < ApplicationController
 
    def get_user
      @user = User.find(params[:user_id])
+   end
+   
+   def get_questions
+     @MasterQuestions = [true, false, false, true, false, false, false, true, true, true, false, true, false, true, true]
+     @MasterQuestions.shuffle
    end
 end
