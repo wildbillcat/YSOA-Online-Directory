@@ -16,7 +16,7 @@ class LaserAgreementsController < ApplicationController
   end
 
   def new
-    if(params[:educated])
+    if(params[:educated] && request.referer == request.url)
     @MasterQuestions = :get_questions
     @laser_agreement = @user.laser_agreements.build
     else
