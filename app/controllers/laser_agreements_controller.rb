@@ -17,7 +17,8 @@ class LaserAgreementsController < ApplicationController
 
   def new
     if(params[:educated] && ((request.referer+"?educated=true" == request.url) || (request.referer == request.url)))
-    @MasterQuestions = :get_questions
+    @MasterQuestions = [true, false, false, true, false, false, false, true, true, true, false, true, false, true, true]
+    @MasterQuestions.shuffle
     @laser_agreement = @user.laser_agreements.build
     else
     render :action => "lasercuttervideoeducation"   
@@ -69,8 +70,4 @@ class LaserAgreementsController < ApplicationController
      @user = User.find(params[:user_id])
    end
    
-   def get_questions
-     @MasterQuestions = [true, false, false, true, false, false, false, true, true, true, false, true, false, true, true]
-     @MasterQuestions.shuffle
-   end
 end
