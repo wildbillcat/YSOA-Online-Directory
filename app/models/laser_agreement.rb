@@ -7,7 +7,7 @@ class LaserAgreement < ActiveRecord::Base
   validates_uniqueness_of :user_id, :scope => :semester, :message => "has already registered for laser cutting this semester"
 
   attr_accessor :question1, :question2, :question3, :question4, :question5, :question6, :question7, :question8, :question9, :question10, :question11, :question12, :question13, :question14, :question15
-  attr_accessor :masterquestions
+  
   validate :check_answers?
   
   
@@ -19,22 +19,21 @@ class LaserAgreement < ActiveRecord::Base
   private
   
   def check_answers?
-    masterQuestions = [ masterquestions ]
-    unless ((question1 == 'true' || masterQuestions[0]=='false') && 
-      (question2 == 'true' || masterQuestions[1]=='false') && 
-      (question3 == 'false' || masterQuestions[2]=='false') && 
-      (question4 == 'true' || masterQuestions[3]=='false') && 
-      (question5 == 'false' || masterQuestions[4]=='false') && 
-      (question6 == 'true' || masterQuestions[5]=='false') && 
-      (question7 == 'false' || masterQuestions[6]=='false') && 
-      (question8 == 'false' || masterQuestions[7]=='false') && 
-      (question9 == 'true' || masterQuestions[8]=='false') && 
-      (question10 == 'false' || masterQuestions[9]=='false') && 
-      (question11 == 'true' || masterQuestions[10]=='false') && 
-      (question12 == 'false' || masterQuestions[11]=='false') && 
-      (question13 == 'true' || masterQuestions[12]=='false') && 
-      (question14 == 'false' || masterQuestions[13]=='false') && 
-      (question15 == 'false' || masterQuestions[14]=='false'))
+    unless ((question1 == 'true' || question1.nil?) && 
+      (question2 == 'true' || question2.nil?) && 
+      (question3 == 'false' || question3.nil?) && 
+      (question4 == 'true' || question4.nil?) && 
+      (question5 == 'false' || question5.nil?) && 
+      (question6 == 'true' || question6.nil?) && 
+      (question7 == 'false' || question7.nil?) && 
+      (question8 == 'false' || question8.nil?) && 
+      (question9 == 'true' || question9.nil?) && 
+      (question10 == 'false' || question10.nil?) && 
+      (question11 == 'true' || question11.nil?) && 
+      (question12 == 'false' || question12.nil?) && 
+      (question13 == 'true' || question13.nil?) && 
+      (question14 == 'false' || question14.nil?) && 
+      (question15 == 'false' || question15.nil?))
       errors.add_to_base("You answered one or more of the questions incorrectly - please re-review the laser safety video and try again")
     end
   end
