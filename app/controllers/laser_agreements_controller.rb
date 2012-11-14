@@ -39,6 +39,7 @@ class LaserAgreementsController < ApplicationController
       flash[:notice] = 'You are now registered to use the laser cutters.  Please follow all posted safety guidelines.'
       redirect_to(@user)
     else
+      @MasterQuestions = [true, false, false, true, false, false, false, true, true, true, false, true, false, true, true].shuffle
       render :action => "new" 
     end
   end
