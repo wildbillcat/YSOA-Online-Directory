@@ -27,7 +27,7 @@
 		<p><%= link_to "Working Safely with Embedded Lasers", "http://www.yale.edu/ehs/onlinetraining/EmbeddedLaser/EmbeddedLaser.htm", :popup => true %></p>
 		<p>Then answer the following True/False questions.  <strong>You must answer the questions correctly to register</strong>.</p>
 		<ol>
-			<% if(@MasterQuestions[0]) %>
+			<%if(@MasterQuestions[0]) %>
 		  	<li>
 				Class 4 lasers (the type of laser in our laser cutters) are high-powered lasers with the capacity to cause skin burns and permanent eye damage.   <%= f.select :question1, [true, false], {:include_blank => true} %>
 			</li>
