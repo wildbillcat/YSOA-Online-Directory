@@ -19,7 +19,7 @@ class LaserAgreement < ActiveRecord::Base
   private
   
   def check_answers?
-    unless question1 == 'true' && question2 == 'true' && question3 == 'false' && question4 == 'true' && question5 == 'false' && question6 == 'true' && question7 == 'false' && question8 == 'false'
+    unless (question1 == 'true' || params[:MasterQuestions[0]]=='false') && (question2 == 'true' || params[:MasterQuestions[1]]=='false') && (question3 == 'false' || params[:MasterQuestions[0]]=='false') && (question4 == 'true' || params[:MasterQuestions[0]]=='false') && (question5 == 'false' || params[:MasterQuestions[0]]=='false') && (question6 == 'true' || params[:MasterQuestions[0]]=='false') && (question7 == 'false' || params[:MasterQuestions[0]]=='false') && (question8 == 'false' || params[:MasterQuestions[0]]=='false')
       errors.add_to_base("You answered one or more of the questions incorrectly - please re-review the laser safety video and try again")
     end
   end

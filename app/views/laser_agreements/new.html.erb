@@ -149,6 +149,7 @@
 	<fieldset>
 		<legend>Agree and Submit</legend>
 		<p>
+			<%= f.hidden_field :MasterQuestions, :value => @MasterQuestions %>
 			<%= f.select :laser_agree, [['Agree', true], ['Do Not Agree', false]], {:include_blank => true}  %>
 			Select "Agree" to acknowledge that you agree to these terms and conditions, then click <strong>Submit</strong>.
 		</p>
