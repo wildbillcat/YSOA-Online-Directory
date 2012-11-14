@@ -7,7 +7,7 @@ class LaserAgreement < ActiveRecord::Base
   validates_uniqueness_of :user_id, :scope => :semester, :message => "has already registered for laser cutting this semester"
 
   attr_accessor :question1, :question2, :question3, :question4, :question5, :question6, :question7, :question8, :question9, :question10, :question11, :question12, :question13, :question14, :question15
-  attr_accessor :masterQuestions
+  attr_accessor :masterquestions
   validate :check_answers?
   
   
@@ -19,6 +19,7 @@ class LaserAgreement < ActiveRecord::Base
   private
   
   def check_answers?
+    masterQuestions = [ masterquestions ]
     unless ((question1 == 'true' || masterQuestions[0]=='false') && 
       (question2 == 'true' || masterQuestions[1]=='false') && 
       (question3 == 'false' || masterQuestions[2]=='false') && 
