@@ -19,7 +19,21 @@ class LaserAgreement < ActiveRecord::Base
   private
   
   def check_answers?
-    unless (question1 == 'true' || params[:MasterQuestions[0]]=='false') && (question2 == 'true' || params[:MasterQuestions[1]]=='false') && (question3 == 'false' || params[:MasterQuestions[0]]=='false') && (question4 == 'true' || params[:MasterQuestions[0]]=='false') && (question5 == 'false' || params[:MasterQuestions[0]]=='false') && (question6 == 'true' || params[:MasterQuestions[0]]=='false') && (question7 == 'false' || params[:MasterQuestions[0]]=='false') && (question8 == 'false' || params[:MasterQuestions[0]]=='false')
+    unless ((question1 == 'true' || params[:MasterQuestions[0]]=='false') && 
+      (question2 == 'true' || params[:MasterQuestions[1]]=='false') && 
+      (question3 == 'false' || params[:MasterQuestions[2]]=='false') && 
+      (question4 == 'true' || params[:MasterQuestions[3]]=='false') && 
+      (question5 == 'false' || params[:MasterQuestions[4]]=='false') && 
+      (question6 == 'true' || params[:MasterQuestions[5]]=='false') && 
+      (question7 == 'false' || params[:MasterQuestions[6]]=='false') && 
+      (question8 == 'false' || params[:MasterQuestions[7]]=='false') && 
+      (question9 == 'true' || params[:MasterQuestions[8]]=='false') && 
+      (question10 == 'false' || params[:MasterQuestions[9]]=='false') && 
+      (question11 == 'true' || params[:MasterQuestions[10]]=='false') && 
+      (question12 == 'false' || params[:MasterQuestions[11]]=='false') && 
+      (question13 == 'true' || params[:MasterQuestions[12]]=='false') && 
+      (question14 == 'false' || params[:MasterQuestions[13]]=='false') && 
+      (question15 == 'false' || params[:MasterQuestions[14]]=='false'))
       errors.add_to_base("You answered one or more of the questions incorrectly - please re-review the laser safety video and try again")
     end
   end
