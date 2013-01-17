@@ -4,7 +4,7 @@ class EquipMailer < ActionMailer::Base
 
   def overdue_product_notification(transaction)
     @transaction = transaction
-    mail( :to => "claudia.staffieri@yale.edu",
+    mail( :to => "claudia.staffieri@yale.edu, daniel.hammond@yale.edu",
         :cc => "patrick.mcmorran@yale.edu",  
 	:subject => "Oops!  Something's Late!")
   end

@@ -12,14 +12,14 @@ class RegMailer < ActionMailer::Base
     def print_registrations_notification(print_agreements)
       @print_agreements = print_agreements
       mail( :to => "patrick.mcmorran@yale.edu",
-            :cc => "vincent.guerrero@yale.edu, robert.liston@yale.edu",
+            :cc => "vincent.guerrero@yale.edu, robert.liston@yale.edu,trevor.d.williams@yale.edu",
             :subject => "Yesterday's Printing Registrations")
     end
   
     def workstation_registrations_notification(workstations)
       @workstations = workstations
       mail( :to => "patrick.mcmorran@yale.edu",
-            :cc => "vincent.guerrero@yale.edu, robert.liston@yale.edu",
+            :cc => "vincent.guerrero@yale.edu, robert.liston@yale.edu,trevor.d.williams@yale.edu",
             :subject => "Yesterday's Workstation Registrations")
     end
   
