@@ -16,7 +16,7 @@ class Submission < ActiveRecord::Base
   validates_attachment_presence :portfolio
   validates_attachment_size :portfolio, :less_than => 50.megabytes
   
-  COLLECTIONS = ['Design Review: MArch1 2012 to 2013', 'Design Review: MArch2 2012 to 2013', 'Graduating Review: MArch1 2012 to 2013', 'Graduating Review: MArch 2 2012 to 2013', '251b Junior Studio Portfolio Review Spring 2013', 
+  COLLECTIONS = ['Design Review: MArch1 2012 to 2013', 'Design Review: MArch2 2012 to 2013', 'Graduating Students Portfolio Submission May 2013', 'Interim Portfolio Submission May 2013', '251b Junior Studio Portfolio Review Spring 2013', 
     'KPF Traveling Fellowship 2013']
 
   def owner
