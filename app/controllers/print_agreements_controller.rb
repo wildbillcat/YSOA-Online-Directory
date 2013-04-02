@@ -34,6 +34,11 @@ class PrintAgreementsController < ApplicationController
       @user.print_agreement_id = @print_agreement.id
       @user.last_print_agree_semester = current_semester
       @user.save
+      #Papercut Activation
+      servername = 'papercutServer'
+      auth_token = 'apiKey'
+      p = ServerCommandProxy.new :servername => servername, :auth_token => auth_token
+      p.setUserProperty(params[:user_id], 'disabled-print', 'FALSE')
       flash[:notice] = 'You are now registered to use the Architecture printers and plotters.'
       redirect_to(@user)
     else
@@ -66,4 +71,22 @@ class PrintAgreementsController < ApplicationController
    def get_user
      @user = User.find(params[:user_id])
    end
+end
+
+class ServerCommandProxy
+  require 'xmlrpc/client'
+
+  attr_accessor :auth_token, :server
+
+  def initialize(options)
+    @server = XMLRPC::Client.new3 :host => options[:servername],
+                                  :path => '/rpc/api/xmlrpc',
+                                  :port => options[:port] || 9191,
+                                  :use_ssl => false
+    @auth_token = options[:auth_token]
+  end
+
+  def method_missing(meth_id, *args)
+    @server.send('call', "api.#{meth_id.id2name}", @auth_token, *args)
+  end
 end
