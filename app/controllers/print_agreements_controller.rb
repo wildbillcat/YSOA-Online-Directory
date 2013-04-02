@@ -38,7 +38,7 @@ class PrintAgreementsController < ApplicationController
       servername = 'papercutServer'
       auth_token = 'apiKey'
       p = ServerCommandProxy.new :servername => servername, :auth_token => auth_token
-      p.setUserProperty(:cas_user, 'disabled-print', 'FALSE')
+      p.setUserProperty(session[:cas_user], 'disabled-print', 'FALSE')
       flash[:notice] = 'You are now registered to use the Architecture printers and plotters.'
       redirect_to(@user)
     else
