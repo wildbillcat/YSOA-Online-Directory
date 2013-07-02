@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
     
   PROGRAMS = %w[MARCH1 MARCH2 MED PhD Undergrad MARCH1+FES MARCH1+MED MARCH1+SOM MARCH2+FES MARCH2+MED MARCH2+SOM Summer External VAR]
   
-  STATUSES = %w[active inactive graduated leave leave_with_access leave_without_access in_absentia]
+  STATUSES = %w[active inactive graduated leave leave_with_access leave_without_access in_absentia withdrawn]
   
  
   def role_symbols
