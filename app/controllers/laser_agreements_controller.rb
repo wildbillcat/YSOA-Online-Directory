@@ -16,7 +16,7 @@ class LaserAgreementsController < ApplicationController
   end
 
   def new
-    if(params[:educated] && ((request.referer+"?educated=true" == request.url) || (request.referer == request.url)))
+    if(params[:educated] == "true")
     @MasterQuestions = [true, false, false, true, false, false, false, true, true, true, false, true, false, true, true].shuffle
     @laser_agreement = @user.laser_agreements.build
     else
