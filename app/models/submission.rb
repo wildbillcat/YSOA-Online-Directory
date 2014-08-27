@@ -16,8 +16,13 @@ class Submission < ActiveRecord::Base
   validates_attachment_presence :portfolio
   validates_attachment_size :portfolio, :less_than => 50.megabytes
   
+<<<<<<< HEAD
   COLLECTIONS = ['Design Review: MArch1 2014 to 2015', 'Design Review: MArch2 2014 to 2015',
      'Graduating Students Portfolio Submission December 2014']
+=======
+  COLLECTIONS = ['Design Review: MArch1 2013 to 2014', 'Design Review: MArch2 2013 to 2014', 'RAMSA Travel Fellowship',
+     '250a Junior Studio Portfolio Review Spring 2014', 'KPF Traveling Fellowship 2014']
+>>>>>>> 19e2d6b6275e58f10d434fafc1e523ffb7074d76
 
   def owner
     if user_id && User.exists?(user_id)
