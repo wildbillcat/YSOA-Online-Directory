@@ -45,11 +45,11 @@
 				<%= f.collection_select :program, User::PROGRAMS, :to_s, :humanize, :include_blank => true %>
   			</p>
   			<p>
-    			<%= f.label :program_year, "Prior Education" %><br />
+    			<%= f.label :program_year %><br />
 				<%= f.select :program_year, [1, 2, 3, 4, 5 ], {:include_blank => true} %>			
 			</p>
   			<p>
-    			<%= f.label :undergrad_college %><br />
+    			<%= f.label :undergrad_college, "Prior Education" %><br />
     			<%= f.text_field :undergrad_college %>
   			</p>
 			<p>
